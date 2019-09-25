@@ -20,8 +20,10 @@ class Comment extends React.Component {
 
 
 						<div className="footer">
-							<p><i class="fas fa-chevron-up"></i></p>
-							<p><i class="far fa-comments"></i></p>
+							<div className="footerItemReport">Report Post</div>
+							<div></div>
+							<p className="footerItemUpvote"><i class="fas fa-chevron-up"></i></p>
+							<p className="footerItemComment"><i class="far fa-comments"></i></p>
 						</div>
 
 
