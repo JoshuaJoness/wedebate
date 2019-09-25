@@ -1,45 +1,61 @@
-.left {
-	text-align: left;
+.topic{
+text-align: center;
+}
 
-	border: solid 1px black;
-	display: inline-block;
-	width: 50%;
-	border: 2px solid blue;
+.outerWrapper {
+	display: grid;
+	grid-template-columns: 50% 50%;
+}
+
+.left {
+	padding-left: 10%;
+	padding-right: 3%;
 }
 
 .right {
-	text-align: right;
-
-	border: solid 1px black;
-	display: inline-block;
-	width: 50%;
+	padding-right: 10%;
+	padding-left:3%;
 }
 
 .outerWrap{
 	display: grid;
-
+	border: 1px solid black;
+	margin-top: 2%;
 }
 
-.wrap{
-	border: 1px solid black;
+.wrapper{
 	grid-template-rows: 20% 60% 20%;
 }
 
 .header {
-	border: 1px solid green;
-
-	display: grid;
+	border-bottom: 1px solid black;
 }
 
 .headerItem {
-	grid-template-rows: 50% 50%;
+	display: inline-block;
+	margin-right: 10% auto;
 }
 
 .text {
-	border: 1px solid red;
+	border-bottom: 1px solid black;
 	display: block;
 }
 
 .footer {
-	display: inline-block;
+	display: grid;
+	grid-template-columns: 20% 70% 5% 5%;
+}
+
+.footerItemReport{
+		display: inline-block;
+		margin-left: 4%;
+}
+
+.footerItemUpvote{
+		display: inline-block;
+		margin-right: 2%;
+}
+
+..footerItemComment{
+		margin-right: 2%;
 }

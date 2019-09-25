@@ -23,16 +23,21 @@ class Topic extends React.Component {
 		return(
 			<>
 				<Nav/>
-				<h1>Title</h1>
-				<div>Image</div>
+				<div className="topic">
+					<h1>Title</h1>
+					<img src="https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_1248,w_2220/f_auto,q_auto,w_1100/v1555924300/shape/mentalfloss/185187503.jpg" alt="landscape with rainbows and colorful birds"/>
+					<div>Description:</div>
+				</div>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
 
-				<div>Description</div>
-
-				<div>
+				<div className="outerWrapper">
 
 				<div className="column" className="left">
 
-
+					<p>Pros</p>
 					{this.state.pros.map(p => <Comment />)}
 
 				</div>
@@ -42,6 +47,7 @@ class Topic extends React.Component {
 
 					<div className="column" className="right">
 
+						<p>Cons</p>
 										{this.state.cons.map(p => <Comment />)}
 
 
