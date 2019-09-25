@@ -2,6 +2,7 @@ import React from 'react'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import Signup from './Signup'
 import TextInput from './TextInput'
+import Ranking from './Ranking'
 
 import Nav from './Nav'
 import Topic from './Topic'
@@ -15,7 +16,7 @@ class Routes extends React.Component{
 	    <BrowserRouter>
 	      <Switch>
 	        <Route path='/signup' component={Signup} />
-					<Route path='/posttopic' component={PostTopic} />
+					<Route path='/ranking' component={Ranking} />
 					<Route path='/input' component={TextInput} />
 					<Route path='/login' component={Login} />
 					<Route path='/topic' component={Topic} />
