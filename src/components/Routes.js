@@ -9,7 +9,7 @@ import Topic from './Topic'
 import HomePage from './HomePage'
 import Login from './Login'
 import PostTopic from './PostTopic'
-import Settings from './Settings'
+import Profile from './Profile'
 
 class Routes extends React.Component{
 	render () {
@@ -17,7 +17,9 @@ class Routes extends React.Component{
 	    <BrowserRouter>
 	      <Switch>
 	        <Route path='/posttopic' component={PostTopic} />
-					<Route path='/settings' component={Settings} />
+					<Route path='/input' component={TextInput} />
+					<Route path='/signup' component={Signup} />
+					<Route path='/profile' component={Profile} />
 					<Route path='/ranking' component={Ranking} />
 					<Route path='/signup' component={Signup} />
 					<Route path='/input' component={TextInput} />
