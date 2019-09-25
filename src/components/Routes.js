@@ -15,9 +15,10 @@ class Routes extends React.Component{
 	  return (
 	    <BrowserRouter>
 	      <Switch>
-	        <Route path='/signup' component={Signup} />
-					<Route path='/ranking' component={Ranking} />
+	        <Route path='/posttopic' component={PostTopic} />
 					<Route path='/input' component={TextInput} />
+					<Route path='/signup' component={Signup} />
+					<Route path='/ranking' component={Ranking} />
 					<Route path='/login' component={Login} />
 					<Route path='/topic' component={Topic} />
 					<Route path='/nav' component={Nav} />
