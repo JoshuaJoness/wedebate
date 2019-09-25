@@ -2,7 +2,9 @@ import React from 'react'
 import { Input } from 'react-rainbow-components'
 import { Select } from 'react-rainbow-components'
 import { Textarea } from 'react-rainbow-components'
+import Nav from './Nav'
 import '../styles/postTopic.css'
+
 
 const containerStyles = {
     maxWidth: 700,
@@ -12,12 +14,13 @@ const options = [
     { value: 'option 1', label: 'Religion' },
     { value: 'option 2', label: 'Politics' },
     { value: 'option 3', label: 'Finance' },
-];
+]
 
 class PostTopic extends React.Component {
 	render(){
 		return(
 			<>
+			<Nav/>
 			<div className="wrap">
 				<div></div>
 

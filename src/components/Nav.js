@@ -19,40 +19,40 @@ class Nav extends React.Component {
 					<a to="/profile" className="button">
 
 					<AvatarMenu
-	id="avatar-menu"
-	src="images/user/user2.jpg"
-	assistiveText="Tahimi Leon"
-	menuAlignment="right"
-	menuSize="small"
-	avatarSize="small"
-	title="Tahimi Leon"
->
-	<li className="rainbow-p-horizontal_small rainbow-align_center rainbow-flex">
-			<Avatar
-					src="images/user/user2.jpg"
-					assistiveText="Tahimi Leon"
-					title="Tahimi Leon"
-					size="large"
-			/>
-			<div className="rainbow-m-left_x-small">
-					<p className="rainbow-font-size-text_medium rainbow-color_dark-1">Tahimi</p>
-					<p className="rainbow-font-size-text_small rainbow-color_gray-3">
-							janedoe@gmail.com
-					</p>
-			</div>
-	</li>
-	<MenuDivider variant="space" />
-	<MenuItem
-			label="Edit Profile"
-			icon=<i class="fas fa-pencil-alt"></i>
-			iconPosition="left"
-	/>
-	<MenuItem
-			label="Logout"
-			icon=<i class="fas fa-power-off"></i>
-			iconPosition="left"
-	/>
-</AvatarMenu>
+						id="avatar-menu"
+						src="images/user/user2.jpg"
+						assistiveText="Tahimi Leon"
+						menuAlignment="right"
+						menuSize="small"
+						avatarSize="small"
+						title="Tahimi Leon"
+					>
+						<li className="rainbow-p-horizontal_small rainbow-align_center rainbow-flex">
+							<Avatar
+								src="images/user/user2.jpg"
+								assistiveText="Tahimi Leon"
+								title="Tahimi Leon"
+								size="large"
+							/>
+							<div className="rainbow-m-left_x-small">
+								<p className="rainbow-font-size-text_medium rainbow-color_dark-1">Tahimi</p>
+								<p className="rainbow-font-size-text_small rainbow-color_gray-3">
+											janedoe@gmail.com
+								</p>
+							</div>
+						</li>
+						<MenuDivider variant="space" />
+						<MenuItem
+							label="Edit Profile"
+							icon=<i class="fas fa-pencil-alt"></i>
+							iconPosition="left"
+						/>
+						<MenuItem
+							label="Logout"
+							icon=<i class="fas fa-power-off"></i>
+							iconPosition="left"
+						/>
+					</AvatarMenu>
 
 						<span>Carl</span>
 					</a>

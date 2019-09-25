@@ -14,9 +14,7 @@ class Login extends React.Component {
 			<>
 				<div className="wrap">
 				<div></div>
-
-<div>
-
+				<div>
 					<form className="form">
 					<span className="title">Login</span>
 						<div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
@@ -40,9 +38,7 @@ class Login extends React.Component {
 							</div>
 						</div>
 					</form>
-
-</div>
-
+					</div>
 				</div>
 			</>
 		)

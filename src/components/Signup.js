@@ -61,7 +61,7 @@ class Signup extends React.Component {
 								className="formInput"
 								label="Please enter a password:"
 								placeholder="password"
-								type="email" />
+								type="password" />
 							<div className="uploadLabel">Please select a profile picture:</div>
 							<div className="rainbow-p-vertical_large rainbow-p-left_xx-large" className="upload">
 								<br></br>

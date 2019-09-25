@@ -1,0 +1,14 @@
+.settingsWrap{
+	padding-left: 10%;
+	padding-right: 10%;
+	display: grid;
+	grid-template-rows: 50% 30% 30% 30% 30% 30% 30%;
+}
+
+.settingsInput{
+	width: 370px;
+}
+
+.settingsItem{
+	margin-top: 5%;
+}
