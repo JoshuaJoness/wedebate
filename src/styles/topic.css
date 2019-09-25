@@ -2,6 +2,25 @@
 text-align: center;
 }
 
+.bar{
+	display: grid;
+	grid-template-columns: 30% 40% 30%
+}
+
+.yesButton{
+	display: inline-block;
+	margin-left: 80%;
+}
+
+.noButton{
+	margin-right: 80%;
+}
+
+.barImage{
+	margin-left: 10%;
+	width: 80%;
+}
+
 .outerWrapper {
 	display: grid;
 	grid-template-columns: 50% 50%;
