@@ -43,6 +43,9 @@ class Topic extends React.Component {
 				</div>
 				<br></br>
 				<br></br>
+				<button className="leaveOpinion">Click here to leave an opinion!</button>
+				<br></br>
+				<br></br>
 				<br></br>
 				<br></br>
 
