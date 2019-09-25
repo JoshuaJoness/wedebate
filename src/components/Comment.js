@@ -20,7 +20,7 @@ class Comment extends React.Component {
 
 
 						<div className="footer">
-							<div className="footerItemReport">Report Post</div>
+							<button className="footerItemReport">Report Post</button>
 							<div></div>
 							<p className="footerItemUpvote"><i class="fas fa-chevron-up"></i></p>
 							<p className="footerItemComment"><i class="far fa-comments"></i></p>
