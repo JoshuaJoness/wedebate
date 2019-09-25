@@ -1,5 +1,4 @@
 import React from 'react'
-import { CheckboxGroup } from 'react-rainbow-components'
 import { Input } from 'react-rainbow-components'
 
 import '../styles/forms.css'
@@ -9,33 +8,7 @@ const inputContainerStyles = {
     width: '50%',
 }
 
-const options = [
-    {
-			value: 'checkboxOne',
-			label: 'By checking this box I grant DEBATORS to use my image in any way that they \r see fit. I also certify that I have full legal rights to this image.',
-			disabled: false
-		},
-		{
-			value: 'checkboxTwo',
-			label: 'By checking this box I certify that I am of legal age in my jurisdiction to use this site.',
-			disabled: false
-		}
-]
-
 class Login extends React.Component {
-
-	constructor(props) {
-			super(props);
-			this.state = { values: ['checkboxOne', 'checkboxTwo'] };
-			this.handleOnChange = this.handleOnChange.bind(this);
-	}
-
-	handleOnChange(values) {
-			this.setState({ values });
-	}
-
-
-
 	render() {
 		return(
 			<>

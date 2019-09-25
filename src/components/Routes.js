@@ -7,6 +7,7 @@ import Nav from './Nav'
 import Topic from './Topic'
 import HomePage from './HomePage'
 import Login from './Login'
+import PostTopic from './PostTopic'
 
 class Routes extends React.Component{
 	render () {
@@ -14,7 +15,7 @@ class Routes extends React.Component{
 	    <BrowserRouter>
 	      <Switch>
 	        <Route path='/signup' component={Signup} />
-	
+					<Route path='/posttopic' component={PostTopic} />
 					<Route path='/input' component={TextInput} />
 					<Route path='/login' component={Login} />
 					<Route path='/topic' component={Topic} />
