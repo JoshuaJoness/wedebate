@@ -1,0 +1,45 @@
+.left {
+	text-align: left;
+
+	border: solid 1px black;
+	display: inline-block;
+	width: 50%;
+	border: 2px solid blue;
+}
+
+.right {
+	text-align: right;
+
+	border: solid 1px black;
+	display: inline-block;
+	width: 50%;
+}
+
+.outerWrap{
+	display: grid;
+
+}
+
+.wrap{
+	border: 1px solid black;
+	grid-template-rows: 20% 60% 20%;
+}
+
+.header {
+	border: 1px solid green;
+
+	display: grid;
+}
+
+.headerItem {
+	grid-template-rows: 50% 50%;
+}
+
+.text {
+	border: 1px solid red;
+	display: block;
+}
+
+.footer {
+	display: inline-block;
+}

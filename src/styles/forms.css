@@ -1,0 +1,27 @@
+.wrap {
+	display: grid;
+	margin-top: 7%;
+	grid-template-columns: 25% 50% 25%;
+}
+
+.form {
+	background-color: #8FBC8F;
+	text-align: left;
+	border-radius: 1%;
+	border: 1px solid black;
+}
+
+.formInput {
+	margin-top: 20px;
+}
+
+.uploadLabel {
+	margin-top: 20px;
+}
+
+.title {
+	margin-top: 5%;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 20px;
+}

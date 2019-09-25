@@ -1,0 +1,29 @@
+.grid. {
+    display: grid;
+}
+.grid.homepage {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 30px 120px;
+    grid-column-gap: 50px;
+    grid-row-gap: 30px;
+}
+.grid.center {
+    grid-template-columns: 400px;
+    justify-content: center;
+}
+.grid.sidebar-left {
+    grid-template-columns: 200px auto;
+    grid-column-gap: 100px;
+}
+.grid.sidebar-right {
+    grid-template-columns: auto 350px;
+    grid-column-gap: 100px;
+}
+.grid.middle {
+    align-content: center;
+}
+.grid.tall {
+    height: 100vh;
+}
