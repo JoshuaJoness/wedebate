@@ -13,9 +13,9 @@ class Nav extends React.Component {
     return (
       <nav>
         <a
-          href="/index"
+          href="/posttopic"
           className="logo"
-          style={{backgroundImage: `url(${"./logo192.png"})`}}
+          style={{backgroundImage: `url(${"./109526.svg"})`}}
         ></a>
 
         <div>
