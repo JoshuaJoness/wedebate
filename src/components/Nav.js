@@ -6,7 +6,7 @@ class Nav extends React.Component {
 	render () {
 		return (
 			<nav>
-				<a href="/index" className="logo" style={{backgroundImage: `url(${'./logo192.png'})`}}></a>
+				<a href="/posttopic" className="logo" style={{backgroundImage: `url(${'./109526.svg'})`}}></a>
 
 				<div>
 					<div>1000 Points</div>

@@ -26,7 +26,7 @@ class Signup extends React.Component {
 
 	constructor(props) {
 			super(props);
-			this.state = { values: ['checkboxOne', 'checkboxTwo'] };
+			this.state = { values: ['', ''] };
 			this.handleOnChange = this.handleOnChange.bind(this);
 	}
 
@@ -68,7 +68,7 @@ class Signup extends React.Component {
 								<input type="file"/>
 								<br></br>
 								<br></br>
-							Nav.js</div>
+							</div>
 							<div className="rainbow-p-vertical_large rainbow-p-left_xx-large" className="checkbox">
 								<CheckboxGroup className="formCheckbox"
 									label=""
