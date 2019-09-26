@@ -1,23 +1,11 @@
-import React from 'react';
+import React from "react";
 
-    import { Button } from 'react-rainbow-components';
+import {Button} from "react-rainbow-components";
 
-    class Button extends React.Component {
+class Button_ extends React.Component {
+  render() {
+    return <Button label={this.props.name} variant="brand" />;
+  }
+}
 
-			render() {
-
-
-				return (
-						<Button
-								label="Hello World!"
-								variant="brand"
-								onClick={() => alert('Hello World!')}
-						/>
-				);
-			}
-
-			}
-
-
-
-export default Button
+export default Button_;

@@ -1,0 +1,23 @@
+button {
+
+
+width: 90px;
+float: right;
+
+
+
+}
+
+.search {
+
+	width: 300px
+}
+
+select {
+width: 140px
+}
+
+.searchBar {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr
+}

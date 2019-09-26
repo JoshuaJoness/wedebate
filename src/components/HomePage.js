@@ -1,37 +1,48 @@
-import React from 'react';
+import React from "react";
 
 import Thumbnail from "./Thumbnail";
-import '../styles/card.css'
-import '../styles/grid.css'
-import Nav from './Nav'
-
+import Button from "./Button";
+import "../styles/card.css";
+import "../styles/grid.css";
+import "../styles/button.css";
+import Nav from "./Nav";
 
 class HomePage extends React.Component {
-
-	render() {
-		return(
-						<>
-							<Nav/>
-							<nav>
-								<input type="text" className="search" placeholder="Search..." />
-							</nav>
-							<div className="grid homepage">
-								<a href='./topic'><Thumbnail /></a>
-								<Thumbnail />
-								<Thumbnail />
-								<Thumbnail />
-								<Thumbnail />
-								<Thumbnail />
-								<Thumbnail />
-								<Thumbnail />
-								<Thumbnail />
-								<Thumbnail />
-								<Thumbnail />
-								<Thumbnail />
-							</div>
-						</>
-		)
-	}
+  render() {
+    return (
+      <>
+        <Nav />
+        <nav className="searchBar">
+          <input type="text" className="search" placeholder="Search..." />
+          <button>Popularity</button>
+          <select>
+            <option value="1">Categories</option>
+            <option value="1">Politics</option>
+            <option value="1">Health</option>
+            <option value="1">Lifestyle</option>
+            <option value="1">Technology</option>
+            <option value="1">Philosophy</option>
+          </select>
+        </nav>
+        <div className="grid homepage">
+          <a href="./topic">
+            <Thumbnail />
+          </a>
+          <Thumbnail />
+          <Thumbnail />
+          <Thumbnail />
+          <Thumbnail />
+          <Thumbnail />
+          <Thumbnail />
+          <Thumbnail />
+          <Thumbnail />
+          <Thumbnail />
+          <Thumbnail />
+          <Thumbnail />
+        </div>
+      </>
+    );
+  }
 }
 
-export default HomePage
+export default HomePage;
