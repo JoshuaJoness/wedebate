@@ -4,6 +4,17 @@ import Circle from './Circle'
 import "../styles/card.css";
 
 class Thumbnail extends React.Component {
+	state= {
+		topic: {
+			title: ''
+		}
+	}
+
+	componentWillMount() {
+		this.setState({
+			topic: this.props.topic
+		})
+	}
     render() {
         return(
                 <Card className="card link"
@@ -27,7 +38,7 @@ class Thumbnail extends React.Component {
 													alt="landscape with rainbows and colorful birds"
 											/>
                         <h1 className="rainbow-p-top_large rainbow-font-size-heading_small rainbow-color_dark-1 meta">
-                            Should we all be vegan?
+                            {this.props.topic}
                         </h1>
                                     <div className='yesno'>
                                                         <Circle/>
