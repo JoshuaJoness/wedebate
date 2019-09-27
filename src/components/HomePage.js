@@ -14,18 +14,23 @@ import Nav from "./Nav";
 class HomePage extends React.Component {
 
 	state = {
-    topic: {
-			title: '',
-			image: '',
-			description: '',
-			user: '',
-			category: '',
-			yesVotes: [],
-			noVotes: []
-		},
-		category: []
+    topics: [],
   };
 
+	componentWillMount() {
+
+		let topics =  this.state.topics
+
+		axios.get('http://localhost:4000/topic/')
+			.then(res => {
+				this.setState({
+
+					topics: res.data,
+			
+				})
+			})
+			.catch(err => console.log(err))
+		}
 
   render() {
     return (
@@ -43,6 +48,10 @@ class HomePage extends React.Component {
             <option value="1">Philosophy</option>
           </select>
         </nav>
+						<div>{this.state.topics.map(topic => {
+							return <div>{topic.title}</div>
+						})}
+						</div>
         <div className="grid homepage">
           <a href="./topic">
             <Thumbnail />
