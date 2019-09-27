@@ -20,7 +20,6 @@ class HomePage extends React.Component {
 
 	componentWillMount() {
 
-		let topics =  this.state.topics
 
 		axios.get('http://localhost:4000/topic/')
 			.then(res => {
@@ -52,7 +51,7 @@ class HomePage extends React.Component {
         <div className="grid homepage">
 				{
 					this.state.topics.map((topic,index) => {
-return <Thumbnail key={index} topic={topic} />
+return <Thumbnail key={index} topic={'topic'} />
 					})
 				}
 
