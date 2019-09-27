@@ -26,16 +26,6 @@ class HomePage extends React.Component {
 		category: []
   };
 
-	componentWillMount() {
-			this.setState({filteredPlaces: this.state.places})			axios.get('http://localhost:4000/places/')
-			.then(res => {
-				this.setState({
-					places: res.data,
-					filteredPlaces: res.data
-				})
-			})
-			.catch(err => console.log(err))
-		}		
 
   render() {
     return (
