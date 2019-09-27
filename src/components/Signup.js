@@ -29,25 +29,40 @@ class Signup extends React.Component {
 			avatar:'',
 			email:'',
 			username:'',
-			password:''
-		}
+			password:'',
+		},
+		values: ['false','false']
 	}
+	//
+	// constructor(props) {
+	// 		super(props);
+	// 		this.state = { values: ['', ''] };
+	// 		this.handleOnChange = this.handleOnChange.bind(this);
+	// }
 
-	constructor(props) {
-			super(props);
-			this.state = { values: ['', ''] };
-			this.handleOnChange = this.handleOnChange.bind(this);
-	}
-
-	handleOnChange(values) {
+	handleOnChange = (values) => {
 			this.setState({ values });
+	}
+
+	changeField = (e, field) => {
+		let user = this.state.user
+		user[field] = e.target.value
+		this.setState({user})
+		console.log(this.state.user);
 	}
 
 	submit = (e) => {
 		e.preventDefault()
 		let user = this.state.user
 		if(user.email && user.username && user.password)
-		axios.get()
+		axios.post("http://localhost:4000/signup",
+		user).then(res =>{
+			localStorage.setItem('token', res.data)
+			console.log(res.data)
+			this.props.history.push("/")
+		}).catch(err =>{
+			console.log(err);
+		})
 	}
 
 
@@ -67,17 +82,20 @@ class Signup extends React.Component {
 						   	className="formInput"
 						   	label="Please enter your email:"
 						   	placeholder="example@email.com"
-								type="email" />
+								type="email"
+								onChange={(e)=>this.changeField(e,'email')} />
 							<Input
 								className="formInput"
 								label="Please enter a username:"
 								placeholder="username"
-								type="text" />
+								type="text"
+								onChange={(e)=>this.changeField(e,'username')} />
 							<Input
 								className="formInput"
 								label="Please enter a password:"
 								placeholder="password"
-								type="password" />
+								type="password"
+								onChange={(e)=>this.changeField(e,'password')} />
 							<div className="uploadLabel">Please select a profile picture:</div>
 							<div className="rainbow-p-vertical_large rainbow-p-left_xx-large" className="upload">
 								<br></br>
