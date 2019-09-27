@@ -5,9 +5,38 @@ import Button from "./Button";
 import "../styles/card.css";
 import "../styles/grid.css";
 import "../styles/button.css";
+import axios from "axios";
 import Nav from "./Nav";
 
+
+
+
 class HomePage extends React.Component {
+
+	state = {
+    topic: {
+			title: '',
+			image: '',
+			description: '',
+			user: '',
+			category: '',
+			yesVotes: [],
+			noVotes: []
+		},
+		category: []
+  };
+
+	componentWillMount() {
+			this.setState({filteredPlaces: this.state.places})			axios.get('http://localhost:4000/places/')
+			.then(res => {
+				this.setState({
+					places: res.data,
+					filteredPlaces: res.data
+				})
+			})
+			.catch(err => console.log(err))
+		}		
+
   render() {
     return (
       <>
