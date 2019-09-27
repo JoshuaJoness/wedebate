@@ -33,7 +33,7 @@ class Login extends React.Component {
 				console.log(err);
 			})
 		} else {
-			alert("Email or password not found! Please try again!");
+			console.log("Email or password not found! Please try again!");
 		}
 	}
 
