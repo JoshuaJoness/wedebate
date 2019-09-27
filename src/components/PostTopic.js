@@ -2,6 +2,7 @@ import React from 'react'
 import { Input } from 'react-rainbow-components'
 import { Select } from 'react-rainbow-components'
 import { Textarea } from 'react-rainbow-components'
+import axios from "axios";
 import Nav from './Nav'
 import '../styles/postTopic.css'
 
