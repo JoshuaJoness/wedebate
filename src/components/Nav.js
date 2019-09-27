@@ -59,12 +59,12 @@ class Nav extends React.Component {
               <MenuDivider variant="space" />
               <MenuItem
                 label="Edit Profile"
-                icon=<i class="fas fa-pencil-alt"></i>
+                icon=<i className="fas fa-pencil-alt"></i>
                 iconPosition="left"
               />
               <MenuItem
                 label="Logout"
-                icon=<i class="fas fa-power-off"></i>
+                icon=<i className="fas fa-power-off"></i>
                 iconPosition="left"
               />
             </AvatarMenu>

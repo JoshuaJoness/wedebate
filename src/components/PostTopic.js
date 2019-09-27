@@ -18,6 +18,48 @@ const options = [
 ]
 
 class PostTopic extends React.Component {
+
+	state= {
+		topics:{},
+		category: []
+	}
+
+	componentWillMount() {
+
+		axios.get('http://localhost:4000/category/')
+			.then(res => {
+				this.setState({
+
+					category: res.data,
+				})
+			})
+			.catch(err => console.log(err))
+		}
+
+	changeField = (e, field) => {
+		let topic = this.state.topics
+		topic[field] = e.target.value
+		this.setState({topic})
+		console.log(this.state.topic);
+	}
+
+	submit = (e) => {
+		e.preventDefault()
+		let topic = this.state.topics
+		if (topic.title && topic.description) {
+			axios.post("http://localhost:4000/topic",
+			topic).then(res => {
+				res.send(topic)
+			}).catch(err =>{
+				console.log(err);
+			})
+		} else {
+			alert("Topic required");
+		}
+	}
+
+
+
 	render(){
 		return(
 			<>
@@ -27,16 +69,21 @@ class PostTopic extends React.Component {
 
 <div>
 
-				<form className="form">
+				<form onSubmit={this.submit} className="form">
 				<span className="title">Post Topic</span>
 					<div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
+
+
 						<Select
-					    label="Please select a topic for your post:"
-					    options={options}
-					    id="example-select-1"
-					    style={containerStyles}
-					    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-						/>
+									label="Please select a topic for your post:"
+									options={this.state.category.map((category,index) => {return category.name})}
+									id="example-select-1"
+									style={containerStyles}
+									className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+								/>
+
+
+
 						<Textarea
 							id="example-textarea-1"
 							label="Please enter a title for your topic:"
@@ -44,6 +91,7 @@ class PostTopic extends React.Component {
 							placeholder="Title"
 							style={containerStyles}
 							className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+							onChange={(e)=>this.changeField(e,'title')}
 						/>
 						<Textarea
 					    id="example-textarea-1"
@@ -52,6 +100,7 @@ class PostTopic extends React.Component {
 					    placeholder="Your topic..."
 					    style={containerStyles}
 					    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+							onChange={(e)=>this.changeField(e,'description')}
 						/>
 						<div className="uploadLabel">Please select an image for your topic:</div>
 						<input className="topicPhoto" type="file"/>
