@@ -14,7 +14,8 @@ import Nav from "./Nav";
 class HomePage extends React.Component {
 
 	state = {
-    topics: [],
+    topics: []
+
   };
 
 	componentWillMount() {
@@ -26,7 +27,6 @@ class HomePage extends React.Component {
 				this.setState({
 
 					topics: res.data,
-			
 				})
 			})
 			.catch(err => console.log(err))
@@ -48,12 +48,15 @@ class HomePage extends React.Component {
             <option value="1">Philosophy</option>
           </select>
         </nav>
-						<div>{this.state.topics.map(topic => {
-							return <div>{topic.title}</div>
-						})}
-						</div>
+
         <div className="grid homepage">
-          <a href="./topic">
+				{
+					this.state.topics.map((topic,index) => {
+return <Thumbnail key={index} topic={topic} />
+					})
+				}
+
+					<a href="./topic">
             <Thumbnail />
           </a>
           <Thumbnail />

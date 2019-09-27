@@ -27,7 +27,7 @@ class Thumbnail extends React.Component {
 													alt="landscape with rainbows and colorful birds"
 											/>
                         <h1 className="rainbow-p-top_large rainbow-font-size-heading_small rainbow-color_dark-1 meta">
-                            Should we all be vegan?
+                            {this.props.topic.title}
                         </h1>
                                     <div className='yesno'>
                                                         <Circle/>
