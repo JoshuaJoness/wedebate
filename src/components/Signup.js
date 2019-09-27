@@ -1,7 +1,7 @@
 import React from 'react'
 import { CheckboxGroup } from 'react-rainbow-components'
 import { Input } from 'react-rainbow-components'
-
+import axios from 'axios'
 import '../styles/forms.css'
 
 
@@ -24,6 +24,15 @@ const options = [
 
 class Signup extends React.Component {
 
+	state= {
+		user: {
+			avatar:'',
+			email:'',
+			username:'',
+			password:''
+		}
+	}
+
 	constructor(props) {
 			super(props);
 			this.state = { values: ['', ''] };
@@ -32,6 +41,13 @@ class Signup extends React.Component {
 
 	handleOnChange(values) {
 			this.setState({ values });
+	}
+
+	submit = (e) => {
+		e.preventDefault()
+		let user = this.state.user
+		if(user.email && user.username && user.password)
+		axios.get()
 	}
 
 
@@ -45,7 +61,7 @@ class Signup extends React.Component {
 <div>
 
 
-					<form className="form">
+					<form className="form" onSubmit={this.submit}>
 						<div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
 						  <Input
 						   	className="formInput"
