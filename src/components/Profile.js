@@ -1,10 +1,36 @@
 import React from "react";
-
 import LineChart from "./LineChart";
 import ActivityCard from "./ActivityCard";
 import {Avatar} from "react-rainbow-components";
 import "../styles/profile.css";
+import axios from 'axios'
+
 class Profile extends React.Component {
+
+	state = {
+		user:{
+			username:'',
+			email:'',
+			password:'',
+			avatar:''
+		}
+	}
+
+	componentWillMount(){
+		let token = localStorage.getItem('token')
+
+		axios.get('http://localhost:4000/profile', {
+		  headers: {
+		    Authorization: `Bearer ${token}`
+		  }
+		}).then(res => {
+			console.log(res.data);
+		}).catch(err => {
+			console.log(err);
+		})
+	}
+
+
   render() {
     return (
       <div>
@@ -47,8 +73,9 @@ class Profile extends React.Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
+
 
 export default Profile;
