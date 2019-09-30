@@ -35,7 +35,6 @@ Promise.all([
   render() {
     return (
       <>
-			<div>{this.state.topics.map(t => t.percentage)}</div>
         <Nav />
         <nav className="searchBar">
           <input type="text" className="search" placeholder="Search..." />
