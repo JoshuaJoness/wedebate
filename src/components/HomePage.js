@@ -1,5 +1,5 @@
 import React from "react";
-
+import Thumbnail_ from "./Thumbnail_";
 import Thumbnail from "./Thumbnail";
 import Button from "./Button";
 import "../styles/card.css";
@@ -14,21 +14,22 @@ import Nav from "./Nav";
 class HomePage extends React.Component {
 
 	state = {
-    topics: []
+    topics: [],
+		categories: []
 
   };
 
-	componentWillMount() {
+	componentDidMount() {
 
-
-		axios.get('http://localhost:4000/topic/')
-			.then(res => {
+Promise.all([
+	axios.get('http://localhost:4000/topic/'),
+	axios.get('http://localhost:4000/category/')
+]).then(([topics, categories]) => {
 				this.setState({
-
-					topics: res.data,
+					topics: topics.data,
+					categories: categories.data
 				})
 			})
-			.catch(err => console.log(err))
 		}
 
   render() {
@@ -39,36 +40,19 @@ class HomePage extends React.Component {
           <input type="text" className="search" placeholder="Search..." />
           <button>Popularity</button>
           <select>
-            <option value="1">Categories</option>
-            <option value="1">Politics</option>
-            <option value="1">Health</option>
-            <option value="1">Lifestyle</option>
-            <option value="1">Technology</option>
-            <option value="1">Philosophy</option>
+					{this.state.categories.map((category, index) =>
+						<option value={category.name} key={index}>{category.name}</option>
+					)}
           </select>
         </nav>
 
         <div className="grid homepage">
 				{
 					this.state.topics.map((topic,index) => {
-return <Thumbnail key={index} topic={'topic'} />
+						return <Thumbnail key={index} topic={topic} />
 					})
 				}
 
-					<a href="./topic">
-            <Thumbnail />
-          </a>
-          <Thumbnail />
-          <Thumbnail />
-          <Thumbnail />
-          <Thumbnail />
-          <Thumbnail />
-          <Thumbnail />
-          <Thumbnail />
-          <Thumbnail />
-          <Thumbnail />
-          <Thumbnail />
-          <Thumbnail />
         </div>
       </>
     );

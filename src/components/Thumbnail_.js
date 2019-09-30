@@ -1,6 +1,6 @@
 import React from "react";
 import Circle from './Circle'
-import "../styles/Cards.css";
+import "../styles/card.css";
 class Thumbnail_ extends React.Component {
  render() {
    return (
@@ -8,13 +8,15 @@ class Thumbnail_ extends React.Component {
        <div
          className="image"
          style={{
-           backgroundImage: url(https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_1248,w_2220/f_auto,q_auto,w_1100/v1555924300/shape/mentalfloss/185187503.jpg)
+           backgroundImage: `url({https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_1248,w_2220/f_auto,q_auto,w_1100/v1555924300/shape/mentalfloss/185187503.jpg})`
          }}
+
+
        >
        </div>
        <div className="content">
          <h1 className="meta">
-           Should we all be vegan?
+           {this.props.topic.title}
          </h1>
          <small className="location">
 <div className='yesno'>
