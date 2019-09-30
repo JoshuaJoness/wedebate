@@ -11,7 +11,15 @@ class Topic extends React.Component {
 
 	state = {
 		topic: [],
-		opinion: [],
+		opinions: [ {
+
+        upvoters: [],
+        user: {
+					avatar: '',
+            username: ""
+        },
+        text: "",
+    }],
 		pros:
 		[
 			{item1: 'yo'},
@@ -29,12 +37,14 @@ class Topic extends React.Component {
 
 Promise.all([
 	axios.get(`http://localhost:4000/topic/${this.props.match.params.id}`),
-	axios.get(`http://localhost:4000/getOpinionsTopic/${this.props.match.params.id}`)
+	axios.get(`http://localhost:4000/opinions/topic/${this.props.match.params.id}`)
 
-]).then(([topic, opinion]) => {
+]).then(([topic, opinions]) => {
+					console.log(opinions)
 				this.setState({
 					topic: topic.data,
-					opinion: opinion.data
+					opinions: opinions.data
+
 				})
 			})
 		}
@@ -62,7 +72,7 @@ Promise.all([
 				<div className="bar">
 					<button className="yesButton">Yes</button>
 
-						<ProgressBar value={10} size="large" className="barImage"/>
+						<ProgressBar value={this.state.topic.percentage} size="large" className="barImage"/>
 
 					<button className="noButton">No</button>
 				</div>
@@ -79,7 +89,7 @@ Promise.all([
 				<div className="column" className="left">
 
 					<p>Pros</p>
-					{this.state.pros.map(p => <Comment />)}
+					{this.state.opinions.map(p => <Comment />)}
 
 				</div>
 
