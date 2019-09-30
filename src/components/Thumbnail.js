@@ -5,6 +5,11 @@ import "../styles/card.css";
 
 class Thumbnail extends React.Component {
 
+	state = {
+    topics: [],
+		categories: []
+
+  };
 
     render() {
         return(
@@ -32,7 +37,7 @@ class Thumbnail extends React.Component {
                             {this.props.topic.title}
                         </h1>
                                     <div className='yesno'>
-                                                        <Circle/>
+                                                        <Circle topic={this.props.topic}/>
                                     </div>
                     </div>
                 </Card>

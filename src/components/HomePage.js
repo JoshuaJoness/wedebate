@@ -35,6 +35,7 @@ Promise.all([
   render() {
     return (
       <>
+			<div>{this.state.topics.map(t => t.percentage)}</div>
         <Nav />
         <nav className="searchBar">
           <input type="text" className="search" placeholder="Search..." />
@@ -48,8 +49,9 @@ Promise.all([
 
         <div className="grid homepage">
 				{
+		
 					this.state.topics.map((topic,index) => {
-						return <Thumbnail key={index} topic={topic} />
+						return <Thumbnail key={index} topic={topic}  />
 					})
 				}
 
