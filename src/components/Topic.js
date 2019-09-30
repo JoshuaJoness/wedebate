@@ -11,7 +11,7 @@ class Topic extends React.Component {
 
 	state = {
 		topic: [],
-		category: [],
+		opinion: [],
 		pros:
 		[
 			{item1: 'yo'},
@@ -29,11 +29,12 @@ class Topic extends React.Component {
 
 Promise.all([
 	axios.get(`http://localhost:4000/topic/${this.props.match.params.id}`),
-	axios.get('http://localhost:4000/category/')
-]).then(([topic, category]) => {
+	axios.get(`http://localhost:4000/getOpinionsTopic/${this.props.match.params.id}`)
+
+]).then(([topic, opinion]) => {
 				this.setState({
 					topic: topic.data,
-					category: category.data
+					opinion: opinion.data
 				})
 			})
 		}
