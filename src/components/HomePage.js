@@ -49,7 +49,7 @@ Promise.all([
 
         <div className="grid homepage">
 				{
-		
+
 					this.state.topics.map((topic,index) => {
 						return <Thumbnail key={index} topic={topic}  />
 					})

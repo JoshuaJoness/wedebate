@@ -4,13 +4,14 @@ import 'react-circular-progressbar/dist/styles.css';
 import '../styles/circle.css'
 class Circle extends React.Component {
 
-	state = {
-		topics: [],
-		categories: []
 
-	};
+
 
     render() {
+
+
+
+
         return(
 							<div>
 		            <CircularProgressbar value={this.props.topic.percentage} text={`${this.props.topic.side} ${this.props.topic.percentage}%`}
@@ -26,6 +27,8 @@ class Circle extends React.Component {
 								   // Can specify path transition in more detail, or remove it entirely
 								   // pathTransition: 'none',()
 								   // Colors
+
+
 
 								   pathColor: `rgba(0,255,20,0.7)', ${this.props.topic.percentage / 100})`,
 								   textColor: 'rgba(0,255,0)',
