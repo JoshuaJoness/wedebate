@@ -1,12 +1,17 @@
+
 import React from 'react'
 import '../styles/topic.css'
 import Comment from './Comment'
+import axios from 'axios'
 import Nav from './Nav'
 import { ProgressBar } from 'react-rainbow-components'
 
 class Topic extends React.Component {
 
+
 	state = {
+		topic: [],
+		category: [],
 		pros:
 		[
 			{item1: 'yo'},
@@ -20,14 +25,33 @@ class Topic extends React.Component {
 		]
 	}
 
+	componentDidMount() {
+
+Promise.all([
+	axios.get(`http://localhost:4000/topic/${this.props.match.params.id}`),
+	axios.get('http://localhost:4000/category/')
+]).then(([topic, category]) => {
+				this.setState({
+					topic: topic.data,
+					category: category.data
+				})
+			})
+		}
+
+
+
+
+
+
 	render() {
 		return(
 			<>
 				<Nav/>
 				<div className="topic">
-					<h1>Title</h1>
-					<img src="https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_1248,w_2220/f_auto,q_auto,w_1100/v1555924300/shape/mentalfloss/185187503.jpg" alt="landscape with rainbows and colorful birds"/>
+					<h1>{this.state.topic.title}</h1>
+					<img src={this.state.topic.image} alt="landscape with rainbows and colorful birds"/>
 					<div>Description:</div>
+				<div>	{this.state.topic.description}</div>
 				</div>
 				<br></br>
 				<br></br>
