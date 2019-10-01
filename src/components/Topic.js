@@ -72,7 +72,7 @@ Promise.all([
 				<div className="bar">
 					<button className="yesButton">Yes</button>
 
-						<ProgressBar value={this.state.topic.percentage} size="large" className="barImage"/>
+						<ProgressBar value={this.state.topic.percentage} size="large" className="barImage"  variant="success"/>
 
 					<button className="noButton">No</button>
 				</div>
