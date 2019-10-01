@@ -1,6 +1,8 @@
 import React from 'react'
+import { Avatar } from 'react-rainbow-components';
+import "../styles/opinion.css";
 
-class Comment extends React.Component {
+class Opinion extends React.Component {
 
 	state = {
 
@@ -24,7 +26,14 @@ class Comment extends React.Component {
 
 				<div className="header">
 
-						<div className="headerItem">Avatar</div>
+				<div className="rainbow-m-horizontal_medium">
+ <Avatar
+		 src={this.props.opinion.user.avatar}
+		 assistiveText="Tahimi Leon"
+		 title="Tahimi Leon"
+		 size="small"
+ />
+</div>
 						<div className="headerItem">{this.props.opinion.user.username}</div>
 
 				</div>
@@ -49,4 +58,4 @@ class Comment extends React.Component {
 	}
 }
 
-export default Comment
+export default Opinion
