@@ -59,7 +59,7 @@ Promise.all([
           <button>Popularity</button>
           <select>
 					{this.state.categories.map((category, index) =>
-						<option value={category.name} key={index}>{category.name}</option>
+						<option value={category.label} key={index}>{category.label}</option>
 					)}
           </select>
         </nav>
