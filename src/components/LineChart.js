@@ -1,40 +1,33 @@
 import React from 'react'
-
+import axios from 'axios'
 import { Chart, Dataset } from 'react-rainbow-components';
 
 class LineChart extends React.Component {
+componentWillReceiveProps(props){
+	console.log('LineChart', props.points);
+
+}
 
 	render() {
-		const containerStyles = {
-	maxWidth: 600,
-};
-
-
+		const containerStyles = {maxWidth: 600}
 		return(
+			<div className="rainbow-p-vertical_medium rainbow-m_auto" style={containerStyles}>
+					<div className="rainbow-align-content_center">
+							<Chart
+									labels={['A', 'B', 'C', 'D']}
+									type="line"
+									className="rainbow-m-horizontal_xx-large rainbow-m-top_x-large"
+							>
 
-
-<div className="rainbow-p-vertical_medium rainbow-m_auto" style={containerStyles}>
-    <div className="rainbow-align-content_center">
-        <Chart
-            labels={['A', 'B', 'C', 'D']}
-            type="line"
-            className="rainbow-m-horizontal_xx-large rainbow-m-top_x-large"
-        >
-            <Dataset
-                title="Dataset 1"
-                values={[23, 45, 123, 56]}
-                backgroundColor="#1de9b6"
-                borderColor="#1de9b6"
-            />
-            <Dataset
-                title="Dataset 2"
-                values={[66, 100, 30, 156]}
-                backgroundColor="#01b6f5"
-                borderColor="#01b6f5"
-            />
-        </Chart>
-    </div>
-</div>
+									<Dataset
+											title="Total points"
+											values={this.props.points}
+											backgroundColor="#1de9b6"
+											borderColor="#1de9b6"
+									/>
+							</Chart>
+					</div>
+			</div>
 		)
 	}
 }

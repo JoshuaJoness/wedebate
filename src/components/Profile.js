@@ -52,10 +52,12 @@ class Profile extends React.Component {
 		console.log('Response on profile page',res.data);
 			let opinions = this.state.opinions
 			opinions = res.data
-			this.setState({opinions})
+			this.setState({opinions}, () => {console.log('ProfilePage',this.state.opinions)})
 		}).catch(err =>{
 			console.log(err)
 		})
+
+		
 	}
 
 
@@ -63,9 +65,7 @@ class Profile extends React.Component {
     return (
       <div>
 
-{console.log(this.state.opinions)}
-
-				<Nav user={this.state.user} points={this.state.points}/>
+				<Nav user={this.state.user} points={this.state.ranking}/>
 
         <div className="profileWrap">
           <div>
@@ -92,10 +92,10 @@ class Profile extends React.Component {
         <div
           style={{border: "black solid 1px", borderRadius: "5%", width: "600px", marginLeft: "10%", marginBottom: "5%", marginTop:"5%"}}
         >
-          <LineChart className="chart"/>
+          <LineChart className="chart" points={this.state.ranking}/>
         </div>
 
-//problems passing props from opinions
+//problems passing props from opinions AND passing to lineChart
 
         <div className="boxHolder">
 					<div></div>

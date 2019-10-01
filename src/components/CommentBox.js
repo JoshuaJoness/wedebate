@@ -16,7 +16,7 @@ class CommentBox extends React.Component {
 									label={this.props.user.username}
 									// icon={<UserSignUpIcon  style={iconStyles} />}
 									datetime="Yesterday"
-									description={console.log('>>>>>>>>>>>>>>',this.state.opinions)}
+									description={console.log('CommentBox',this.state.opinions)}
 							/>
 							<TimelineMarker
 									label="User phone verified."
