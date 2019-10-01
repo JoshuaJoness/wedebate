@@ -1,53 +1,23 @@
 import React from 'react';
 import { Table, Column, StatusBadge, GlobalHeader, ButtonGroup, ButtonIcon, FontAwesomeIcon } from 'react-rainbow-components';
+import axios from 'axios'
 
 
 class SortTable extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-				sortedBy: undefined,
+				sortedBy: 'score',
 				sortDirection: 'asc',
 				data: [
 						{
 							ranking: 1,
-								name: 'Leandro Torres',
-								score: 1748,
+								username: 'Leandro Torres',
+								score: 0,
 								rank: 'sophist',
-								topicsPosted: 7,
-								opinions: 4,
-								upvotes: 36
-
-						},
-
-						{
-							ranking: 2,
-								name: 'John Smith',
-								score: 1672,
-								rank: 'sophist',
-								topicsPosted: 4,
-								opinions: 7,
-								upvotes: 10
-
-						},
-						{
-							ranking: 3,
-								name: 'Richard Gere',
-								score: 1272,
-								rank: 'senior',
-								topicsPosted: 2,
-								opinions: 7,
-								upvotes: 4
-
-						},
-						{
-							ranking: 4,
-								name: 'Bill Gates',
-								score: 456,
-								rank: 'freshman',
-								topicsPosted: 2,
-								opinions: 1,
-								upvotes: 23
+								topics: 0,
+								opinions: 0,
+								comments: 0
 
 						},
 
@@ -55,6 +25,21 @@ class SortTable extends React.Component {
 		};
 		this.handleOnSort = this.handleOnSort.bind(this);
 }
+
+
+
+
+
+		componentWillMount() {
+			axios.get('http://localhost:4000/rankings')
+			  .then(res => {
+			    this.setState({
+			      data: res.data
+			    })
+			  })
+			  .catch(err => {})
+		}
+
 
 handleOnSort(event, field, nextSortDirection) {
 		const { data, sortedBy, sortDirection } = this.state;
@@ -89,12 +74,12 @@ handleOnSort(event, field, nextSortDirection) {
 	                    >
 
 												<Column header="ranking" field="ranking" sortable />
-												<Column header="name" field="name" sortable />
+												<Column header="username" field="username" sortable />
                         <Column header="rank" field="rank" component={StatusBadge} />
 												<Column header="score" field="score" sortable />
-                        <Column header="topics" field="topicsPosted" />
+                        <Column header="topics" field="topics" />
                         <Column header="opinions" field="opinions" sortable />
-												 <Column header="upvotes" field="upvotes" sortable />
+												 <Column header="comments" field="comments" sortable />
 		     							</Table>
 				 						</div>
 									</div>
