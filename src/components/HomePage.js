@@ -15,9 +15,23 @@ class HomePage extends React.Component {
 
 	state = {
     topics: [],
-		categories: []
+		categories: [],
+		topicDisplay: [],
 
   };
+
+
+	searchFilter = (event) => {
+		let topics = this.state.topics
+		let input = event.target.value
+		let topicDisplay = topics.filter(p => p.title.toLowerCase().includes(input.toLowerCase()))
+		this.setState({topicDisplay: topicDisplay})
+	}
+
+
+
+
+
 
 	componentDidMount() {
 
@@ -27,17 +41,21 @@ Promise.all([
 ]).then(([topics, categories]) => {
 				this.setState({
 					topics: topics.data,
-					categories: categories.data
+					categories: categories.data,
+					topicDisplay: topics.data
 				})
 			})
 		}
 
+
+
   render() {
     return (
       <>
+
         <Nav />
         <nav className="searchBar">
-          <input type="text" className="search" placeholder="Search..." />
+          <input onChange={this.searchFilter} type="text" className="search" placeholder="Search..." />
           <button>Popularity</button>
           <select>
 					{this.state.categories.map((category, index) =>
@@ -49,7 +67,7 @@ Promise.all([
         <div className="grid homepage">
 				{
 
-					this.state.topics.map((topic,index) => {
+					this.state.topicDisplay.map((topic,index) => {
 						return <Thumbnail key={index} topic={topic}  />
 					})
 				}
