@@ -89,18 +89,27 @@ Promise.all([
 				<div className="column" className="left">
 
 					<p>Pros</p>
-					{this.state.opinions.map(p => <Comment />)}
+					{
+
+						this.state.opinions.map((opinion,index) => {
+							return <Comment key={index} opinion={opinion}  />
+						})
+					}
+
 
 				</div>
-
 
 
 
 					<div className="column" className="right">
 
 						<p>Cons</p>
-										{this.state.cons.map(p => <Comment />)}
+						{
 
+							this.state.opinions.map((opinion,index) => {
+								return <Comment key={index} opinion={opinion}  />
+							})
+						}
 
 					</div>
 				</div>

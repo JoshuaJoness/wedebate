@@ -14,7 +14,11 @@ import Nav from "./Nav";
 class HomePage extends React.Component {
 
 	state = {
-    topics: [],
+    topics: [{
+			user: {
+				 username: "",
+			}
+		}],
 		categories: [],
 		topicDisplay: [],
 
@@ -27,6 +31,14 @@ class HomePage extends React.Component {
 		let topicDisplay = topics.filter(p => p.title.toLowerCase().includes(input.toLowerCase()))
 		this.setState({topicDisplay: topicDisplay})
 	}
+
+	// categoriesFilter = (event) => {
+	// 	let topics = this.state.topics
+	// 	let input = event.target.value
+	// 	let topicDisplay = topics.filter(p => p.label.toLowerCase().includes(input.toLowerCase()))
+	// 	this.setState({topicDisplay: topicDisplay})
+	// 	array.filter(p => p.type.name) : array.filter(p => p.type.name === t)},
+	// }
 
 
 
