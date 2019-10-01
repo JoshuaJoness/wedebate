@@ -4,64 +4,63 @@ import Circle from "./Circle";
 import "../styles/profile.css";
 
 class ActivityCard extends React.Component {
-  render() {
-    return (
-      <Card
-        className="card link"
-        footer={
-          <div className="rainbow-align-content_space-between linking">
-            View all comments
-          </div>
-        }
-      >
-        <h1> Last Comments</h1>
-        <div className="comment">
-          <label>John Smith - 2 days ago</label>
-          <p>
-            {" "}
-            I think the 2010s suck because people no longer know what empathy
-            means, They are lonelier, More depressed, And more isoalted than
-            ever before.
-          </p>
-        </div>
-        <div className="comment">
-          <label>John Smith - 2 days ago</label>
-          <p>
-            {" "}
-            I think the 2010s suck because people no longer know what empathy
-            means, They are lonelier, More depressed, And more isoalted than
-            ever before.
-          </p>
-        </div>
-        <div className="comment">
-          <label>John Smith - 2 days ago</label>
-          <p>
-            {" "}
-            I think the 2010s suck because people no longer know what empathy
-            means, They are lonelier, More depressed, And more isoalted than
-            ever before.
-          </p>
-        </div>
-        <div className="comment">
-          <label>John Smith - 2 days ago</label>
-          <p>
-            {" "}
-            I think the 2010s suck because people no longer know what empathy
-            means, They are lonelier, More depressed, And more isoalted than
-            ever before.
-          </p>
-        </div>
-        <div className="comment">
-          <label>John Smith - 2 days ago</label>
-          <p>
-            {" "}
-            I think the 2010s suck because people no longer know what empathy
-            means, They are lonelier, More depressed, And more isoalted than
-            ever before.
-          </p>
-        </div>
-      </Card>
-    );
-  }
+ 	render() {
+   return (
+     <Card
+       className="card link"
+       footer={
+         <div className="rainbow-align-content_space-between linking">
+           View all comments
+         </div>
+       }
+     >
+       <h1> Last Comments</h1>
+       <div className="comment">
+         <label>{this.props.user.username} - 2 days ago</label>
+         <p>
+           {" "}
+           {console.log('activityCard',this.props.opinions)}
+
+         </p>
+       </div>
+       <div className="comment">
+         <label>John Smith - 2 days ago</label>
+         <p>
+           {" "}
+           I think the 2010s suck because people no longer know what empathy
+           means, They are lonelier, More depressed, And more isoalted than
+           ever before.
+         </p>
+       </div>
+       <div className="comment">
+         <label>John Smith - 2 days ago</label>
+         <p>
+           {" "}
+           I think the 2010s suck because people no longer know what empathy
+           means, They are lonelier, More depressed, And more isoalted than
+           ever before.
+         </p>
+       </div>
+       <div className="comment">
+         <label>John Smith - 2 days ago</label>
+         <p>
+           {" "}
+           I think the 2010s suck because people no longer know what empathy
+           means, They are lonelier, More depressed, And more isoalted than
+           ever before.
+         </p>
+       </div>
+       <div className="comment">
+         <label>John Smith - 2 days ago</label>
+         <p>
+           {" "}
+           I think the 2010s suck because people no longer know what empathy
+           means, They are lonelier, More depressed, And more isoalted than
+           ever before.
+         </p>
+       </div>
+     </Card>
+   );
+ }
 }
 export default ActivityCard;

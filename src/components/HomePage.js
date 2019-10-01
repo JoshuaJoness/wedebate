@@ -14,6 +14,7 @@ import Nav from "./Nav";
 class HomePage extends React.Component {
 
 	state = {
+		// user: {},
     topics: []
 
   };
@@ -29,12 +30,28 @@ class HomePage extends React.Component {
 				})
 			})
 			.catch(err => console.log(err))
+			//
+			// let token = localStorage.getItem('token')
+			// axios.get('http://localhost:4000/profile', {
+			// 	headers: {
+			// 		Authorization: `Bearer ${token}`
+			// 	}
+			// }).then(res => {
+			// 	console.log(res.data);
+			// 	let user = this.state.user
+			// 	user = res.data
+			// 	this.setState({user})
+			// }).catch(err => {
+			// 	console.log(err);
+			// })
+
 		}
+
 
   render() {
     return (
       <>
-        <Nav />
+        <Nav user={this.state.user}/>
         <nav className="searchBar">
           <input type="text" className="search" placeholder="Search..." />
           <button>Popularity</button>
