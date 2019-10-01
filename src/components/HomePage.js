@@ -32,10 +32,11 @@ Promise.all([
 			})
 		}
 
+
   render() {
     return (
       <>
-        <Nav />
+        <Nav user={this.state.user}/>
         <nav className="searchBar">
           <input type="text" className="search" placeholder="Search..." />
           <button>Popularity</button>
