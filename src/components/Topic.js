@@ -1,7 +1,7 @@
 
 import React from 'react'
 import '../styles/topic.css'
-import Comment from './Comment'
+import Opinion from './Opinion'
 import axios from 'axios'
 import Nav from './Nav'
 import { ProgressBar } from 'react-rainbow-components'
@@ -19,18 +19,10 @@ class Topic extends React.Component {
             username: ""
         },
         text: "",
+				side: ""
     }],
-		pros:
-		[
-			{item1: 'yo'},
-			{item2:'hola'}
-		],
-		cons:
-		[
-			{
-				con1:'grrrr'
-			}
-		]
+		proOpinons: [],
+		conOpinions: []
 	}
 
 	componentDidMount() {
@@ -40,19 +32,17 @@ Promise.all([
 	axios.get(`http://localhost:4000/opinions/topic/${this.props.match.params.id}`)
 
 ]).then(([topic, opinions]) => {
-					console.log(opinions)
+
 				this.setState({
 					topic: topic.data,
-					opinions: opinions.data
+					opinions: opinions.data,
+					proOpinions: opinions.data.filter((opinion) => opinion.side === 'pro'),
+					conOpinions: opinions.data.filter((opinion) => opinion.side === 'con')
 
 				})
+				console.log(this.state.proOpinions)
 			})
 		}
-
-
-
-
-
 
 	render() {
 		return(
@@ -89,18 +79,27 @@ Promise.all([
 				<div className="column" className="left">
 
 					<p>Pros</p>
-					{this.state.opinions.map(p => <Comment />)}
+					{
+
+						this.state.opinions.map((opinion,index) => {
+							return <Opinion key={index} opinion={opinion}  />
+						})
+					}
+
 
 				</div>
-
 
 
 
 					<div className="column" className="right">
 
 						<p>Cons</p>
-										{this.state.cons.map(p => <Comment />)}
+						{
 
+							this.state.opinions.map((opinion,index) => {
+								return <Opinion key={index} opinion={opinion}  />
+							})
+						}
 
 					</div>
 				</div>

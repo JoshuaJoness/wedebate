@@ -4,6 +4,21 @@ import 'react-circular-progressbar/dist/styles.css';
 import '../styles/circle.css'
 class Circle extends React.Component {
 
+		state = {
+			color: "rgba(0,255,20,0.7)",
+			textColor: "rgba(0,255,20,0.7)"
+		}
+
+		componentWillMount() {
+			if (this.props.topic.side === 'Con') {
+this.setState( {color: "rgba(255,0,0,0.7)", textColor:"rgba(255,0,0,0.7)" })
+} else if ((this.props.topic.side === 'Tie')) {
+	this.setState({color: "rgba(255,165,0,0.7)", textColor:"rgba(255,165,0,0.7)" })
+} else if ((this.props.topic.side === '')) {
+	this.setState({color: "rgba(192,192,192,0.7)", textColor:"rgba(192,192,192,0.7)" })
+}}
+
+
 
 
 
@@ -30,8 +45,8 @@ class Circle extends React.Component {
 
 
 
-								   pathColor: `rgba(0,255,20,0.7)', ${this.props.topic.percentage / 100})`,
-								   textColor: 'rgba(0,255,0)',
+								   pathColor: `${this.state.color}, ${this.props.topic.percentage / 100})`,
+								   textColor: `${this.state.textColor}`,
 								   trailColor: '#d6d6d6',
 								   backgroundColor: '#3e98c7',
 						 	 		})}

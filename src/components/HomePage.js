@@ -14,10 +14,36 @@ import Nav from "./Nav";
 class HomePage extends React.Component {
 
 	state = {
-    topics: [],
-		categories: []
+    topics: [{
+			user: {
+				 username: "",
+			}
+		}],
+		categories: [],
+		topicDisplay: [],
 
   };
+
+
+	searchFilter = (event) => {
+		let topics = this.state.topics
+		let input = event.target.value
+		let topicDisplay = topics.filter(p => p.title.toLowerCase().includes(input.toLowerCase()))
+		this.setState({topicDisplay: topicDisplay})
+	}
+
+	// categoriesFilter = (event) => {
+	// 	let topics = this.state.topics
+	// 	let input = event.target.value
+	// 	let topicDisplay = topics.filter(p => p.label.toLowerCase().includes(input.toLowerCase()))
+	// 	this.setState({topicDisplay: topicDisplay})
+	// 	array.filter(p => p.type.name) : array.filter(p => p.type.name === t)},
+	// }
+
+
+
+
+
 
 	componentDidMount() {
 
@@ -27,7 +53,8 @@ Promise.all([
 ]).then(([topics, categories]) => {
 				this.setState({
 					topics: topics.data,
-					categories: categories.data
+					categories: categories.data,
+					topicDisplay: topics.data
 				})
 			})
 		}
@@ -38,11 +65,11 @@ Promise.all([
       <>
         <Nav user={this.state.user}/>
         <nav className="searchBar">
-          <input type="text" className="search" placeholder="Search..." />
+          <input onChange={this.searchFilter} type="text" className="search" placeholder="Search..." />
           <button>Popularity</button>
           <select>
 					{this.state.categories.map((category, index) =>
-						<option value={category.name} key={index}>{category.name}</option>
+						<option value={category.label} key={index}>{category.label}</option>
 					)}
           </select>
         </nav>
@@ -50,7 +77,7 @@ Promise.all([
         <div className="grid homepage">
 				{
 
-					this.state.topics.map((topic,index) => {
+					this.state.topicDisplay.map((topic,index) => {
 						return <Thumbnail key={index} topic={topic}  />
 					})
 				}
