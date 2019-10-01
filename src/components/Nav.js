@@ -1,36 +1,26 @@
 import React from "react";
 import "../styles/nav.css";
-import {
-  AvatarMenu,
-  Avatar,
-  MenuDivider,
-  MenuItem,
-  FontAwesomeIcon
-} from "react-rainbow-components";
+import {AvatarMenu, Avatar, MenuDivider, MenuItem, FontAwesomeIcon} from "react-rainbow-components";
+import {Link} from 'react-router-dom'
 
 class Nav extends React.Component {
+
+	logOut = () => {
+		localStorage.removeItem('token')
+	}
+
   render() {
     return (
       <nav>
-        <a
-          href="/posttopic"
-          className="logo"
-          style={{backgroundImage: `url(${"./109526.svg"})`}}
-        ></a>
-
+        <Link to="/posttopic" className="logo" style={{backgroundImage: `url(${"./109526.svg"})`}}></Link>
         <div>
-          <div>1000 Points</div>
+          <div>{this.props.points}</div>
           <div>rank #1</div>
         </div>
-
-        <a
-          href="/index"
-          className="logo"
-          style={{backgroundImage: `url(${"./logo192.png"})`}}
-        ></a>
+        <Link to="/" className="logo" style={{backgroundImage: `url(${"./logo192.png"})`}}></Link>
 
         <div className="profile">
-          <a to="/profile" className="button">
+
             <AvatarMenu
               id="avatar-menu"
               src="images/user/user2.jpg"
@@ -57,20 +47,25 @@ class Nav extends React.Component {
                 </div>
               </li>
               <MenuDivider variant="space" />
+							<Link to="/profile">
               <MenuItem
                 label="Edit Profile"
                 icon=<i class="fas fa-pencil-alt"></i>
                 iconPosition="left"
               />
+							</Link>
+							<Link to="/">
               <MenuItem
                 label="Logout"
                 icon=<i class="fas fa-power-off"></i>
                 iconPosition="left"
+								onClick={this.logOut}
               />
+							</Link>
             </AvatarMenu>
 
-            <span>Carl</span>
-          </a>
+            <span>{this.props.user.username}</span>
+
         </div>
       </nav>
     );
