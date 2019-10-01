@@ -91,6 +91,7 @@ handleOnSort(event, field, nextSortDirection) {
 												<Column header="ranking" field="ranking" sortable />
 												<Column header="name" field="name" sortable />
                         <Column header="rank" field="rank" component={StatusBadge} />
+												<Column header="score" field="score" sortable />
                         <Column header="topics" field="topicsPosted" />
                         <Column header="opinions" field="opinions" sortable />
 												 <Column header="upvotes" field="upvotes" sortable />
