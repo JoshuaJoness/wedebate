@@ -2,6 +2,7 @@ import React from "react";
 import Thumbnail_ from "./Thumbnail_";
 import Thumbnail from "./Thumbnail";
 import Button from "./Button";
+import {Link} from "react-router-dom";
 import "../styles/card.css";
 import "../styles/grid.css";
 import "../styles/button.css";
@@ -78,9 +79,10 @@ Promise.all([
 				{
 
 					this.state.topicDisplay.map((topic,index) => {
-						return <Thumbnail key={index} topic={topic}  />
+						return (<Link key={index} to={`/topic/${this.state.topics[index]._id}`}> <Thumbnail key={index} topic={topic}  /> </Link>)
 					})
 				}
+
 
         </div>
       </>
