@@ -36,9 +36,10 @@ class Profile extends React.Component {
 				Authorization: `Bearer ${token}`
 			}
 		}).then(res => {
+			console.log('>>>>>>RANK',res.data);
 			let ranking = this.state.ranking
 			ranking = res.data.total
-			this.setState({ranking})
+			this.setState({ranking}, ()=>console.log('>>>>>>>>>>>RANKING',this.state.ranking))
 		}).catch(err =>{
 			console.log(err)
 		})

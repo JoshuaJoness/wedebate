@@ -1,12 +1,38 @@
-
 import React from 'react'
 import '../styles/topic.css'
 import Opinion from './Opinion'
 import axios from 'axios'
 import Nav from './Nav'
 import { ProgressBar } from 'react-rainbow-components'
+import Popup from "reactjs-popup";
+import { Textarea } from 'react-rainbow-components'
+import SimpleRadioGroup from './ProConRadio'
+
+const containerStyles = {
+    maxWidth: 700,
+}
 
 class Topic extends React.Component {
+	state = {
+		user:{},
+			topic: [],
+			opinions: [ {
+
+					upvoters: [],
+					user: {
+						avatar: '',
+							username: ""
+					},
+					text: "",
+					side: ""
+			}],
+		proOpinons: [],
+		conOpinions: [],
+		currentOpinion:{
+			text:'',
+			user:'',
+		}
+	}
 
 	componentWillMount(){
 		let token = localStorage.getItem('token')
@@ -18,7 +44,9 @@ class Topic extends React.Component {
 		}).then(res => {
 			let user = this.state.user
 			user = res.data
-			this.setState({user})
+			let currentOpinion = this.state.currentOpinion
+			currentOpinion.user = res.data._id
+			this.setState({user, currentOpinion}, ()=>console.log('>>>>>>>>>>>>',this.state.currentOpinion))
 		}).catch(err => {
 			console.log(err);
 		})
@@ -37,41 +65,51 @@ class Topic extends React.Component {
 		})
 	}
 
-	state = {
-		user:{},
-			topic: [],
-			opinions: [ {
+	componentDidMount() {
+		Promise.all([
+			axios.get(`http://localhost:4000/topic/${this.props.match.params.id}`),
+			axios.get(`http://localhost:4000/opinions/topic/${this.props.match.params.id}`)
+			]).then(([topic, opinions]) => {
+						this.setState({
+							topic: topic.data,
+							opinions: opinions.data,
+							proOpinions: opinions.data.filter((opinion) => opinion.side === 'pro'),
+							conOpinions: opinions.data.filter((opinion) => opinion.side === 'con')
+						})
+						console.log(this.state.proOpinions)
+					})
+				}
 
-					upvoters: [],
-					user: {
-						avatar: '',
-							username: ""
-					},
-					text: "",
-					side: ""
-			}],
-			proOpinons: [],
-			conOpinions: []
+	writeOpinion = (e) => {
+		console.log('e', e.target.value);
+		let currentOpinion = this.state.currentOpinion
+		currentOpinion.text = e.target.value
+		this.setState({currentOpinion}, () => console.log('STATE',this.state.currentOpinion))
 	}
 
-	componentDidMount() {
+	changeProCon = (e) => {
+		let currentOpinion = this.state.currentOpinion
+		currentOpinion.side = e.target.value
+		this.setState({ currentOpinion });
+	}
 
-Promise.all([
-	axios.get(`http://localhost:4000/topic/${this.props.match.params.id}`),
-	axios.get(`http://localhost:4000/opinions/topic/${this.props.match.params.id}`)
-
-]).then(([topic, opinions]) => {
-
-				this.setState({
-					topic: topic.data,
-					opinions: opinions.data,
-					proOpinions: opinions.data.filter((opinion) => opinion.side === 'pro'),
-					conOpinions: opinions.data.filter((opinion) => opinion.side === 'con')
-
-				})
-				console.log(this.state.proOpinions)
+	submitOpinion = (e) => {
+		e.preventDefault()
+		let currentOpinion = this.state.currentOpinion
+		if(currentOpinion) {
+			axios.post('http://localhost:4000/opinion',
+			currentOpinion).then(res => {
+				console.log(res.data)
+				// this.props.history.push("/")
+			}).catch(err =>{
+				console.log(err);
 			})
+		} else {
+			console.log('missing data');
 		}
+	}
+
+
 
 	render() {
 		return(
@@ -97,7 +135,22 @@ Promise.all([
 				</div>
 				<br></br>
 				<br></br>
-				<button className="leaveOpinion">Click here to leave an opinion!</button>
+
+				<Popup trigger={<button className="leaveOpinion">Click here to leave an opinion!</button>} position="center">
+					<Textarea
+						id="example-textarea-1"
+						label="Please enter your topic below:"
+						rows={6}
+						placeholder="Your topic..."
+						style={containerStyles}
+						className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+						onChange={(e)=>this.writeOpinion(e)}
+					/>
+					<SimpleRadioGroup onChange={this.handleOnChange}/>
+					<button onClick={this.submitOpinion}>Submit!</button>
+					<button>Cancel!</button>
+				</Popup>
+
 				<br></br>
 				<br></br>
 				<br></br>
