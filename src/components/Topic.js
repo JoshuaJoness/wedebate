@@ -6,11 +6,16 @@ import Nav from './Nav'
 import { ProgressBar } from 'react-rainbow-components'
 import Popup from "reactjs-popup";
 import { Textarea } from 'react-rainbow-components'
-import SimpleRadioGroup from './ProConRadio'
+import { RadioGroup } from 'react-rainbow-components'
 
 const containerStyles = {
     maxWidth: 700,
 }
+
+const options = [
+    { value: 'pro', label: 'Pro' },
+    { value: 'con', label: 'Con' },
+]
 
 class Topic extends React.Component {
 	state = {
@@ -29,8 +34,15 @@ class Topic extends React.Component {
 		proOpinons: [],
 		conOpinions: [],
 		currentOpinion:{
+			topic:'',
 			text:'',
 			user:'',
+			side:''
+		},
+		currentComment:{
+			topic:'',
+			text:'',
+			user:''
 		}
 	}
 
@@ -46,7 +58,8 @@ class Topic extends React.Component {
 			user = res.data
 			let currentOpinion = this.state.currentOpinion
 			currentOpinion.user = res.data._id
-			this.setState({user, currentOpinion}, ()=>console.log('>>>>>>>>>>>>',this.state.currentOpinion))
+			currentOpinion.topic = this.props.match.params.id
+			this.setState({user, currentOpinion}, ()=>console.log('>>>>>>>>>>>>',this.props.match.params.id))
 		}).catch(err => {
 			console.log(err);
 		})
@@ -109,7 +122,21 @@ class Topic extends React.Component {
 		}
 	}
 
-
+	// leaveComment = (e) => {
+	// 	e.preventDefault()
+	// 	let leaveComment = this.state.leaveComment
+	// 	if(leaveComment) {
+	// 		axios.post('http://localhost:4000/opinion',
+	// 		currentOpinion).then(res => {
+	// 			console.log(res.data)
+	// 			// this.props.history.push("/")
+	// 		}).catch(err =>{
+	// 			console.log(err);
+	// 		})
+	// 	} else {
+	// 		console.log('missing data');
+	// 	}
+	// }
 
 	render() {
 		return(
@@ -146,7 +173,16 @@ class Topic extends React.Component {
 						className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
 						onChange={(e)=>this.writeOpinion(e)}
 					/>
-					<SimpleRadioGroup onChange={this.handleOnChange}/>
+
+
+					<RadioGroup
+							id="radio-group-component-1"
+							options={options}
+							value={this.state.value}
+							onChange={this.changeProCon}
+							label="Radio Group Label"
+					/>
+
 					<button onClick={this.submitOpinion}>Submit!</button>
 					<button>Cancel!</button>
 				</Popup>
