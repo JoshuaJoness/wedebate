@@ -2,12 +2,18 @@ import React from 'react'
 import { Card, Button, ButtonIcon } from 'react-rainbow-components';
 import Circle from './Circle'
 import "../styles/card.css";
+import TimeAgo from 'react-timeago'
+import frenchStrings from 'react-timeago/lib/language-strings/fr'
+import buildFormatter from 'react-timeago/lib/formatters/buildFormatter'
+
 
 class Thumbnail extends React.Component {
 
 	state = {
     topics: [],
 		categories: []
+
+
 
   };
 
@@ -39,6 +45,11 @@ class Thumbnail extends React.Component {
                                     <div className='yesno'>
                                                         <Circle topic={this.props.topic}/>
                                     </div>
+
+																		<span className="author"> Created by: {this.props.topic.user.username}</span>
+
+																								 <small className="date"><TimeAgo date= {this.props.topic.created}  /></small>
+
                     </div>
                 </Card>
         )
