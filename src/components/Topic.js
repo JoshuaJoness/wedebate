@@ -50,7 +50,16 @@ class Topic extends React.Component {
 					text: "",
 					side: ""
 			}],
-			proOpinons: [],
+			proOpinions: [ {
+
+					upvoters: [],
+					user: {
+						avatar: '',
+							username: ""
+					},
+					text: "",
+					side: ""
+			}],
 			conOpinions: []
 	}
 
@@ -110,7 +119,7 @@ Promise.all([
 					<p>Pros</p>
 					{
 
-						this.state.opinions.map((opinion,index) => {
+						this.state.proOpinions.map((opinion,index) => {
 							return <Opinion key={index} opinion={opinion}  />
 						})
 					}
@@ -125,7 +134,7 @@ Promise.all([
 						<p>Cons</p>
 						{
 
-							this.state.opinions.map((opinion,index) => {
+							this.state.conOpinions.map((opinion,index) => {
 								return <Opinion key={index} opinion={opinion}  />
 							})
 						}
