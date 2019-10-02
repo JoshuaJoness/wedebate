@@ -59,7 +59,7 @@ class Topic extends React.Component {
 			let currentOpinion = this.state.currentOpinion
 			currentOpinion.user = res.data._id
 			currentOpinion.topic = this.props.match.params.id
-			this.setState({user, currentOpinion}, ()=>console.log('>>>>>>>>>>>>',this.props.match.params.id))
+			this.setState({user, currentOpinion}, ()=>console.log('>>>>>>>>>>>>',this.props))
 		}).catch(err => {
 			console.log(err);
 		})
@@ -112,8 +112,15 @@ class Topic extends React.Component {
 		if(currentOpinion) {
 			axios.post('http://localhost:4000/opinion',
 			currentOpinion).then(res => {
-				console.log(res.data)
-				// this.props.history.push("/")
+				if (res.data.side === 'pro') {
+					let proOpinions = this.state.proOpinions
+					proOpinions.push(res.data)
+					this.setState(proOpinions)
+				} else if (res.data.side === 'con') {
+					let conOpinions = this.state.conOpinions
+					conOpinions.push(res.data)
+					this.setState(conOpinions)
+				}
 			}).catch(err =>{
 				console.log(err);
 			})

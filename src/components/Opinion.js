@@ -23,9 +23,12 @@ class Opinion extends React.Component {
 				text:''
 		}],
 		currentComment: {
-			topic:this.props.opinion._id,
+			opinion: this.props.opinion._id,
 			user:'',
 			text: ''
+		},
+		upVoter: {
+			_id: ''
 		}
   }
 
@@ -39,7 +42,9 @@ class Opinion extends React.Component {
 		}). then (res => {
 			let currentComment = this.state.currentComment
 			currentComment.user = res.data._id
-			this.setState({currentComment})
+			let upVoter = this.state.upVoter
+			upVoter._id = res.data._id
+			this.setState({currentComment:currentComment, upVoter:upVoter})
 		}).catch(err => {
 			console.log(err);
 		})
@@ -62,6 +67,17 @@ class Opinion extends React.Component {
 	})
 	}
 
+	upVote = () => {
+		let upVoter = this.state.upVoter
+		console.log('userID',upVoter);
+		axios.post(`http://localhost:4000/upvote/${this.props.opinion._id}`,
+		upVoter).then(res => {
+			console.log(res.data);
+		}).catch(err =>{
+			console.log(err);
+		})
+	}
+
 	render() {
 		return (
 			<div className="outerWrap">
@@ -78,9 +94,9 @@ class Opinion extends React.Component {
 				</div>
 					<div className="text">{this.props.opinion.text}</div>
 						<div className="footer">
-							<button className="footerItemReport">Report Post</button>
+
 							<div></div>
-							<p className="footerItemUpvote"><i className="fas fa-chevron-up"></i></p>
+							<p className="footerItemUpvote" onClick={this.upVote}><i className="fas fa-chevron-up"></i></p>
 							<p className="footerItemComment">
 								<Popup trigger={<i className="far fa-comments"></i>} position="center">
 									<Textarea
