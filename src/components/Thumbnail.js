@@ -39,6 +39,8 @@ class Thumbnail extends React.Component {
                                     <div className='yesno'>
                                                         <Circle topic={this.props.topic}/>
                                     </div>
+																		<span className="author"> Created by: {this.props.topic.user.username}</span>
+																								 <span className="date"> 2 days ago</span>
                     </div>
                 </Card>
         )

@@ -23,7 +23,7 @@ class Thumbnail_ extends React.Component {
                     <Circle/>
 </div>
          </small >
-         <span className="author"> Created by: John Smith</span>
+         <div> > holaaa</div>
                       <span className="date"> 2 days ago</span>
        </div>
      </div>
