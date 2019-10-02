@@ -5,7 +5,6 @@ import Opinion from './Opinion'
 import axios from 'axios'
 import Nav from './Nav'
 import { ProgressBar } from 'react-rainbow-components'
-import axios from 'axios'
 
 class Topic extends React.Component {
 

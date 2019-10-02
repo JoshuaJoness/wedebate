@@ -16,19 +16,15 @@ class HomePage extends React.Component {
 
 	state = {
 		user: {},
-    topics: [],
-		points:0
-  };
-
-	topics: [{
-		user: {
+		points:0,
+		topics: [{
+			user: {
 			 username: "",
-		}
-	}],
+			}
+		}],
 	categories: [],
 	topicDisplay: [],
-
-};
+}
 
 
 searchFilter = (event) => {
@@ -63,6 +59,7 @@ axios.get('http://localhost:4000/category/')
 				topicDisplay: topics.data
 			})
 		})
+	}
 
 	componentWillMount() {
 		let token = localStorage.getItem('token')
