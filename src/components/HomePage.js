@@ -40,8 +40,8 @@ class HomePage extends React.Component {
 	categoryFilter = (e,filter) => {
 		let topics = this.state.topics
 		let input = e.target.value
-		let categoryDisplay = this.state.filters[filter](topics, input)
-		this.setState({categoryDisplay: categoryDisplay})
+		let topicDisplay = this.state.filters[filter](topics, input)
+		this.setState({topicDisplay: topicDisplay})
 	}
 
 
@@ -97,7 +97,7 @@ Promise.all([
         <div className="grid homepage">
 				{
 
-					this.state.categoryDisplay.map((topic,index) => {
+					this.state.topicDisplay.map((topic,index) => {
 						return <Thumbnail key={index} topic={topic}  />
 					})
 				}
