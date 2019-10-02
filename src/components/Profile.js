@@ -11,11 +11,10 @@ import Nav from "./Nav"
 class Profile extends React.Component {
 
 	state = {
-		user:{
-
-		},
+		user:{},
 		ranking:0,
-		opinions:[]
+		opinions:[],
+		comments:[]
 	}
 
 	componentWillMount(){
@@ -57,7 +56,21 @@ class Profile extends React.Component {
 			console.log(err)
 		})
 
-		
+		axios.get('http://localhost:4000/comment', {
+			headers: {
+				Authorization: `Bearer ${token}`
+		}
+	}).then(res => {
+		console.log('Response on profile page',res.data);
+			let comments = this.state.comments
+			comments = res.data
+			this.setState({comments}, () => {console.log('ProfilePageComments',this.state.comments)})
+		}).catch(err =>{
+			console.log(err)
+		})
+
+
+
 	}
 
 
@@ -78,7 +91,7 @@ class Profile extends React.Component {
               />
               <div className="headerName">
                 <p>{this.state.user.username}</p>
-                <p>User since:</p>
+                <p>User since:{this.state.user.created}</p>
               </div>
             </div>
           </div>
@@ -95,15 +108,13 @@ class Profile extends React.Component {
           <LineChart className="chart" points={this.state.ranking}/>
         </div>
 
-//problems passing props from opinions AND passing to lineChart
-
         <div className="boxHolder">
 					<div></div>
           <div className="box">
             <OpinionBox user={this.state.user} opinions={this.state.opinions}/>
           </div>
           <div className="box">
-            <CommentBox user={this.state.user}/>
+            <CommentBox user={this.state.user} comments={this.state.comments}/>
           </div>
 					<div></div>
         </div>

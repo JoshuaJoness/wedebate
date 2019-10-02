@@ -3,10 +3,15 @@ import axios from 'axios'
 import { Chart, Dataset } from 'react-rainbow-components';
 
 class LineChart extends React.Component {
-componentWillReceiveProps(props){
-	console.log('LineChart', props.points);
 
-}
+	state={
+		points:0
+	}
+
+	componentWillReceiveProps(props){
+		console.log('LineChart', props.points);
+		this.setState({points: props.points}, ()=>{console.log('>>>>>>>>>>',this.state.points);})
+	}
 
 	render() {
 		const containerStyles = {maxWidth: 600}
@@ -14,14 +19,14 @@ componentWillReceiveProps(props){
 			<div className="rainbow-p-vertical_medium rainbow-m_auto" style={containerStyles}>
 					<div className="rainbow-align-content_center">
 							<Chart
-									labels={['A', 'B', 'C', 'D']}
+									labels={[]}
 									type="line"
 									className="rainbow-m-horizontal_xx-large rainbow-m-top_x-large"
 							>
 
 									<Dataset
 											title="Total points"
-											values={this.props.points}
+											values={[this.state.points]}
 											backgroundColor="#1de9b6"
 											borderColor="#1de9b6"
 									/>
