@@ -1,20 +1,22 @@
 import DataTable from 'react-data-table-component';
 import React from 'react';
-import Nav from '/Nav.js'
+import Nav from './Nav'
 import { Table, Column, StatusBadge, GlobalHeader, ButtonGroup, ButtonIcon, FontAwesomeIcon } from 'react-rainbow-components';
 import axios from 'axios'
 
 class SortTable extends React.Component {
 
-
-
 	state= {
+		user: {
+			avatar: '',
+				username: ""
+		},
 		data: [
 			{
-					ranking: 0,
-					username: '',
+				ranking: 0,
+					username: 'Leandro Torres',
 					score: 0,
-					rank: '',
+					rank: 'sophist',
 					topics: 0,
 					opinions: 0,
 					comments: 0
@@ -66,16 +68,7 @@ class SortTable extends React.Component {
 		]}
 
 		componentWillMount() {
-			axios.get('http://localhost:4000/rankings')
-			  .then(res => {
-			    this.setState({
-			      data: res.data
-			    })
-			  })
-			  .catch(err => {})
-		}
 
-		componentWillMount(){
 			let token = localStorage.getItem('token')
 
 			axios.get('http://localhost:4000/profile', {
@@ -102,26 +95,30 @@ class SortTable extends React.Component {
 			}).catch(err =>{
 				console.log(err)
 			})
+
+			axios.get('http://localhost:4000/rankings')
+			  .then(res => {
+			    this.setState({
+			      data: res.data
+			    })
+			  })
+			  .catch(err => {})
 		}
 
 
 
-	render() {
-
-		return(
-						<>
-							<Nav user={this.state.user} points={this.state.points}/>
-							<h1 style={{textAlign: 'center'}}>Ranking</h1>
-							<SortTable
-								title="Ranking"
-								columns={this.state.columns}
-								data={this.state.data}
-							/>
-						</>
-
-
-		)
-	}
+  render() {
+    return (
+			<>
+			<Nav user={this.state.user} points={this.state.points}/>
+      <DataTable
+        title="Ranking"
+        columns={this.state.columns}
+        data={this.state.data}
+      />
+			</>
+    )
+  }
 }
 
 
