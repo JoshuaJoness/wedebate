@@ -96,7 +96,7 @@ class Opinion extends React.Component {
 						<div className="footer">
 
 							<div></div>
-							<p className="footerItemUpvote" onClick={this.upVote}><i className="fas fa-chevron-up"></i></p>
+							<p className="footerItemUpvote" onClick={this.upVote}><i className="fas fa-chevron-up"></i>1</p>
 							<p className="footerItemComment">
 								<Popup trigger={<i className="far fa-comments"></i>} position="center">
 									<Textarea
