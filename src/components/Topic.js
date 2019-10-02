@@ -138,87 +138,77 @@ class Topic extends React.Component {
 	// 	}
 	// }
 
-	render() {
-		return(
-			<>
-				<Nav user={this.state.user} points={this.state.points}/>
-				<div className="topic">
-					<h1>{this.state.topic.title}</h1>
-					<img src={this.state.topic.image} alt="landscape with rainbows and colorful birds"/>
-					<div>Description:</div>
-				<div>	{this.state.topic.description}</div>
-				</div>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
+		render() {
+			return(
+				<>
+					<Nav user={this.state.user} points={this.state.points}/>
+					<div className="topic">
+						<h1>{this.state.topic.title}</h1>
+						<img src={this.state.topic.image} alt="landscape with rainbows and colorful birds"/>
+						<div>Description:</div>
+					<div>	{this.state.topic.description}</div>
+					</div>
+					<br></br>
+					<br></br>
+					<br></br>
+					<br></br>
 
-				<div className="bar">
-					<button className="yesButton">Yes</button>
+					<div className="bar">
+						<button className="yesButton">Yes</button>
 
-						<ProgressBar value={this.state.topic.percentage} size="large" className="barImage"  variant="success"/>
+							<ProgressBar value={this.state.topic.percentage} size="large" className="barImage"  variant="success"/>
 
-					<button className="noButton">No</button>
-				</div>
-				<br></br>
-				<br></br>
+						<button className="noButton">No</button>
+					</div>
+					<br></br>
+					<br></br>
 
-				<Popup trigger={<button className="leaveOpinion">Click here to leave an opinion!</button>} position="center">
-					<Textarea
-						id="example-textarea-1"
-						label="Please enter your topic below:"
-						rows={6}
-						placeholder="Your topic..."
-						style={containerStyles}
-						className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-						onChange={(e)=>this.writeOpinion(e)}
-					/>
-
-
-					<RadioGroup
-							id="radio-group-component-1"
-							options={options}
-							value={this.state.value}
-							onChange={this.changeProCon}
-							label="Radio Group Label"
-					/>
-
-					<button onClick={this.submitOpinion}>Submit!</button>
-					<button>Cancel!</button>
-				</Popup>
-
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-
-				<div className="outerWrapper">
-
-				<div className="column" className="left">
-
-					<p>Pros</p>
-					{
-
-						this.state.opinions.map((opinion,index) => {
-							return <Opinion key={index} opinion={opinion}  />
-						})
-					}
+					<Popup trigger={<button className="leaveOpinion">Click here to leave your opinion!</button>} 				position="center">
+						<Textarea
+							id="example-textarea-1"
+							label="Please enter your topic below:"
+							rows={6}
+							placeholder="Your topic..."
+							style={containerStyles}
+							className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+							onChange={(e)=>this.writeOpinion(e)}
+						/>
 
 
-				</div>
+						<RadioGroup
+								id="radio-group-component-1"
+								options={options}
+								value={this.state.value}
+								onChange={this.changeProCon}
+								label="Radio Group Label"
+						/>
 
+						<button onClick={this.submitOpinion}>Submit!</button>
+						<button>Cancel!</button>
+					</Popup>
 
+					<br></br>
+					<br></br>
+					<br></br>
+					<br></br>
 
+					<div className="outerWrapper">
+
+					<div className="column" className="left">
+						<p className="label">Pros</p>
+							{
+								this.state.opinions.map((opinion,index) => {
+									return <Opinion key={index} opinion={opinion}  />
+								})
+							}
+					</div>
 					<div className="column" className="right">
-
-						<p>Cons</p>
-						{
-
-							this.state.opinions.map((opinion,index) => {
-								return <Opinion key={index} opinion={opinion}  />
-							})
-						}
-
+						<p className="label">Cons</p>
+							{
+								this.state.opinions.map((opinion,index) => {
+									return <Opinion key={index} opinion={opinion}  />
+								})
+							}
 					</div>
 				</div>
 			</>
