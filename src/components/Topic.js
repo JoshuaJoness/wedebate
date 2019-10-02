@@ -31,7 +31,7 @@ class Topic extends React.Component {
 					text: "",
 					side: ""
 			}],
-		proOpinons: [],
+		proOpinions: [],
 		conOpinions: [],
 		currentOpinion:{
 			topic:'',
@@ -197,7 +197,7 @@ class Topic extends React.Component {
 					<div className="column" className="left">
 						<p className="label">Pros</p>
 							{
-								this.state.opinions.map((opinion,index) => {
+								this.state.proOpinions.map((opinion,index) => {
 									return <Opinion key={index} opinion={opinion}  />
 								})
 							}
@@ -205,7 +205,7 @@ class Topic extends React.Component {
 					<div className="column" className="right">
 						<p className="label">Cons</p>
 							{
-								this.state.opinions.map((opinion,index) => {
+								this.state.conOpinions.map((opinion,index) => {
 									return <Opinion key={index} opinion={opinion}  />
 								})
 							}
