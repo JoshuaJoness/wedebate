@@ -21,7 +21,12 @@ class HomePage extends React.Component {
 		}],
 		categories: [],
 		topicDisplay: [],
+		categoryDisplay: [],
+		filters: {
 
+					category: function(array, t) {return array.filter(p => p.category.label === t)},
+
+				}
   };
 
 
@@ -31,6 +36,18 @@ class HomePage extends React.Component {
 		let topicDisplay = topics.filter(p => p.title.toLowerCase().includes(input.toLowerCase()))
 		this.setState({topicDisplay: topicDisplay})
 	}
+
+	categoryFilter = (e,filter) => {
+		let topics = this.state.topics
+		let input = e.target.value
+		let categoryDisplay = this.state.filters[filter](topics, input)
+		this.setState({categoryDisplay: categoryDisplay})
+	}
+
+
+
+
+
 
 	// categoriesFilter = (event) => {
 	// 	let topics = this.state.topics
@@ -54,7 +71,8 @@ Promise.all([
 				this.setState({
 					topics: topics.data,
 					categories: categories.data,
-					topicDisplay: topics.data
+					topicDisplay: topics.data,
+					categoryDisplay: topics.data
 				})
 			})
 		}
@@ -69,7 +87,7 @@ Promise.all([
         <nav className="searchBar">
           <input onChange={this.searchFilter} type="text" className="search" placeholder="Search..." />
           <button>Popularity</button>
-          <select>
+          <select  onChange={(e) => {this.categoryFilter(e, 'category')}}>
 					{this.state.categories.map((category, index) =>
 						<option value={category.label} key={index}>{category.label}</option>
 					)}
@@ -79,7 +97,7 @@ Promise.all([
         <div className="grid homepage">
 				{
 
-					this.state.topicDisplay.map((topic,index) => {
+					this.state.categoryDisplay.map((topic,index) => {
 						return <Thumbnail key={index} topic={topic}  />
 					})
 				}
