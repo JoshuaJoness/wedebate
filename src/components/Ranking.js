@@ -5,13 +5,15 @@ import axios from 'axios'
 
 class SortTable extends React.Component {
 
+
+
 	state= {
 		data: [
 			{
-				ranking: 0,
-					username: 'Leandro Torres',
+					ranking: 0,
+					username: '',
 					score: 0,
-					rank: 'sophist',
+					rank: '',
 					topics: 0,
 					opinions: 0,
 					comments: 0
