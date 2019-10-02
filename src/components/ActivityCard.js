@@ -10,55 +10,21 @@ class ActivityCard extends React.Component {
        className="card link"
        footer={
          <div className="rainbow-align-content_space-between linking">
-           View all comments
+           View all comments OR perhaps infinite scroll for now
          </div>
        }
      >
-       <h1> Last Comments</h1>
+       <h1> Need to populate topics and get topic title </h1>
        <div className="comment">
-         <label>{this.props.user.username} - 2 days ago</label>
+         <label>{this.props.user.username} - need to import opinion creation date and then format</label>
          <p>
-           {" "}
-           {console.log('activityCard',this.props.opinions)}
+					 {this.props.opinion}
+           
+         </p>
+       </div>
 
-         </p>
-       </div>
-       <div className="comment">
-         <label>John Smith - 2 days ago</label>
-         <p>
-           {" "}
-           I think the 2010s suck because people no longer know what empathy
-           means, They are lonelier, More depressed, And more isoalted than
-           ever before.
-         </p>
-       </div>
-       <div className="comment">
-         <label>John Smith - 2 days ago</label>
-         <p>
-           {" "}
-           I think the 2010s suck because people no longer know what empathy
-           means, They are lonelier, More depressed, And more isoalted than
-           ever before.
-         </p>
-       </div>
-       <div className="comment">
-         <label>John Smith - 2 days ago</label>
-         <p>
-           {" "}
-           I think the 2010s suck because people no longer know what empathy
-           means, They are lonelier, More depressed, And more isoalted than
-           ever before.
-         </p>
-       </div>
-       <div className="comment">
-         <label>John Smith - 2 days ago</label>
-         <p>
-           {" "}
-           I think the 2010s suck because people no longer know what empathy
-           means, They are lonelier, More depressed, And more isoalted than
-           ever before.
-         </p>
-       </div>
+
+
      </Card>
    );
  }

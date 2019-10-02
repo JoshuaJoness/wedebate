@@ -15,56 +15,113 @@ import Nav from "./Nav";
 class HomePage extends React.Component {
 
 	state = {
-    topics: [{
-			user: {
-				 username: "",
-			}
-		}],
-		categories: [],
-		topicDisplay: [],
-
+		user: {},
+    topics: [],
+		points:0
   };
 
+	topics: [{
+		user: {
+			 username: "",
+		}
+	}],
+	categories: [],
+	topicDisplay: [],
 
-	searchFilter = (event) => {
-		let topics = this.state.topics
-		let input = event.target.value
-		let topicDisplay = topics.filter(p => p.title.toLowerCase().includes(input.toLowerCase()))
-		this.setState({topicDisplay: topicDisplay})
-	}
-
-	// categoriesFilter = (event) => {
-	// 	let topics = this.state.topics
-	// 	let input = event.target.value
-	// 	let topicDisplay = topics.filter(p => p.label.toLowerCase().includes(input.toLowerCase()))
-	// 	this.setState({topicDisplay: topicDisplay})
-	// 	array.filter(p => p.type.name) : array.filter(p => p.type.name === t)},
-	// }
+};
 
 
+searchFilter = (event) => {
+	let topics = this.state.topics
+	let input = event.target.value
+	let topicDisplay = topics.filter(p => p.title.toLowerCase().includes(input.toLowerCase()))
+	this.setState({topicDisplay: topicDisplay})
+}
+
+// categoriesFilter = (event) => {
+// 	let topics = this.state.topics
+// 	let input = event.target.value
+// 	let topicDisplay = topics.filter(p => p.label.toLowerCase().includes(input.toLowerCase()))
+// 	this.setState({topicDisplay: topicDisplay})
+// 	array.filter(p => p.type.name) : array.filter(p => p.type.name === t)},
+// }
 
 
 
 
-	componentDidMount() {
+
+
+componentDidMount() {
 
 Promise.all([
-	axios.get('http://localhost:4000/topic/'),
-	axios.get('http://localhost:4000/category/')
+axios.get('http://localhost:4000/topic/'),
+axios.get('http://localhost:4000/category/')
 ]).then(([topics, categories]) => {
+			this.setState({
+				topics: topics.data,
+				categories: categories.data,
+				topicDisplay: topics.data
+			})
+		})
+
+	componentWillMount() {
+		let token = localStorage.getItem('token')
+
+		axios.get('http://localhost:4000/topic/')
+			.then(res => {
 				this.setState({
-					topics: topics.data,
-					categories: categories.data,
-					topicDisplay: topics.data
+					topics: res.data,
 				})
 			})
+			.catch(err => console.log(err))
+
+			axios.get('http://localhost:4000/profile', {
+				headers: {
+					Authorization: `Bearer ${token}`
+				}
+			}).then(res => {
+				let user = this.state.user
+				user = res.data
+				this.setState({user})
+			}).catch(err => {
+				console.log(err);
+			})
+
+
+			axios.get('http://localhost:4000/ranking', {
+				headers: {
+					Authorization: `Bearer ${token}`
+				}
+			}).then(res => {
+				let points = this.state.points
+				points = res.data.total
+				this.setState({points})
+			}).catch(err =>{
+				console.log(err)
+			})
+
+			//
+			// let token = localStorage.getItem('token')
+			// axios.get('http://localhost:4000/profile', {
+			// 	headers: {
+			// 		Authorization: `Bearer ${token}`
+			// 	}
+			// }).then(res => {
+			// 	console.log(res.data);
+			// 	let user = this.state.user
+			// 	user = res.data
+			// 	this.setState({user})
+			// }).catch(err => {
+			// 	console.log(err);
+			// })
+
 		}
 
 
   render() {
     return (
       <>
-        <Nav user={this.state.user}/>
+        <Nav user={this.state.user} points={this.state.points}/>
         <nav className="searchBar">
           <input onChange={this.searchFilter} type="text" className="search" placeholder="Search..." />
           <button>Popularity</button>

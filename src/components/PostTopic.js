@@ -20,6 +20,7 @@ const containerStyles = {
 class PostTopic extends React.Component {
 
 	state={
+		user:{},
 		options:[],
 		topic:{
 
@@ -38,16 +39,34 @@ class PostTopic extends React.Component {
 		}).then(res => {
 			topic.user = res.data._id
 			this.setState({topic})
+			let user = this.state.user
+			user = res.data
+			this.setState({user})
 		}).catch(err => {
 			console.log(err);
 		})
+
 		axios.get('http://localhost:4000/category')
 			.then(res => {
 				let options = this.state.options
 				options.value = res.data._id
 				this.setState({options: res.data})
 			})
-		}
+
+		axios.get('http://localhost:4000/ranking', {
+			headers: {
+				Authorization: `Bearer ${token}`
+			}
+		}).then(res => {
+			let points = this.state.points
+			points = res.data.total
+			this.setState({points})
+		}).catch(err =>{
+			console.log(err)
+		})
+	}
+
+
 
 	submitTopic = (e) => {
 		e.preventDefault()
@@ -84,7 +103,7 @@ class PostTopic extends React.Component {
 	render(){
 		return(
 			<>
-			<Nav/>
+			<Nav user={this.state.user} points={this.state.points}/>
 			<div className="wrap">
 				<div></div>
 
