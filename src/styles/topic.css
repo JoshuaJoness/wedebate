@@ -21,17 +21,12 @@ text-align: center;
 	width: 80%;
 }
 .leaveOpinion{
-	margin-top: 5%;
-
-	margin-right: 50%;
-	display: block;
+	margin-left: 43%;
 }
 
 .outerWrapper {
 	display: grid;
 	grid-template-columns: 50% 50%;
-	margin-top:10%;
-	margin-bottom: 10%;
 }
 
 .left {
@@ -85,9 +80,4 @@ text-align: center;
 
 ..footerItemComment{
 		margin-right: 2%;
-}
-
-.label{
-	font-size: 20px;
-	text-align: center;
 }
