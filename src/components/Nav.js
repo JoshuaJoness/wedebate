@@ -18,7 +18,7 @@ class Nav extends React.Component {
           <div>{this.props.points}</div>
           <div>rank #1</div>
         </div>
-        <Link to="/" className="logoImage"   />
+        <Link to="/" className="logoImage"  />
 
         <div className="profile">
 
