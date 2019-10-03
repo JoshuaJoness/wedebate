@@ -14,6 +14,19 @@ nav .logo {
 	cursor: pointer;
 }
 
+.logoImage {
+
+	background-image: url('../images/logo.png');
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 70px;
+    height: 50px;
+
+}
+
+
+
 nav .profile {
 	text-align: right;
 }

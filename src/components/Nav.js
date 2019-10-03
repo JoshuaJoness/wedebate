@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/nav.css";
 import {AvatarMenu, Avatar, MenuDivider, MenuItem, FontAwesomeIcon} from "react-rainbow-components";
 import {Link} from 'react-router-dom'
+import logo from '../images/logo.png';
 
 class Nav extends React.Component {
 
@@ -17,7 +18,7 @@ class Nav extends React.Component {
           <div>{this.props.points}</div>
           <div>rank #1</div>
         </div>
-        <Link to="/" className="logo" style={{backgroundImage: `url(${"./logo192.png"})`}}></Link>
+        <Link to="/" className="logoImage"   />
 
         <div className="profile">
 
@@ -32,7 +33,7 @@ class Nav extends React.Component {
             >
               <li className="rainbow-p-horizontal_small rainbow-align_center rainbow-flex">
                 <Avatar
-                  src="images/user/user2.jpg"
+                  src="images/ user/user2.jpg"
                   assistiveText="Tahimi Leon"
                   title="Tahimi Leon"
                   size="large"
