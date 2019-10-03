@@ -40,6 +40,9 @@ class Signup extends React.Component {
 	// 		this.handleOnChange = this.handleOnChange.bind(this);
 	// }
 
+
+
+
 	handleOnChange = (values) => {
 			this.setState({ values });
 	}
@@ -51,12 +54,30 @@ class Signup extends React.Component {
 		console.log(this.state.user);
 	}
 
+	getFile = (e) => {
+		let file = this.state.user.avatar
+	  file = e.target.files[0]
+console.log(file)
+	}
+
+
 	submit = (e) => {
 		e.preventDefault()
 		let user = this.state.user
+
+
+
+
+
+		let data = new FormData()
+
+	data.append('avatar', this.state.user.avatar)
+
+
+
 		if(user.email && user.username && user.password)
 		axios.post("http://localhost:4000/signup",
-		user).then(res =>{
+		 data).then(res =>{
 			localStorage.setItem('token', res.data)
 			console.log(res.data)
 			this.props.history.push("/")
@@ -99,7 +120,7 @@ class Signup extends React.Component {
 							<div className="uploadLabel">Please select a profile picture:</div>
 							<div className="rainbow-p-vertical_large rainbow-p-left_xx-large" className="upload">
 								<br></br>
-								<input type="file"/>
+								<input type="file"name="myFile"onChange={this.getFile} />
 								<br></br>
 								<br></br>
 							</div>
