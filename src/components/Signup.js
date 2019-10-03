@@ -55,8 +55,12 @@ class Signup extends React.Component {
 	}
 
 	getFile = (e) => {
-		let file = this.state.user.avatar
-	  file = e.target.files[0]
+	  let file = e.target.files[0]
+		let user = this.state.user
+		user.avatar = file
+		this.setState({
+		user: user
+		})
 console.log(file)
 	}
 
@@ -64,21 +68,22 @@ console.log(file)
 	submit = (e) => {
 		e.preventDefault()
 		let user = this.state.user
-
-
-
-
-
+		console.log('this.state', this.state);
 		let data = new FormData()
 
-	data.append('avatar', this.state.user.avatar)
+		data.append('avatar', this.state.user.avatar)
+		data.append('email', this.state.user.email)
+		data.append('username', this.state.user.username)
+		data.append('password', this.state.user.password)
+
+		console.log(data)
 
 
 
 		if(user.email && user.username && user.password)
 		axios.post("http://localhost:4000/signup",
 		 data).then(res =>{
-			localStorage.setItem('token', res.data)
+			localStorage.setItem('token', res.data.token)
 			console.log(res.data)
 			this.props.history.push("/")
 		}).catch(err =>{

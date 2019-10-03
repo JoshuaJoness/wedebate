@@ -20,6 +20,7 @@ class HomePage extends React.Component {
 		topics: [{
 			user: {
 			 username: "",
+			 avatar: ""
 			}
 		}],
 		categories: [],
@@ -40,11 +41,16 @@ searchFilter = (event) => {
 	this.setState({topicDisplay: topicDisplay})
 }
 
-	categoryFilter = (e,filter) => {
-		let topics = this.state.topics
-		let input = e.target.value
-		let topicDisplay = this.state.filters[filter](topics, input)
-		this.setState({topicDisplay: topicDisplay})
+	categoryFilter = (e, filter) => {
+		let val = e.target.value
+		if (val !== 'Categories') {
+			let topicDisplay = this.state.topics.filter(t => t.category.label === val)
+			this.setState({topicDisplay: topicDisplay})
+		} else {
+			let topics = this.state.topics
+			this.setState({topicDisplay: topics})
+		}
+
 	}
 
 
@@ -117,12 +123,14 @@ searchFilter = (event) => {
   render() {
     return (
       <>
-        <Nav user={this.state.user} points={this.state.points}/>
+        <Nav points={this.state.points}/>
         <nav className="searchBar">
           <input onChange={this.searchFilter} type="text" className="search" placeholder="Search..." />
           <button>Popularity</button>
           <select  onChange={(e) => {this.categoryFilter(e, 'category')}}>
+
 						<option value='Categories' >Categories</option>
+
 					{this.state.categories.map((category, index) =>
 						<option value={category.label} key={index}>{category.label}</option>
 					)}
