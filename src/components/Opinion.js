@@ -18,7 +18,20 @@ class Opinion extends React.Component {
 
   };
 
+<<<<<<< HEAD
 
+=======
+	upVote = () => {
+		let upVoter = this.state.upVoter
+		console.log('userID',upVoter);
+		axios.post(`http://localhost:4000/upvote/${this.props.opinion._id}`,
+		upVoter).then(res => {
+			console.log(res.data);
+		}).catch(err =>{
+			console.log(err);
+		})
+	}
+>>>>>>> parent of ed692dd... minor updates
 
 	render() {
 		return (
@@ -48,11 +61,31 @@ class Opinion extends React.Component {
 						<div className="footer">
 							<button className="footerItemReport">Report Post</button>
 							<div></div>
+<<<<<<< HEAD
 							<p className="footerItemUpvote"><i className="fas fa-chevron-up"></i></p>
 							<p className="footerItemComment"><i className="far fa-comments"></i></p>
 						</div>
 
 
+=======
+							<p className="footerItemUpvote" onClick={this.upVote}><i className="fas fa-chevron-up"></i>1</p>
+							<p className="footerItemComment">
+								<Popup trigger={<i className="far fa-comments"></i>} position="center">
+									<Textarea
+										id="example-textarea-1"
+										label="Please enter your comment below:"
+										rows={6}
+										placeholder="Your comment..."
+										style={containerStyles}
+										className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+										onChange={(e)=>this.writeComment(e)}
+									/>
+									<button onClick={this.submitComment}>Submit!</button>
+									<button>Cancel!</button>
+								</Popup>
+							</p>
+					</div>
+>>>>>>> parent of ed692dd... minor updates
 			</div>
 		)
 	}
