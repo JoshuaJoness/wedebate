@@ -37,7 +37,7 @@ searchFilter = (event) => {
 	this.setState({topicDisplay: topicDisplay})
 }
 
-	categoryFilter = (e, filter) => {
+	categoryFilter = (e) => {
 		let val = e.target.value
 		if (val !== 'All Categories') {
 			let topicDisplay = this.state.topics.filter(t => t.category.label === val)
@@ -123,7 +123,7 @@ searchFilter = (event) => {
         <nav className="searchBar">
           <input onChange={this.searchFilter} type="text" className="search" placeholder="Search..." />
           <button>Popularity</button>
-          <select  onChange={(e) => {this.categoryFilter(e, 'category')}}>
+          <select  onChange={(e) => {this.categoryFilter(e)}}>
 
 						<option value='All Categories' >All Categories</option>
 
