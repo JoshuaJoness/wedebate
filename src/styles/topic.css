@@ -1,83 +1,75 @@
 .topic{
 text-align: center;
 }
-
 .bar{
-	display: grid;
-	grid-template-columns: 30% 40% 30%
+    display: grid;
+    grid-template-columns: 30% 40% 30%
 }
-
 .yesButton{
-	display: inline-block;
-	margin-left: 80%;
+    display: inline-block;
+    margin-left: 80%;
 }
-
 .noButton{
-	margin-right: 80%;
+    margin-right: 80%;
 }
-
 .barImage{
-	margin-left: 10%;
-	width: 80%;
+    margin-left: 10%;
+    width: 80%;
 }
 .leaveOpinion{
-	margin-left: 43%;
+    margin-top: 5%;
+    margin-right: 50%;
+    display: block;
 }
-
 .outerWrapper {
-	display: grid;
-	grid-template-columns: 50% 50%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-top:10%;
+    margin-bottom: 10%;
 }
-
 .left {
-	padding-left: 10%;
-	padding-right: 3%;
+    padding-left: 10%;
+    padding-right: 3%;
 }
-
 .right {
-	padding-right: 10%;
-	padding-left:3%;
+    padding-right: 10%;
+    padding-left:3%;
 }
-
 .outerWrap{
-	display: grid;
-	border: 1px solid black;
-	margin-top: 2%;
+    display: grid;
+    border: 1px solid black;
+    margin-top: 2%;
 }
-
 .wrapper{
-	grid-template-rows: 20% 60% 20%;
+    grid-template-rows: 20% 60% 20%;
 }
-
 .header {
-	border-bottom: 1px solid black;
+    border-bottom: 1px solid black;
 }
-
 .headerItem {
-	display: inline-block;
-	margin-right: 10% auto;
+    display: inline-block;
+    margin-right: 10% auto;
 }
-
 .text {
-	border-bottom: 1px solid black;
-	display: block;
+    border-bottom: 1px solid black;
+    display: block;
 }
-
 .footer {
-	display: grid;
-	grid-template-columns: 20% 70% 5% 5%;
+    display: grid;
+    grid-template-columns: 20% 70% 5% 5%;
 }
-
 .footerItemReport{
-		display: inline-block;
-		margin-left: 4%;
+        display: inline-block;
+        margin-left: 4%;
 }
-
 .footerItemUpvote{
-		display: inline-block;
-		margin-right: 2%;
+        display: inline-block;
+        margin-right: 2%;
 }
-
 ..footerItemComment{
-		margin-right: 2%;
+        margin-right: 2%;
+}
+.label{
+    font-size: 20px;
+    text-align: center;
 }
