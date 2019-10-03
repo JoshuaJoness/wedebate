@@ -26,11 +26,7 @@ class HomePage extends React.Component {
 		categories: [],
 		topicDisplay: [],
 		categoryDisplay: [],
-		filters: {
 
-					category: function(array, t) {return array.filter(p => p.category.label === t)},
-
-				}
   };
 
 
@@ -43,7 +39,7 @@ searchFilter = (event) => {
 
 	categoryFilter = (e, filter) => {
 		let val = e.target.value
-		if (val !== 'Categories') {
+		if (val !== 'All Categories') {
 			let topicDisplay = this.state.topics.filter(t => t.category.label === val)
 			this.setState({topicDisplay: topicDisplay})
 		} else {
@@ -129,7 +125,7 @@ searchFilter = (event) => {
           <button>Popularity</button>
           <select  onChange={(e) => {this.categoryFilter(e, 'category')}}>
 
-						<option value='Categories' >Categories</option>
+						<option value='All Categories' >All Categories</option>
 
 					{this.state.categories.map((category, index) =>
 						<option value={category.label} key={index}>{category.label}</option>
