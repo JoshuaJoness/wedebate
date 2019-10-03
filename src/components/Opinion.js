@@ -67,6 +67,8 @@ class Opinion extends React.Component {
 	})
 	}
 
+
+//do I have to pass props from child to parent in order to update opinions.upvoters, since this component is receiveing each opinion as a prop from Topic.js?
 	upVote = () => {
 		let upVoter = this.state.upVoter
 		console.log('userID',upVoter);
@@ -96,7 +98,7 @@ class Opinion extends React.Component {
 						<div className="footer">
 
 							<div></div>
-							<p className="footerItemUpvote" onClick={this.upVote}><i className="fas fa-chevron-up"></i>1</p>
+							<p className="footerItemUpvote" onClick={this.upVote}><i className="fas fa-chevron-up"></i>{this.props.opinion.upvoters.length} upvotes</p>
 							<p className="footerItemComment">
 								<Popup trigger={<i className="far fa-comments"></i>} position="center">
 									<Textarea
