@@ -3,8 +3,64 @@ import "../styles/nav.css";
 import {AvatarMenu, Avatar, MenuDivider, MenuItem, FontAwesomeIcon} from "react-rainbow-components";
 import {Link} from 'react-router-dom'
 import logo from '../images/logo.png';
+import axios from 'axios'
 
 class Nav extends React.Component {
+
+	componentWillMount(){
+		let token = localStorage.getItem('token')
+
+		axios.get('http://localhost:4000/profile', {
+			headers: {
+				Authorization: `Bearer ${token}`
+			}
+		}).then(res => {
+			let user = this.state.user
+			user = res.data
+			this.setState({user})
+		}).catch(err => {
+			console.log(err);
+		})
+
+
+		axios.get('http://localhost:4000/ranking', {
+			headers: {
+				Authorization: `Bearer ${token}`
+			}
+		}).then(res => {
+			let points = this.state.points
+			points = res.data.total
+			this.setState({points})
+		}).catch(err =>{
+			console.log(err)
+		})
+	}
+
+	state = {
+		user:{},
+			topic: [],
+			opinions: [ {
+					upvoters: [],
+					point: 0,
+					user: {
+						avatar: '',
+							username: ""
+					},
+					text: "",
+					side: ""
+			}],
+			proOpinions: [ {
+
+					upvoters: [],
+					user: {
+						avatar: "",
+							username: ""
+					},
+					text: "",
+					side: ""
+			}],
+			conOpinions: []
+	}
 
 	logOut = () => {
 		localStorage.removeItem('token')
@@ -15,7 +71,7 @@ class Nav extends React.Component {
       <nav>
         <Link to="/posttopic" className="logo" style={{backgroundImage: `url(${"./109526.svg"})`}}></Link>
         <div>
-          <div>{this.props.points}</div>
+          <div>{this.state.points}</div>
           <div>rank #1</div>
         </div>
         <Link to="/" className="logoImage"  />
@@ -24,7 +80,7 @@ class Nav extends React.Component {
 
             <AvatarMenu
               id="avatar-menu"
-              src="images/user/user2.jpg"
+              src={this.state.user.avatar}
               assistiveText="Tahimi Leon"
               menuAlignment="right"
               menuSize="small"
@@ -65,7 +121,7 @@ class Nav extends React.Component {
 							</Link>
             </AvatarMenu>
 
-            <span>{this.props.user.username}</span>
+            <span>{this.state.user.username}</span>
 
         </div>
       </nav>
