@@ -4,6 +4,7 @@ import "../styles/opinion.css";
 import { Textarea, ActivityTimeline, TimelineMarker, Card, Button, ButtonIcon } from 'react-rainbow-components'
 import Popup from "reactjs-popup";
 import axios from 'axios'
+import Comment from './Comment'
 
 const containerStyles = {
     maxWidth: 700,
@@ -22,6 +23,7 @@ class Opinion extends React.Component {
 				},
 				text:''
 		}],
+		comments: [],
 		currentComment: {
 			opinion: this.props.opinion._id,
 			user:'',
@@ -50,8 +52,9 @@ class Opinion extends React.Component {
 			console.log(err);
 		})
 		axios.get(`http://localhost:4000/comment?opinion=${this.props.opinion._id}`).then(res => {
-			console.log('comment',res.data);
-
+			let comments = this.state.comments
+			comments = res.data
+			this.setState({comments}, ()=> console.log('LOVE',this.state.comments))
 		}).catch(err => {
 			console.log(err)
 		})
@@ -69,13 +72,14 @@ class Opinion extends React.Component {
 		axios.post("http://localhost:4000/comment",
 			currentComment).then(res => {
 		console.log(res.data)
+		let comments = this.state.comments
+		comments.push(res.data)
+		this.setState(comments)
 	}).catch(err => {
 		console.log(err)
 	})
 	}
 
-
-//do I have to pass props from child to parent in order to update opinions.upvoters, since this component is receiveing each opinion as a prop from Topic.js?
 	upVote = () => {
 		let upVoter = this.state.upVoter
 		console.log('userID',upVoter);
@@ -113,6 +117,12 @@ class Opinion extends React.Component {
 				textAlign: 'left',
 				paddingTop: '20px',
 				display: 'none'
+			},
+			textarea: {
+				width: '90%'
+			},
+			leaveComment: {
+				marginBottom: '20px'
 			}
 		}
 		return (
@@ -137,24 +147,23 @@ class Opinion extends React.Component {
 	            </div>
 							<div style={styles.comments} className={this.state.commentsOpen ? 'open' : ''}>
 								<ActivityTimeline>
-										<TimelineMarker
-												label="User Sign Up."
 
-												datetime="Yesterday"
-												description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua."
-										/>
-										<TimelineMarker
-												label="User phone verified."
+										<div styles={styles.leaveComment}>
+											<Textarea
+												onChange={this.writeComment}
+												id="example-textarea-1"
+												label="Leave a comment:"
+												rows={4}
+												placeholder="Leave a comment below"
+												style={styles.textarea}
+												className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+											/>
+											<Button onClick={this.submitComment}>Submit</Button>
+										</div>
 
-												datetime="Today"
-												description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-										/>
-										<TimelineMarker
-												label="User first post."
+										{this.state.comments.map(comment => <Comment comment={comment}/>)}
 
-												datetime="3 hours ago"
-												description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.">
-										</TimelineMarker>
+
 								</ActivityTimeline>
 							</div>
 						</>
