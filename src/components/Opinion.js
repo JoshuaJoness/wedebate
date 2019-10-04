@@ -29,7 +29,8 @@ class Opinion extends React.Component {
 		},
 		upVoter: {
 			_id: ''
-		}
+		},
+		commentsOpen: false
   }
 
 	componentWillMount () {
@@ -86,6 +87,13 @@ class Opinion extends React.Component {
 		})
 	}
 
+	toggleComments = () => {
+		let commentsOpen = this.state.commentsOpen
+		console.log('commentsOpen',commentsOpen);
+		commentsOpen = !commentsOpen
+		this.setState({commentsOpen})
+	}
+
 	render() {
 		const styles = {
 			button: {
@@ -103,7 +111,8 @@ class Opinion extends React.Component {
 			},
 			comments: {
 				textAlign: 'left',
-				paddingTop: '20px'
+				paddingTop: '20px',
+				display: 'none'
 			}
 		}
 		return (
@@ -124,9 +133,9 @@ class Opinion extends React.Component {
 								<div>
 	              	<i className="far fa-comments"></i> 23 Comments
 								</div>
-								<i className="fas fa-chevron-down"></i>
+								<i className="fas fa-chevron-down" onClick={this.toggleComments}></i>
 	            </div>
-							<div style={styles.comments}>
+							<div style={styles.comments} className={this.state.commentsOpen ? 'open' : ''}>
 								<ActivityTimeline>
 										<TimelineMarker
 												label="User Sign Up."
