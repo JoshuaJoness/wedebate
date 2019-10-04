@@ -9,6 +9,10 @@ import CommentBox from "./CommentBox"
 import Nav from "./Nav"
 import TimeAgo from 'react-timeago'
 import moment from 'moment'
+import PieChart from "./PieChart"
+
+
+
 
 class Profile extends React.Component {
 
@@ -98,7 +102,8 @@ class Profile extends React.Component {
               </div>
             </div>
           </div>
-
+					<PieChart/>
+<div>{this.state.comments.length}</div>
           <div className="headerPoints">
             <p>Points: {this.state.ranking}</p>
             <p></p>
@@ -114,9 +119,11 @@ class Profile extends React.Component {
         <div className="boxHolder">
 					<div></div>
           <div className="box">
+					<h1>Your Opinions</h1>
             <OpinionBox user={this.state.user} opinions={this.state.opinions}/>
           </div>
           <div className="box">
+							<h1>Your Comments</h1>
             <CommentBox user={this.state.user} comments={this.state.comments}/>
           </div>
 					<div></div>
