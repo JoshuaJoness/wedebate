@@ -1,7 +1,7 @@
 import React from 'react'
 import { Avatar } from 'react-rainbow-components';
 import "../styles/opinion.css";
-import { Textarea } from 'react-rainbow-components'
+import { Textarea, ActivityTimeline, TimelineMarker, Card, Button, ButtonIcon } from 'react-rainbow-components'
 import Popup from "reactjs-popup";
 import axios from 'axios'
 
@@ -48,6 +48,12 @@ class Opinion extends React.Component {
 		}).catch(err => {
 			console.log(err);
 		})
+		axios.get(`http://localhost:4000/comment?opinion=${this.props.opinion._id}`).then(res => {
+			console.log('comment',res.data);
+
+		}).catch(err => {
+			console.log(err)
+		})
 	}
 
 	writeComment = (e) => {
@@ -81,41 +87,65 @@ class Opinion extends React.Component {
 	}
 
 	render() {
+		const styles = {
+			button: {
+				minWidth: '130px'
+			},
+			icon: {
+				marginRight: '10px'
+			},
+			text: {
+				fontSize: '16px',
+				wordBreak: 'break-word'
+			},
+			card: {
+				marginTop: '20px'
+			}
+		}
 		return (
-			<div className="outerWrap">
-				<div className="header">
-					<div className="rainbow-m-horizontal_medium">
-					 <Avatar
-							 src={this.props.opinion.user.avatar}
-							 assistiveText="Tahimi Leon"
-							 title="Tahimi Leon"
-							 size="small"
-					 />
-					 </div>
-					 <div className="headerItem">{this.props.opinion.user.username}</div>
-				</div>
-					<div className="text">{this.props.opinion.text}</div>
-						<div className="footer">
+			<Card icon={<Avatar
+					src={this.props.opinion.user.avatar}
+					assistiveText="Tahimi Leon"
+					title="Tahimi Leon"
+					size="small"
+			/>} title={this.props.opinion.user.username}
+					style={styles.card}
+					actions={<Button variant="neutral" className="rainbow-m-around_medium" style={styles.button} onClick={this.upVote}>
+						<i className="fas fa-chevron-up" style={styles.icon}></i>
+						{this.props.opinion.upvoters.length} upvotes
+					</Button>}
+					footer={
+						<div className="rainbow-align-content_space-between">
+							<div>
+              	<i className="far fa-comments"></i> 23 Comments
+							</div>
+							<i className="fas fa-chevron-down"></i>
+            </div>
+					}>
 
-							<div></div>
-							<p className="footerItemUpvote" onClick={this.upVote}><i className="fas fa-chevron-up"></i>{this.props.opinion.upvoters.length} upvotes</p>
-							<p className="footerItemComment">
-								<Popup trigger={<i className="far fa-comments"></i>} position="center">
-									<Textarea
-										id="example-textarea-1"
-										label="Please enter your comment below:"
-										rows={6}
-										placeholder="Your comment..."
-										style={containerStyles}
-										className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-										onChange={(e)=>this.writeComment(e)}
-									/>
-									<button onClick={this.submitComment}>Submit!</button>
-									<button>Cancel!</button>
-								</Popup>
-							</p>
-					</div>
-			</div>
+				<div className="rainbow-p-around_large rainbow-flex_column">
+					<div style={styles.text}>{this.props.opinion.text}</div>
+				</div>
+
+				{
+					/*
+					<Popup trigger={<i className="far fa-comments"></i>} position="center">
+						<Textarea
+							id="example-textarea-1"
+							label="Please enter your comment below:"
+							rows={6}
+							placeholder="Your comment..."
+							style={containerStyles}
+							className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+							onChange={(e)=>this.writeComment(e)}
+						/>
+						<button onClick={this.submitComment}>Submit!</button>
+						<button>Cancel!</button>
+					</Popup>
+					*/
+				}
+
+			</Card>
 		)
 	}
 }
