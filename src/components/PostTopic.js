@@ -11,77 +11,17 @@ const containerStyles = {
     maxWidth: 700,
 };
 
-
+// const options = [
+//     { value: 'option 1', label: 'Religion' },
+//     { value: 'option 2', label: 'Politics' },
+//     { value: 'option 3', label: 'Finance' },
+// ]
 
 class PostTopic extends React.Component {
 
 	state={
 		user:{},
-		options: [
-			{
-					_id: null,
-					label: "Categories"
-
-			},
-			{
-					_id: "5d91ba8e2df68487147b2358",
-					label: "Politics"
-
-			},
-			{
-					_id: "5d91baae2df68487147b2359",
-					label: "Religion",
-
-			},
-			{
-					_id: "5d91bab62df68487147b235a",
-					label: "Economics",
-
-			},
-			{
-					_id: "5d91babf2df68487147b235b",
-					label: "Arts",
-
-			},
-			{
-					_id: "5d91bac52df68487147b235c",
-					label: "Technology",
-
-			},
-			{
-					_id: "5d91bad02df68487147b235d",
-					label: "Animals",
-
-			},
-			{
-					_id: "5d91baf72df68487147b235e",
-					label: "Health",
-
-			},
-			{
-					_id: "5d91bafe2df68487147b235f",
-					label: "Lifestyle",
-
-			},
-			{
-					_id: "5d91bb102df68487147b2360",
-					label: "Nature",
-
-			},
-			{
-					_id: "5d91bb182df68487147b2361",
-					label: "Philosophy",
-
-			},
-			{
-					_id: "5d96b7ff97eae89e7c9d7c70",
-					__v: 0
-			},
-			{
-					"_id": "5d96b80a97eae89e7c9d7c71",
-
-			}
-		],
+		options:[],
 		topic:{
 
 		}
@@ -89,7 +29,12 @@ class PostTopic extends React.Component {
 	//
 
 
+	changeField = (e, field) => {
+		let topic = this.state.topic
+		topic[field] = e.target.value
+		this.setState({topic})
 
+	}
 	//
 
 	componentWillMount () {
@@ -109,18 +54,19 @@ class PostTopic extends React.Component {
 			console.log(err);
 		})
 
-		// axios.get('http://localhost:4000/category')
-		// 	.then(res => {
-		// 		let options = this.state.options
-		// 		options.value = res.data._id
-		// 		options.push( {
-    //     _id: "5d91bab62df68487147b235t",
-    //     label: "Categories",
-		//
-    // })
-		//
-		// 		this.setState({options: res.data})
-		// 	})
+		axios.get('http://localhost:4000/category')
+			.then(res => {
+				let options = this.state.options
+				options.unshift({
+					 _id: null,
+					 label: "Categories",
+				})
+				options.value = res.data._id
+
+				console.log(res.data._id)
+				this.setState({options: res.data})
+			})
+
 
 		axios.get('http://localhost:4000/ranking', {
 			headers: {
@@ -144,11 +90,8 @@ class PostTopic extends React.Component {
 	}
 
 	changeSelect = (e) => {
-
 		let option = this.state.options.find(option => option.label == e.target.value)
-
-	
-
+		console.log(option._id);
 		let topic = this.state.topic
 		topic.category = option._id
 		this.setState({topic})
@@ -244,5 +187,6 @@ console.log(file)
 		)
 	}
 }
+
 
 export default PostTopic
