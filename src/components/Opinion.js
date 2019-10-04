@@ -54,7 +54,7 @@ class Opinion extends React.Component {
 		axios.get(`http://localhost:4000/comment?opinion=${this.props.opinion._id}`).then(res => {
 			let comments = this.state.comments
 			comments = res.data
-			this.setState({comments}, ()=> console.log('LOVE',this.state.comments))
+			this.setState({comments})
 		}).catch(err => {
 			console.log(err)
 		})
@@ -82,7 +82,6 @@ class Opinion extends React.Component {
 
 	upVote = () => {
 		let upVoter = this.state.upVoter
-		console.log('userID',upVoter);
 		axios.post(`http://localhost:4000/upvote/${this.props.opinion._id}`,
 		upVoter).then(res => {
 			console.log(res.data);
