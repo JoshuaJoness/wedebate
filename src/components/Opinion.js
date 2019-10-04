@@ -100,6 +100,10 @@ class Opinion extends React.Component {
 			},
 			card: {
 				marginTop: '20px'
+			},
+			comments: {
+				textAlign: 'left',
+				paddingTop: '20px'
 			}
 		}
 		return (
@@ -115,12 +119,36 @@ class Opinion extends React.Component {
 						{this.props.opinion.upvoters.length} upvotes
 					</Button>}
 					footer={
-						<div className="rainbow-align-content_space-between">
-							<div>
-              	<i className="far fa-comments"></i> 23 Comments
+						<>
+							<div className="rainbow-align-content_space-between">
+								<div>
+	              	<i className="far fa-comments"></i> 23 Comments
+								</div>
+								<i className="fas fa-chevron-down"></i>
+	            </div>
+							<div style={styles.comments}>
+								<ActivityTimeline>
+										<TimelineMarker
+												label="User Sign Up."
+
+												datetime="Yesterday"
+												description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua."
+										/>
+										<TimelineMarker
+												label="User phone verified."
+
+												datetime="Today"
+												description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+										/>
+										<TimelineMarker
+												label="User first post."
+
+												datetime="3 hours ago"
+												description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.">
+										</TimelineMarker>
+								</ActivityTimeline>
 							</div>
-							<i className="fas fa-chevron-down"></i>
-            </div>
+						</>
 					}>
 
 				<div className="rainbow-p-around_large rainbow-flex_column">
