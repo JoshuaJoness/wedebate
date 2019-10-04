@@ -22,9 +22,7 @@ class PostTopic extends React.Component {
 	state={
 		user:{},
 		options:[],
-		topic:{
-
-		}
+		topic:{}
 	}
 	//
 
@@ -56,14 +54,10 @@ class PostTopic extends React.Component {
 
 		axios.get('http://localhost:4000/category')
 			.then(res => {
-				let options = this.state.options
-				options.unshift({
+				res.data.unshift({
 					 _id: null,
 					 label: "Categories",
 				})
-				options.value = res.data._id
-
-				console.log(res.data._id)
 				this.setState({options: res.data})
 			})
 
