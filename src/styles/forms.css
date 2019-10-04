@@ -5,10 +5,10 @@
 }
 
 .form {
-	background-color: #EDE7F6;
+	background-color: #8FBC8F;
 	text-align: left;
-	border-radius: 3%;
-	border: 2px solid silver;
+	border-radius: 1%;
+	border: 1px solid black;
 }
 
 .formInput {
@@ -20,11 +20,8 @@
 }
 
 .title {
-	display: flex;
-	    align-items: center;
-	    justify-content: center;
-	    margin-top: 5%;
-	    margin-left: auto;
-	    margin-right: auto;
-	    font-size: 25px;
+	margin-top: 5%;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 20px;
 }
