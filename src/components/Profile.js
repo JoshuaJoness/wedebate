@@ -7,6 +7,8 @@ import axios from 'axios'
 import OpinionBox from "./OpinionBox"
 import CommentBox from "./CommentBox"
 import Nav from "./Nav"
+import TimeAgo from 'react-timeago'
+import moment from 'moment'
 
 class Profile extends React.Component {
 
@@ -25,6 +27,7 @@ class Profile extends React.Component {
 		  }
 		}).then(res => {
 			let user = this.state.user
+			user.created =
 			user = res.data
 			this.setState({user})
 		}).catch(err => {
@@ -91,7 +94,7 @@ class Profile extends React.Component {
               />
               <div className="headerName">
                 <p>{this.state.user.username}</p>
-                <p>User since:{this.state.user.created}</p>
+                <p>User since: {moment(this.state.user.created).format('D MMMM YYYY')}</p>
               </div>
             </div>
           </div>

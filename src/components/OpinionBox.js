@@ -1,5 +1,6 @@
 import React from 'react'
 import {ActivityTimeline, TimelineMarker, UserSignUpIcon, UserVerifiedIcon, UserFirstPostIcon, Card} from "react-rainbow-components";
+import TimeAgo from 'react-timeago'
 
 const iconStyles = { width: 32, height: 32 }
 
@@ -23,7 +24,7 @@ class OpinionBox extends React.Component {
 						return (<TimelineMarker
 							label={this.props.user.username}
 							// icon={<UserSignUpIcon  style={iconStyles} />}
-							datetime={o.created}
+							datetime=<TimeAgo date= {o.created}  />
 							description={o.text}
 					/>)})}
 
