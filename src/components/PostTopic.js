@@ -27,6 +27,14 @@ class PostTopic extends React.Component {
 		}
 	}
 	//
+
+
+	changeField = (e, field) => {
+		let topic = this.state.topic
+		topic[field] = e.target.value
+		this.setState({topic})
+
+	}
 	//
 
 	componentWillMount () {
@@ -66,24 +74,6 @@ class PostTopic extends React.Component {
 		})
 	}
 
-
-
-	submitTopic = (e) => {
-		e.preventDefault()
-		let topic = this.state.topic
-		if(topic.title && topic.description && topic.user && topic.category) {
-			axios.post('http://localhost:4000/topic',
-			topic).then(res => {
-				console.log(res.data)
-				this.props.history.push("/")
-			}).catch(err =>{
-				console.log(err);
-			})
-		} else {
-			console.log('missing data');
-		}
-	}
-
 	changeField = (e, field) => {
 		console.log('e', e.target.value);
 		let topic = this.state.topic
@@ -99,6 +89,45 @@ class PostTopic extends React.Component {
 		topic.category = option._id
 		this.setState({topic})
 	}
+
+	getFile = (e) => {
+		let file = e.target.files[0]
+		let topic = this.state.topic
+		topic.image = file
+		this.setState({
+		topic: topic
+		})
+console.log(file)
+	}
+
+
+	submitTopic = (e) => {
+		e.preventDefault()
+		let topic = this.state.topic
+
+	console.log('this.state', this.state);
+
+		let data = new FormData()
+
+		data.append('image', this.state.topic.image)
+		data.append('title', this.state.topic.title)
+		data.append('description', this.state.topic.description)
+		data.append('user', this.state.topic.user)
+		data.append('category', this.state.topic.category)
+
+		if(topic.title && topic.description && topic.user && topic.category) {
+			axios.post('http://localhost:4000/topic',
+			data).then(res => {
+				console.log(res.data)
+				this.props.history.push("/")
+			}).catch(err =>{
+				console.log(err);
+			})
+		} else {
+			console.log('missing data');
+		}
+	}
+
 
 	render(){
 		return(
@@ -139,7 +168,7 @@ class PostTopic extends React.Component {
 							onChange={(e)=>this.changeField(e,'description')}
 						/>
 						<div className="uploadLabel">Please select an image for your topic:</div>
-						<input className="topicPhoto" type="file"/>
+							<input type="file"name="myFile"onChange={this.getFile} />
 						<button className="submitTopic">Submit</button>
 					</div>
 				</form>
