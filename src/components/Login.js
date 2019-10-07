@@ -1,7 +1,12 @@
 import React from 'react'
-import { Input } from 'react-rainbow-components'
+import { Input, Button } from 'react-rainbow-components'
 import axios from 'axios'
 import '../styles/forms.css'
+import "../styles/global.css";
+import "../styles/grid.css";
+import "../styles/button.css";
+import "../styles/card.css";
+import "../styles/forms.css";
 
 
 const inputContainerStyles = {
@@ -40,41 +45,62 @@ class Login extends React.Component {
 
 
 	render() {
-		return(
-			<>
-				<div className="wrap">
-				<div></div>
-				<div>
-					<form className="form" onSubmit={this.submit}>
-					<span className="title">Login</span>
-						<div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
-							<Input
-								className="formInput"
-								label="Please enter your username:"
-								placeholder="username"
-								type="text"
-								onChange={(e)=>this.changeField(e,'email')} />
-							<Input
-								className="formInput"
-								label="Please enter your password:"
-								placeholder="password"
-								type="password"
-								onChange={(e)=>this.changeField(e,'password')} />
-							<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
-								<button className="primary">Login</button>
+
+		const styles = {
+			button: {
+				color: 'violet',
+				borderRadius: '10px',
+				height: '40px',
+				background: '#DCDCDC',
+				border: '0.5px solid silver'
+
+
+
+			}
+		}
+
+	return (
+		<body>
+			<div class="grid center middle tall image">
+				<div class="card small">
+					<div class="content">
+						<div className="content">
+							<div
+								class="logo"
+								style={{backgroundImage: `url('/logo.png')`}}
+							>
 							</div>
-							<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
-								<p className="footer">
-									Don't have an account? <a href="/signup">Sign Up!</a>
-								</p>
-							</div>
-						</div>
-					</form>
-					</div>
+								<form className="form" onSubmit={this.submit}>
+									<span className="title">Login</span>
+										<div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
+									<Input
+										className="formInput"
+										label="Please enter your username:"
+										placeholder="username"
+										type="text"
+										onChange={(e)=>this.changeField(e,'email')} />
+
+										<Input
+											className="formInput"
+											label="Please enter your password:"
+											placeholder="password"
+											type="password"
+											onChange={(e)=>this.changeField(e,'password')} />
+
+												<Button style={styles.button}  className="primary signupButton ">Login</Button>
+												</div>
+												<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
+													<p className="footerLogin">
+													Don't have an account? <a href="/signup">Sign Up!</a>
+													</p>
+												</div>
+										</form>
+	</div>
+	</div>
 				</div>
-			</>
+			</div>
+		</body>
 		)
 	}
 }
-
 export default Login

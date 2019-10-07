@@ -5,10 +5,18 @@
 }
 
 .form {
-	background-color: #8FBC8F;
+	background-color: #EDE7F6;
 	text-align: left;
-	border-radius: 1%;
-	border: 1px solid black;
+	border-radius: 3%;
+	border: 2px solid silver;
+}
+
+.formSignup {
+	margin: 30px;
+	background-color: #EDE7F6;
+	text-align: left;
+	border-radius: 3%;
+	border: 2px solid silver;
 }
 
 .formInput {
@@ -20,8 +28,12 @@
 }
 
 .title {
-	margin-top: 5%;
-	margin-left: auto;
-	margin-right: auto;
-	font-size: 20px;
+	display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    margin-top: 5%;
+	    margin-left: auto;
+	    margin-right: auto;
+	    font-size: 25px;
+			font-family: 'Roboto Mono', monospace;
 }
