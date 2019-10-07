@@ -2,6 +2,11 @@ import React from 'react'
 import { Input } from 'react-rainbow-components'
 import axios from 'axios'
 import '../styles/forms.css'
+import "../styles/global.css";
+import "../styles/grid.css";
+import "../styles/button.css";
+import "../styles/card.css";
+import "../styles/forms.css";
 
 
 const inputContainerStyles = {
@@ -48,43 +53,41 @@ class Login extends React.Component {
 						<div className="content">
 							<div
 								class="logo"
-								style={{backgroundImage: `url('/logo-airbnb.png')`}}
-							></div>
-									<form className="form" onSubmit={this.submit}>
-
-								<div class="group">
-
-										<label className="title">Login</label>
+								style={{backgroundImage: `url('/logo.png')`}}
+							>
+							</div>
+								<form className="form" onSubmit={this.submit}>
+									<span className="title">Login</span>
+										<div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
+									<Input
+										className="formInput"
+										label="Please enter your username:"
+										placeholder="username"
+										type="text"
+										onChange={(e)=>this.changeField(e,'email')} />
 
 										<Input
 											className="formInput"
-											label="Please enter your username:"
-											placeholder="username"
-											type="text"
-											onChange={(e)=>this.changeField(e,'email')} />
+											label="Please enter your password:"
+											placeholder="password"
+											type="password"
+											onChange={(e)=>this.changeField(e,'password')} />
 
-								</div>
-								<div class="group">
-									<label>Password</label>
+												<button className="primary">Login</button>
+												</div>
+												<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
+													<p className="footer">
+													Don't have an account? <a href="/signup">Sign Up!</a>
+													</p>
+												</div>
 
-									<input
-										type="text"
-										value={this.state.user.password}
-										onChange={e => this.changeField(e, "password")}
-									/>
-								</div>
-								<button class="primary">Login</button>
-							</form>
-							<p class="footer">
-								Already have an account? <a href=" ">Sign up</a>
-							</p>
-						</div>
-					</div>
+										</form>
+	</div>
+	</div>
 				</div>
 			</div>
 		</body>
-	);
+		)
+	}
 }
-}
-
 export default Login
