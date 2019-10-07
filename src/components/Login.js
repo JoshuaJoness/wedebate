@@ -42,8 +42,7 @@ class Login extends React.Component {
 	render() {
 		return(
 			<>
-				<div className="wrap">
-				<div></div>
+				<div className="grid center middle tall image">
 				<div>
 					<form className="form" onSubmit={this.submit}>
 					<span className="title">Login</span>

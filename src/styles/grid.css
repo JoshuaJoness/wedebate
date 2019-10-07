@@ -27,3 +27,10 @@
 .grid.tall {
     height: 100vh;
 }
+
+.grid.image {
+	background-image: url('../images/debate.jpg');
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
