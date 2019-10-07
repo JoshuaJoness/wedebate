@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input } from 'react-rainbow-components'
+import { Input, Button } from 'react-rainbow-components'
 import axios from 'axios'
 import '../styles/forms.css'
 import "../styles/global.css";
@@ -45,6 +45,20 @@ class Login extends React.Component {
 
 
 	render() {
+
+		const styles = {
+			button: {
+				color: 'violet',
+				borderRadius: '10px',
+				height: '40px',
+				background: '#DCDCDC',
+				border: '0.5px solid silver'
+
+
+
+			}
+		}
+
 	return (
 		<body>
 			<div class="grid center middle tall image">
@@ -73,7 +87,7 @@ class Login extends React.Component {
 											type="password"
 											onChange={(e)=>this.changeField(e,'password')} />
 
-												<button className="primary signupButton ">Login</button>
+												<Button style={styles.button}  className="primary signupButton ">Login</Button>
 												</div>
 												<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
 													<p className="footerSignup">
