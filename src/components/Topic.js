@@ -128,7 +128,7 @@ class Topic extends React.Component {
 		let user = this.state.user
 		user.votedYes = true
 		console.log('USER',user)
-		axios.post(`http://localhost:4000/vote/${this.props.match.params.id}`,
+		axios.patch(`http://localhost:4000/vote/${this.props.match.params.id}`,
 			{user}).then(res => {
 				console.log('RESPONSE',res.data);
 			}).catch(err => {
@@ -139,7 +139,7 @@ class Topic extends React.Component {
 	voteNo = () => {
 		let user = this.state.user
 		console.log('USER',user)
-		axios.post(`http://localhost:4000/vote/${this.props.match.params.id}`,
+		axios.patch(`http://localhost:4000/vote/${this.props.match.params.id}`,
 			{user}).then(res => {
 				console.log('RESPONSE',res.data);
 			}).catch(err => {
@@ -168,7 +168,7 @@ class Topic extends React.Component {
 			},
 			card:{
 				width: '700px',
-				marginLeft: '30%',
+				marginLeft: '27.5%',
 				marginTop: '80px'
 			}
 		}

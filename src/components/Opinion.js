@@ -140,7 +140,7 @@ class Opinion extends React.Component {
 						<>
 							<div className="rainbow-align-content_space-between">
 								<div>
-	              	<i className="far fa-comments"></i> 23 Comments
+	              	<i className="far fa-comments"></i> {this.state.comments.length} Comments
 								</div>
 								<i className="fas fa-chevron-down" onClick={this.toggleComments}></i>
 	            </div>
