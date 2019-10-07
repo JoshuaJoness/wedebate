@@ -1,11 +1,10 @@
 button {
-
-
 width: 90px;
 float: right;
+}
 
-
-
+.signupButton {
+	margin: 20px;
 }
 
 .search {

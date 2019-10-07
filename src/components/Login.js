@@ -49,7 +49,6 @@ class Login extends React.Component {
 		<body>
 			<div class="grid center middle tall image">
 				<div class="card small">
-					<div class="content">
 						<div className="content">
 							<div
 								class="logo"
@@ -73,19 +72,19 @@ class Login extends React.Component {
 											type="password"
 											onChange={(e)=>this.changeField(e,'password')} />
 
-												<button className="primary">Login</button>
+												<button className="primary signupButton">Login</button>
 												</div>
-												<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
+													</form>
 													<p className="footer">
 													Don't have an account? <a href="/signup">Sign Up!</a>
 													</p>
-												</div>
 
-										</form>
+
+
 	</div>
 	</div>
 				</div>
-			</div>
+
 		</body>
 		)
 	}

@@ -38,6 +38,10 @@ h1 {
 }
 
 .content {
+	background-color: #EDE7F6;
+	text-align: left;
+	border-radius: 3%;
+	border: 2px solid silver;
 	margin: 50px 0;
 	position: relative;
 }
