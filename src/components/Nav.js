@@ -91,17 +91,17 @@ class Nav extends React.Component {
             >
               <li className="rainbow-p-horizontal_small rainbow-align_center rainbow-flex">
                 <Avatar
-                  src="images/ user/user2.jpg"
+                  src={this.state.user.avatar}
                   assistiveText="Tahimi Leon"
                   title="Tahimi Leon"
                   size="large"
                 />
                 <div className="rainbow-m-left_x-small">
                   <p className="rainbow-font-size-text_medium rainbow-color_dark-1">
-                    Tahimi
+                    {this.state.user.username}
                   </p>
                   <p className="rainbow-font-size-text_small rainbow-color_gray-3">
-                    janedoe@gmail.com
+                    {this.state.user.email}
                   </p>
                 </div>
               </li>

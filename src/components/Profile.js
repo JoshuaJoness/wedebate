@@ -33,22 +33,21 @@ class Profile extends React.Component {
 			let user = this.state.user
 			user.created =
 			user = res.data
-			this.setState({user})
+			axios.get(`http://localhost:4000/rankings?user=${user._id}`, {
+				headers: {
+					Authorization: `Bearer ${token}`
+				}
+			}).then(res => {
+				console.log('wwwwwww', res.data)
+				this.setState({user: res.data})
+			}).catch(err =>{
+				console.log(err)
+			})
 		}).catch(err => {
 			console.log(err);
 		})
 
-		axios.get('http://localhost:4000/ranking', {
-			headers: {
-				Authorization: `Bearer ${token}`
-			}
-		}).then(res => {
-			let ranking = this.state.ranking
-			ranking = res.data.total
-			this.setState({ranking})
-		}).catch(err =>{
-			console.log(err)
-		})
+
 
 		axios.get('http://localhost:4000/opinion', {
 			headers: {
@@ -91,7 +90,7 @@ class Profile extends React.Component {
           <div>
             <div className="rainbow-m-horizontal_medium">
               <Avatar
-                src="images/user/user1.jpg"
+                src={this.state.user.avatar}
                 assistiveText="Jose Leandro"
                 title="Jose Leandro"
                 size="large"
@@ -102,10 +101,9 @@ class Profile extends React.Component {
               </div>
             </div>
           </div>
-					<PieChart/>
-<div>{this.state.comments.length}</div>
+					<PieChart user={this.state.user}/>
           <div className="headerPoints">
-            <p>Points: {this.state.ranking}</p>
+            <p>Points: {this.state.user.ranking}</p>
             <p></p>
           </div>
         </div>

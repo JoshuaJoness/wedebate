@@ -32,6 +32,11 @@ class PieChart extends React.Component {
         };
     }
 
+		componentWillMount() {
+
+			let topics = this.state.dataset[0].value
+			this.setState({ topics: this.props.user.topics})
+}
 
 
     renderDataset() {
@@ -60,6 +65,7 @@ class PieChart extends React.Component {
                     <Chart labels={labels} type="pie" legendPosition="right" disableCurves>
                         {this.renderDataset()}
                     </Chart>
+
                 </div>
 
         );

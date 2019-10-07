@@ -11,7 +11,8 @@ class Thumbnail extends React.Component {
 
 	state = {
     topics: [],
-		categories: []
+		categories: [],
+		users: []
 
 
 
