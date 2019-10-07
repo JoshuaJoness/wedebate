@@ -17,27 +17,28 @@ class Nav extends React.Component {
 		}).then(res => {
 			let user = this.state.user
 			user = res.data
-			this.setState({user})
+			axios.get(`http://localhost:4000/rankings?user=${user._id}`, {
+				headers: {
+					Authorization: `Bearer ${token}`
+				}
+			}).then(res => {
+				console.log('wwwwwww', res)
+				this.setState({user: res.data})
+			}).catch(err =>{
+				console.log(err)
+			})
 		}).catch(err => {
 			console.log(err);
 		})
 
 
-		axios.get('http://localhost:4000/ranking', {
-			headers: {
-				Authorization: `Bearer ${token}`
-			}
-		}).then(res => {
-			let points = this.state.points
-			points = res.data.total
-			this.setState({points})
-		}).catch(err =>{
-			console.log(err)
-		})
+
 	}
 
 	state = {
-		user:{},
+		user:{
+			score: 0
+		},
 			topic: [],
 			opinions: [ {
 					upvoters: [],
@@ -71,8 +72,9 @@ class Nav extends React.Component {
       <nav>
         <Link to="/posttopic" className="logo" style={{backgroundImage: `url(${"./109526.svg"})`}}></Link>
         <div>
-          <div>{this.state.points}</div>
-          <div>rank #1</div>
+          <div>{this.state.user.score}</div>
+          <div>rank #{this.state.user.ranking}</div>
+					<div>{this.state.user.rank}</div>
         </div>
         <Link to="/" className="logoImage"  />
 

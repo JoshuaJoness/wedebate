@@ -84,25 +84,29 @@ class SortTable extends React.Component {
 			})
 
 
-			axios.get('http://localhost:4000/ranking', {
+			// axios.get('http://localhost:4000/ranking', {
+			// 	headers: {
+			// 		Authorization: `Bearer ${token}`
+			// 	}
+			// }).then(res => {
+			// 	let points = this.state.points
+			// 	points = res.data.total
+			// 	this.setState({points})
+			// }).catch(err =>{
+			//
+			// })
+
+			axios.get('http://localhost:4000/rankings', {
 				headers: {
 					Authorization: `Bearer ${token}`
 				}
-			}).then(res => {
-				let points = this.state.points
-				points = res.data.total
-				this.setState({points})
-			}).catch(err =>{
-				console.log(err)
 			})
-
-			axios.get('http://localhost:4000/rankings')
 			  .then(res => {
 			    this.setState({
 			      data: res.data
 			    })
 			  })
-			  .catch(err => {})
+			  .catch(err => {console.log(err)})
 		}
 
 
