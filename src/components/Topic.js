@@ -1,17 +1,11 @@
-
 import React from 'react'
 import '../styles/topic.css'
 import Opinion from './Opinion'
 import axios from 'axios'
 import Nav from './Nav'
-import { ProgressBar } from 'react-rainbow-components'
-import Popup from "reactjs-popup";
-import { Textarea } from 'react-rainbow-components'
-import { RadioGroup } from 'react-rainbow-components'
+import { RadioGroup, Button, Textarea, ProgressBar, ButtonIcon, Card, RadioButtonGroup } from 'react-rainbow-components'
 
-const containerStyles = {
-    maxWidth: 700,
-}
+
 
 const options = [
     { value: 'pro', label: 'Pro' },
@@ -43,7 +37,8 @@ class Topic extends React.Component {
 			topic:'',
 			text:'',
 			user:''
-			}
+		},
+		value: 'auto'
 		}
 
 	componentWillMount(){
@@ -58,7 +53,7 @@ class Topic extends React.Component {
 					let currentOpinion = this.state.currentOpinion
 					currentOpinion.user = res.data._id
 					currentOpinion.topic = this.props.match.params.id
-					this.setState({user, currentOpinion}, ()=>console.log('>>>>>>>>>>>>',this.props))
+					this.setState({user, currentOpinion}, ()=>console.log('PROPS',this.props.match.params.id))
 				}).catch(err => {
 					console.log(err);
 				})
@@ -101,13 +96,14 @@ class Topic extends React.Component {
 	changeProCon = (e) => {
 		let currentOpinion = this.state.currentOpinion
 		currentOpinion.side = e.target.value
-		this.setState({ currentOpinion });
+		this.setState({ currentOpinion, value:e.target.value });
+
 	}
 
 	submitOpinion = (e) => {
 		e.preventDefault()
 		let currentOpinion = this.state.currentOpinion
-		if(currentOpinion) {
+		if(currentOpinion.text && currentOpinion.side) {
 			axios.post('http://localhost:4000/opinion',
 			currentOpinion).then(res => {
 				if (res.data.side === 'pro') {
@@ -127,52 +123,112 @@ class Topic extends React.Component {
 		}
 	}
 
+//here I am trying to send 'user' via body, when I log in back end however, body is the topic...?
+	voteYes = () => {
+		let user = this.state.user
+		user.votedYes = true
+		console.log('USER',user)
+		axios.patch(`http://localhost:4000/vote/${this.props.match.params.id}`,
+			{user}).then(res => {
+				console.log('RESPONSE',res.data);
+			}).catch(err => {
+				console.log(err);
+			})
+	}
+
+	voteNo = () => {
+		let user = this.state.user
+		console.log('USER',user)
+		axios.patch(`http://localhost:4000/vote/${this.props.match.params.id}`,
+			{user}).then(res => {
+				console.log('RESPONSE',res.data);
+			}).catch(err => {
+				console.log(err);
+			})
+	}
+
 	render() {
+		const styles = {
+			title: {
+				fontSize: '44px',
+				fontWeight: 'bold',
+				padding: '30px'
+			},
+			descriptionLabel:{
+				fontSize: '36px',
+				fontWeight: 'bold',
+				paddingTop: '40px',
+				paddingBottom: '25px'
+			},
+			description:{
+				fontSize: '26px'
+			},
+			textArea:{
+				width:'600px'
+			},
+			card:{
+				width: '700px',
+				marginLeft: '27.5%',
+				marginTop: '80px'
+			}
+		}
 		return(
 			<>
 				<Nav user={this.state.user} points={this.state.points}/>
 				<div className="topic">
-					<h1>{this.state.topic.title}</h1>
+					<h1 style={styles.title}>{this.state.topic.title}</h1>
 					<img src={this.state.topic.image} alt="landscape with rainbows and colorful birds"/>
-					<div>Description:</div>
-				<div>	{this.state.topic.description}</div>
+					<div style={styles.descriptionLabel}>Description:</div>
+				<div style={styles.description}>	{this.state.topic.description}</div>
 				</div>
 				<br></br>
 				<br></br>
 				<br></br>
 				<br></br>
 				<div className="bar">
-					<button className="yesButton">Yes</button>
+					<Button className="yesButton" onClick={this.voteYes}>Yes</Button>
 						<ProgressBar value={this.state.topic.percentage} size="large" className="barImage"  variant="success"/>
-					<button className="noButton">No</button>
+					<Button className="noButton" onClick={this.voteNo}>No</Button>
 				</div>
 				<br></br>
 				<br></br>
 
-				<Popup trigger={<button className="leaveOpinion">Click here to leave your opinion!</button>} 				position="center">
 
-					<Textarea
-						id="example-textarea-1"
-						label="Please enter your topic below:"
-						rows={6}
-						placeholder="Your topic..."
-						style={containerStyles}
-						className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-						onChange={(e)=>this.writeOpinion(e)}
-					/>
-​
-					<RadioGroup
-							id="radio-group-component-1"
-							options={options}
-							value={this.state.value}
-							onChange={this.changeProCon}
-							label="Radio Group Label"
-					/>
-​
-					<button onClick={this.submitOpinion}>Submit!</button>
-					<button>Cancel!</button>
 
-				</Popup>
+				<div className="rainbow-m-around_large" style={styles.card} >
+					<Card
+						title="Leave an opinion:"
+						footer={
+			        <div className="rainbow-align-content_space-between">
+			          <div className="rainbow-flex">
+									<RadioButtonGroup
+											id="radio-button-group-component-1"
+											options={options}
+											value={this.state.value}
+											variant="inverse"
+											onChange={this.changeProCon}
+											error="This field is required"
+									/>
+			          </div>
+			          	<Button onClick={this.submitOpinion}> Submit</Button>
+			        </div>
+			       }
+								>
+						<div className="rainbow-p-around_xx-large rainbow-align-content_center rainbow-flex_column">
+							<Textarea
+								id="example-textarea-1"
+								label="Please enter your topic below:"
+								rows={6}
+								placeholder="Your topic..."
+								style={styles.textArea}
+								className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+								onChange={(e)=>this.writeOpinion(e)}
+							/>
+						</div>
+				</Card>
+			</div>
+
+
 
 				<br></br>
 				<br></br>

@@ -1,9 +1,10 @@
 import React from 'react'
 import { Avatar } from 'react-rainbow-components';
 import "../styles/opinion.css";
-import { Textarea } from 'react-rainbow-components'
+import { Textarea, ActivityTimeline, TimelineMarker, Card, Button, ButtonIcon } from 'react-rainbow-components'
 import Popup from "reactjs-popup";
 import axios from 'axios'
+import Comment from './Comment'
 
 const containerStyles = {
     maxWidth: 700,
@@ -22,6 +23,7 @@ class Opinion extends React.Component {
 				},
 				text:''
 		}],
+		comments: [],
 		currentComment: {
 			opinion: this.props.opinion._id,
 			user:'',
@@ -29,7 +31,8 @@ class Opinion extends React.Component {
 		},
 		upVoter: {
 			_id: ''
-		}
+		},
+		commentsOpen: false
   }
 
 	componentWillMount () {
@@ -48,6 +51,13 @@ class Opinion extends React.Component {
 		}).catch(err => {
 			console.log(err);
 		})
+		axios.get(`http://localhost:4000/comment?opinion=${this.props.opinion._id}`).then(res => {
+			let comments = this.state.comments
+			comments = res.data
+			this.setState({comments})
+		}).catch(err => {
+			console.log(err)
+		})
 	}
 
 	writeComment = (e) => {
@@ -62,16 +72,16 @@ class Opinion extends React.Component {
 		axios.post("http://localhost:4000/comment",
 			currentComment).then(res => {
 		console.log(res.data)
+		let comments = this.state.comments
+		comments.push(res.data)
+		this.setState(comments)
 	}).catch(err => {
 		console.log(err)
 	})
 	}
 
-
-//do I have to pass props from child to parent in order to update opinions.upvoters, since this component is receiveing each opinion as a prop from Topic.js?
 	upVote = () => {
 		let upVoter = this.state.upVoter
-		console.log('userID',upVoter);
 		axios.post(`http://localhost:4000/upvote/${this.props.opinion._id}`,
 		upVoter).then(res => {
 			console.log(res.data);
@@ -80,42 +90,107 @@ class Opinion extends React.Component {
 		})
 	}
 
-	render() {
-		return (
-			<div className="outerWrap">
-				<div className="header">
-					<div className="rainbow-m-horizontal_medium">
-					 <Avatar
-							 src={this.props.opinion.user.avatar}
-							 assistiveText="Tahimi Leon"
-							 title="Tahimi Leon"
-							 size="small"
-					 />
-					 </div>
-					 <div className="headerItem">{this.props.opinion.user.username}</div>
-				</div>
-					<div className="text">{this.props.opinion.text}</div>
-						<div className="footer">
+	toggleComments = () => {
+		let commentsOpen = this.state.commentsOpen
+		console.log('commentsOpen',commentsOpen);
+		commentsOpen = !commentsOpen
+		this.setState({commentsOpen})
+	}
 
-							<div></div>
-							<p className="footerItemUpvote" onClick={this.upVote}><i className="fas fa-chevron-up"></i>{this.props.opinion.upvoters.length} upvotes</p>
-							<p className="footerItemComment">
-								<Popup trigger={<i className="far fa-comments"></i>} position="center">
-									<Textarea
-										id="example-textarea-1"
-										label="Please enter your comment below:"
-										rows={6}
-										placeholder="Your comment..."
-										style={containerStyles}
-										className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-										onChange={(e)=>this.writeComment(e)}
-									/>
-									<button onClick={this.submitComment}>Submit!</button>
-									<button>Cancel!</button>
-								</Popup>
-							</p>
-					</div>
-			</div>
+	render() {
+		const styles = {
+			button: {
+				minWidth: '130px'
+			},
+			icon: {
+				marginRight: '10px'
+			},
+			text: {
+				fontSize: '16px',
+				wordBreak: 'break-word'
+			},
+			card: {
+				marginTop: '20px'
+			},
+			comments: {
+				textAlign: 'left',
+				paddingTop: '20px',
+				display: 'none'
+			},
+			textarea: {
+				width: '90%'
+			},
+			leaveComment: {
+				marginBottom: '20px'
+			}
+		}
+		return (
+			<Card icon={<Avatar
+					src={this.props.opinion.user.avatar}
+					assistiveText="Tahimi Leon"
+					title="Tahimi Leon"
+					size="small"
+			/>} title={this.props.opinion.user.username}
+					style={styles.card}
+					actions={<Button variant="neutral" className="rainbow-m-around_medium" style={styles.button} onClick={this.upVote}>
+						<i className="fas fa-chevron-up" style={styles.icon}></i>
+						{this.props.opinion.upvoters.length} upvotes
+					</Button>}
+					footer={
+						<>
+							<div className="rainbow-align-content_space-between">
+								<div>
+	              	<i className="far fa-comments"></i> {this.state.comments.length} Comments
+								</div>
+								<i className="fas fa-chevron-down" onClick={this.toggleComments}></i>
+	            </div>
+							<div style={styles.comments} className={this.state.commentsOpen ? 'open' : ''}>
+								<ActivityTimeline>
+
+										<div styles={styles.leaveComment}>
+											<Textarea
+												onChange={this.writeComment}
+												id="example-textarea-1"
+												label="Leave a comment:"
+												rows={4}
+												placeholder="Leave a comment below"
+												style={styles.textarea}
+												className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+											/>
+											<Button onClick={this.submitComment}>Submit</Button>
+										</div>
+
+										{this.state.comments.map(comment => <Comment comment={comment}/>)}
+
+
+								</ActivityTimeline>
+							</div>
+						</>
+					}>
+
+				<div className="rainbow-p-around_large rainbow-flex_column">
+					<div style={styles.text}>{this.props.opinion.text}</div>
+				</div>
+
+				{
+					/*
+					<Popup trigger={<i className="far fa-comments"></i>} position="center">
+						<Textarea
+							id="example-textarea-1"
+							label="Please enter your comment below:"
+							rows={6}
+							placeholder="Your comment..."
+							style={containerStyles}
+							className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+							onChange={(e)=>this.writeComment(e)}
+						/>
+						<button onClick={this.submitComment}>Submit!</button>
+						<button>Cancel!</button>
+					</Popup>
+					*/
+				}
+
+			</Card>
 		)
 	}
 }
