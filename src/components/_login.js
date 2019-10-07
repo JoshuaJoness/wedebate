@@ -1,44 +1,34 @@
-render() {
-	return (
-		<body>
-			<div class="grid center middle tall image">
-				<div class="card small">
-					<div class="content">
-						<div className="content">
-							<div
-								class="logo"
-								style={{backgroundImage: `url('/logo-airbnb.png')`}}
-							></div>
-							<form onSubmit={this.signup}>
-								<div class="group">
-									<label>Email</label>
-
-									<input
-										type="text"
-										value={this.state.user.email}
-										onChange={e => this.changeField(e, "email")}
-									/>
-
-								</div>
-								<div class="group">
-									<label>Password</label>
-
-									<input
-										type="text"
-										value={this.state.user.password}
-										onChange={e => this.changeField(e, "password")}
-									/>
-								</div>
-								<button class="primary">Login</button>
-							</form>
-							<p class="footer">
-								Already have an account? <a href=" ">Sign up</a>
-							</p>
-						</div>
-					</div>
+<>
+	<div className="grid center middle tall image">
+	<div>
+		<form className="form" onSubmit={this.submit}>
+		<span className="title">Login</span>
+			<div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
+				<Input
+					className="formInput"
+					label="Please enter your username:"
+					placeholder="username"
+					type="text"
+					onChange={(e)=>this.changeField(e,'email')} />
+				<Input
+					className="formInput"
+					label="Please enter your password:"
+					placeholder="password"
+					type="password"
+					onChange={(e)=>this.changeField(e,'password')} />
+				<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
+					<button className="primary">Login</button>
+				</div>
+				<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
+					<p className="footer">
+						Don't have an account? <a href="/signup">Sign Up!</a>
+					</p>
 				</div>
 			</div>
-		</body>
-	);
+		</form>
+		</div>
+	</div>
+</>
+)
 }
 }
