@@ -94,15 +94,26 @@ console.log(file)
 
 
 	render() {
+
+		const styles = {
+			'span.rainbow-checkbox-group_checkbox-label': {
+				display: 'inline',
+	verticalAlign: 'middle',
+	color: 'black',
+	fontSize: '0.7rem',
+	lineHeight: '1.65rem',
+
+			}
+		}
+
 		return(
 			<>
-				<div className="wrap">
-				<div></div>
+					<div class="grid center-large small image">
 
 <div>
 
 
-					<form className="form" onSubmit={this.submit}>
+					<form className="formSignup" onSubmit={this.submit}>
 						<div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
 						  <Input
 						   	className="formInput"
@@ -129,8 +140,8 @@ console.log(file)
 								<br></br>
 								<br></br>
 							</div>
-							<div className="rainbow-p-vertical_large rainbow-p-left_xx-large" className="checkbox">
-								<CheckboxGroup className="formCheckbox"
+							<div className="rainbow-p-vertical_large rainbow-p-left_xx-large " className="checkbox">
+								<CheckboxGroup style={styles.span} className="formCheckbox"
 									label=""
 									required
 									options={options}
@@ -142,7 +153,7 @@ console.log(file)
 								<button className="primary">Signup</button>
 							</div>
 							<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
-								<p className="footer">
+								<p className="footerSignup">
 									Already have an account? <a href="/Login">Login</a>
 								</p>
 							</div>

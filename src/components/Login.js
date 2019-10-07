@@ -90,7 +90,7 @@ class Login extends React.Component {
 												<Button style={styles.button}  className="primary signupButton ">Login</Button>
 												</div>
 												<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
-													<p className="footerSignup">
+													<p className="footerLogin">
 													Don't have an account? <a href="/signup">Sign Up!</a>
 													</p>
 												</div>

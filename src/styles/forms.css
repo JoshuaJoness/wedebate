@@ -11,6 +11,14 @@
 	border: 2px solid silver;
 }
 
+.formSignup {
+	margin: 30px;
+	background-color: #EDE7F6;
+	text-align: left;
+	border-radius: 3%;
+	border: 2px solid silver;
+}
+
 .formInput {
 	margin-top: 20px;
 }

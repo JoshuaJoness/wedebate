@@ -15,6 +15,13 @@
 	justify-content: center;
 }
 
+.grid.center-large {
+	grid-template-columns: 550px;
+	justify-content: center;
+}
+
+
+
 .grid.sidebar-left {
 	grid-template-columns: 200px auto;
 	grid-column-gap: 100px;
@@ -61,7 +68,13 @@
 	background-repeat: no-repeat;
 }
 
-
+.checkboxContent {
+	display: inline;
+vertical-align: middle;
+color: #061c3f;
+font-size: 0.5rem;
+line-height: 1.65rem;
+}
 
 ul.grid {
 	list-style: none;
