@@ -53,11 +53,25 @@ text-align: center;
 .text {
     border-bottom: 1px solid black;
     display: block;
+
 }
+
+
 .footer {
     display: grid;
     grid-template-columns: 20% 70% 5% 5%;
 }
+
+
+
+
+.footerSignup {
+	text-align: right;
+font-size: 13px;
+margin: 45px 45px 10px;
+}
+
+
 .footerItemReport{
         display: inline-block;
         margin-left: 4%;
