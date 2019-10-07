@@ -84,11 +84,18 @@ class Opinion extends React.Component {
 		let upVoter = this.state.upVoter
 		axios.post(`http://localhost:4000/upvote/${this.props.opinion._id}`,
 		upVoter).then(res => {
-			console.log(res.data);
+
+			let opinions = this.state.opinions
+			opinions = res.data
+			console.log('???????????',opinions.text);
+
+			this.setState({opinions})
 		}).catch(err =>{
 			console.log(err);
 		})
 	}
+
+	//trying to get upvotes to referesh on submit upvote......above
 
 	toggleComments = () => {
 		let commentsOpen = this.state.commentsOpen

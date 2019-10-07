@@ -123,11 +123,9 @@ class Topic extends React.Component {
 		}
 	}
 
-//here I am trying to send 'user' via body, when I log in back end however, body is the topic...?
 	voteYes = () => {
 		let user = this.state.user
 		user.votedYes = true
-		console.log('USER',user)
 		axios.patch(`http://localhost:4000/vote/${this.props.match.params.id}`,
 			{user}).then(res => {
 				console.log('RESPONSE',res.data);
@@ -138,7 +136,6 @@ class Topic extends React.Component {
 
 	voteNo = () => {
 		let user = this.state.user
-		console.log('USER',user)
 		axios.patch(`http://localhost:4000/vote/${this.props.match.params.id}`,
 			{user}).then(res => {
 				console.log('RESPONSE',res.data);
