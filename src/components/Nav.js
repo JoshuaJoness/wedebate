@@ -82,13 +82,16 @@ class Nav extends React.Component {
 			userInfo:{
 				fontFamily: "'Roboto Mono', monospace"
 			},
+			rankings:{
+				marginRight: '15px'
+			}
 		}
 
     return (
       <nav style={styles.nav}>
         <Link to="/posttopic" className="logo" style={{backgroundImage: `url(${"./109526.svg"})`}}></Link>
         <div>
-          <div style={styles.userInfo}>{this.state.user.score}</div>
+          <div style={styles.userInfo}>{this.state.user.username}</div>
           <div style={styles.userInfo}>rank #{this.state.user.ranking}</div>
 					<div style={styles.userInfo}>{this.state.user.rank}</div>
         </div>
@@ -104,6 +107,7 @@ class Nav extends React.Component {
               menuSize="small"
               avatarSize="medium"
               title="Tahimi Leon"
+							style={styles.avatar}
             >
               <li className="rainbow-p-horizontal_small rainbow-align_center rainbow-flex">
                 <Avatar
@@ -138,7 +142,7 @@ class Nav extends React.Component {
               />
 							</Link>
             </AvatarMenu>
-            <span style={styles.userInfo}>{this.state.user.username}</span>
+            <Link to="/ranking" style={styles.rankings}>Rankings</Link>
         </div>
       </nav>
     );
