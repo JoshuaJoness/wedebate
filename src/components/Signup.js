@@ -81,7 +81,7 @@ console.log(file)
 
 
 
-		if(user.email && user.username && user.password && !this.state.values.includes('false'))
+		if(user.email && user.username && user.password && this.state.values.includes('checkboxOne' && 'checkboxTwo'))
 		{
 		axios.post("http://localhost:4000/signup",
 		 data).then(res =>{
@@ -161,7 +161,7 @@ console.log(file)
 								/>
 							</div>
 							<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
-										<Button style={styles.button}  className="primary signupButton ">Login</Button>
+										<button style={styles.button}  className="primary signupButton ">Sign Up</button>
 							</div>
 							<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
 								<p className="footerSignup">
