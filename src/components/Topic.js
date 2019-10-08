@@ -167,6 +167,9 @@ class Topic extends React.Component {
 				width: '700px',
 				marginLeft: '27.5%',
 				marginTop: '80px'
+			},
+			radio:{
+				color: 'black !important'
 			}
 		}
 		return(
@@ -199,12 +202,15 @@ class Topic extends React.Component {
 			        <div className="rainbow-align-content_space-between">
 			          <div className="rainbow-flex">
 									<RadioButtonGroup
-											id="radio-button-group-component-1"
-											options={options}
-											value={this.state.value}
-											variant="inverse"
-											onChange={this.changeProCon}
-											error="This field is required"
+										label="Please select a side"
+										required
+										id="radio-button-group-component-1"
+										options={options}
+										value={this.state.value}
+										variant="inverse"
+										onChange={this.changeProCon}
+										required
+										style={styles.radio}
 									/>
 			          </div>
 			          	<Button onClick={this.submitOpinion}> Submit</Button>

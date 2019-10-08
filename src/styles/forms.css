@@ -37,3 +37,6 @@
 	font-size: 25px;
 	font-family: 'Roboto Mono', monospace;
 }
+.rainbow-checkbox-group_checkbox .rainbow-checkbox-group_checkbox-label {
+	font-size: 10px;
+}

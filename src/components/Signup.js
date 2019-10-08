@@ -81,7 +81,8 @@ console.log(file)
 
 
 
-		if(user.email && user.username && user.password)
+		if(user.email && user.username && user.password && !this.state.values.includes('false'))
+		{
 		axios.post("http://localhost:4000/signup",
 		 data).then(res =>{
 			localStorage.setItem('token', res.data.token)
@@ -90,7 +91,10 @@ console.log(file)
 		}).catch(err =>{
 			console.log(err);
 		})
-	}
+		} else {
+		alert('Please complete all fields, and check all boxes.')
+			}
+		}
 
 
 
@@ -149,11 +153,11 @@ console.log(file)
 								<CheckboxGroup
 									style={styles.checkbox}
 									label=""
-									required
+									required='true'
 									options={options}
 									value={this.state.values}
 									onChange={this.handleOnChange}
-									error="Please check all boxes"
+
 								/>
 							</div>
 							<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
