@@ -12,7 +12,7 @@ const inputContainerStyles = {
 const options = [
     {
 			value: 'checkboxOne',
-			label: 'By checking this box I grant DEBATORS to use my image in any way that they \r see fit. I also certify that I have full legal rights to this image.',
+			label: "By checking this box you hereby grant 'We Debate' to use your image in any way that they see fit within the context of the site. You also certify that I have full legal rights to this image.",
 			disabled: false
 		},
 		{
@@ -109,6 +109,7 @@ console.log(file)
 			}
 		}
 
+
 		return(
 			<>
 					<div class="grid center-large small image">
@@ -144,12 +145,14 @@ console.log(file)
 								<br></br>
 							</div>
 							<div className="rainbow-p-vertical_large rainbow-p-left_xx-large " className="checkbox">
-								<CheckboxGroup style={styles.span} className="formCheckbox"
+								<CheckboxGroup
+									style={styles.checkbox}
 									label=""
 									required
 									options={options}
 									value={this.state.values}
 									onChange={this.handleOnChange}
+									error="Please check all boxes"
 								/>
 							</div>
 							<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
