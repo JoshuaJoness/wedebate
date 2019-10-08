@@ -125,7 +125,8 @@ console.log(file)
 				console.log(err);
 			})
 		} else {
-			console.log('missing data');
+		alert('Please select category and fulfill all fields')
+
 		}
 	}
 

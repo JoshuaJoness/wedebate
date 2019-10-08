@@ -38,8 +38,9 @@ class Login extends React.Component {
 			}).catch(err =>{
 				console.log(err);
 			})
-		} else {
-			console.log("Email or password not found! Please try again!");
+		}  else {
+		alert('Please complete all fields')
+
 		}
 	}
 
