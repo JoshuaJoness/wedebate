@@ -1,5 +1,5 @@
 import React from 'react'
-import { CheckboxGroup } from 'react-rainbow-components'
+import { CheckboxGroup, Button } from 'react-rainbow-components'
 import { Input } from 'react-rainbow-components'
 import axios from 'axios'
 import '../styles/forms.css'
@@ -96,12 +96,15 @@ console.log(file)
 	render() {
 
 		const styles = {
-			'span.rainbow-checkbox-group_checkbox-label': {
-				display: 'inline',
-	verticalAlign: 'middle',
-	color: 'black',
-	fontSize: '0.7rem',
-	lineHeight: '1.65rem',
+			button: {
+				color: 'violet',
+				borderRadius: '10px',
+				height: '40px',
+				background: '#DCDCDC',
+				border: '0.5px solid silver',
+				marginBottom: '10px'
+
+
 
 			}
 		}
@@ -150,7 +153,7 @@ console.log(file)
 								/>
 							</div>
 							<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
-								<button className="primary">Signup</button>
+										<Button style={styles.button}  className="primary signupButton ">Login</Button>
 							</div>
 							<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
 								<p className="footerSignup">

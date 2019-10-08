@@ -52,9 +52,8 @@ class Login extends React.Component {
 				borderRadius: '10px',
 				height: '40px',
 				background: '#DCDCDC',
-				border: '0.5px solid silver'
-
-
+				border: '0.5px solid silver',
+				margin: '0px',
 
 			}
 		}
