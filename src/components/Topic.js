@@ -177,7 +177,7 @@ class Topic extends React.Component {
 				<Nav user={this.state.user} points={this.state.points}/>
 				<div className="topic">
 					<h1 style={styles.title}>{this.state.topic.title}</h1>
-					<img src={this.state.topic.image} alt="landscape with rainbows and colorful birds"/>
+					<img className='topicImage' src={this.state.topic.image} alt="landscape with rainbows and colorful birds"/>
 					<div style={styles.descriptionLabel}>Description:</div>
 				<div style={styles.description}>	{this.state.topic.description}</div>
 				</div>

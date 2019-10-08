@@ -62,7 +62,13 @@ text-align: center;
     grid-template-columns: 20% 70% 5% 5%;
 }
 
-
+.topicImage {
+	width: 600px;
+	height: 400px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
 
 
 .footerLogin {
