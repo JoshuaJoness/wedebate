@@ -62,7 +62,7 @@ class Login extends React.Component {
 	return (
 		<body>
 			<div class="grid center middle tall image">
-				<div class="card small">
+				<div class="small">
 					<div class="content">
 						<div className="content">
 							<div
