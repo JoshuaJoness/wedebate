@@ -4,6 +4,22 @@
 	grid-template-columns: 25% 50% 25%;
 }
 
+.wrapPosttopic {
+	display: grid;
+	margin-top: 7%;
+
+}
+
+.formPostTopic {
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #EDE7F6;
+	text-align: left;
+	border-radius: 3%;
+	border: 2px solid silver;
+}
+
 .form {
 	background-color: #EDE7F6;
 	text-align: left;

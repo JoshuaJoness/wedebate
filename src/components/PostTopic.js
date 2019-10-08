@@ -134,12 +134,13 @@ console.log(file)
 		return(
 			<>
 			<Nav user={this.state.user} points={this.state.points}/>
-			<div className="wrap">
-				<div></div>
+<div className='grid image'>
+			<div className="wrapPosttopic">
+
 
 <div>
 
-				<form className="form" onSubmit={this.submitTopic}>
+				<form className="formPostTopic" onSubmit={this.submitTopic}>
 				<span className="title">Post Topic</span>
 					<div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
 						<Select
@@ -175,7 +176,7 @@ console.log(file)
 				</form>
 
 </div>
-
+</div>
 			</div>
 			</>
 		)

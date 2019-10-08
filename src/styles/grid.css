@@ -61,11 +61,23 @@
 	height: 100vh;
 }
 
+.imageP {
+	background-image: url('../images/debate.jpg');
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
 .grid.image {
 	background-image: url('../images/debate.jpg');
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
+}
+
+.imageBackground {
+		background-image: url('../images/debate.jpg');
+
 }
 
 .checkboxContent {
