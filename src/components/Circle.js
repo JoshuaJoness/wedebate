@@ -5,27 +5,21 @@ import '../styles/circle.css'
 class Circle extends React.Component {
 
 		state = {
-			color: "rgba(0,255,20,0.7)",
-			textColor: "rgba(0,255,20,0.7)"
+			color: "rgba(39, 174, 96,1.0)",
+			textColor: "rgba(39, 174, 96,1.0)"
 		}
 
 		componentWillMount() {
 			if (this.props.topic.side === 'Con') {
-this.setState( {color: "rgba(255,0,0,0.7)", textColor:"rgba(255,0,0,0.7)" })
-} else if ((this.props.topic.side === 'Tie')) {
-	this.setState({color: "rgba(255,165,0,0.7)", textColor:"rgba(255,165,0,0.7)" })
-} else if ((this.props.topic.side === '')) {
-	this.setState({color: "rgba(192,192,192,0.7)", textColor:"rgba(192,192,192,0.7)" })
-}}
-
-
-
-
+				this.setState( {color: "rgba(192, 57, 43,1.0)", textColor:"rgba(192, 57, 43,1.0)" })
+				} else if ((this.props.topic.side === 'Tie')) {
+					this.setState({color: "rgba(255,165,0,0.7)", textColor:"rgba(255,165,0,0.7)" })
+				} else if ((this.props.topic.side === '')) {
+					this.setState({color: "rgba(39, 174, 96,1.0)", textColor:"rgba(39, 174, 96,1.0)" })
+			}
+		}
 
     render() {
-
-
-
 
         return(
 							<div className='circle'>
@@ -42,9 +36,6 @@ this.setState( {color: "rgba(255,0,0,0.7)", textColor:"rgba(255,0,0,0.7)" })
 								   // Can specify path transition in more detail, or remove it entirely
 								   // pathTransition: 'none',()
 								   // Colors
-
-
-
 								   pathColor: `${this.state.color}, ${this.props.topic.percentage / 100})`,
 								   textColor: `${this.state.textColor}`,
 								   trailColor: '#d6d6d6',
