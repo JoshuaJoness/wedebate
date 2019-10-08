@@ -5,7 +5,6 @@ import TimeAgo from 'react-timeago'
 const iconStyles = { width: 32, height: 32 }
 
 class CommentBox extends React.Component {
-
 	componentWillReceiveProps(props){
 		console.log('CommentBox>>>>>>>>>>>>>', props.comments)
 		this.setState({comments: props.comments})
@@ -16,6 +15,12 @@ class CommentBox extends React.Component {
 	}
 
 	render() {
+
+		const styles = {
+			text: {
+				wordBreak: 'break-word'}
+		}
+
 		return (
 			<div className="rainbow-m-around_xx-large">
 					<ActivityTimeline>
@@ -26,6 +31,7 @@ class CommentBox extends React.Component {
 									// icon={<UserSignUpIcon  style={iconStyles} />}
 									datetime=<TimeAgo date= {this.props.user.created}  />
 									description={c.text}
+									style={styles.text}
 								/>)
 						})}
 					</ActivityTimeline>

@@ -17,6 +17,12 @@ class OpinionBox extends React.Component {
 		opinions: this.props.opinions
 	}
 	render() {
+
+		const styles = {
+			text: {
+				wordBreak: 'break-word'}
+		}
+
 		return (
 			<div className="rainbow-m-around_xx-large">
 					<ActivityTimeline>
@@ -26,6 +32,7 @@ class OpinionBox extends React.Component {
 							// icon={<UserSignUpIcon  style={iconStyles} />}
 							datetime=<TimeAgo date= {o.created}  />
 							description={o.text}
+							style={styles.text}
 					/>)})}
 
 					</ActivityTimeline>
