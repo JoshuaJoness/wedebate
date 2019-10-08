@@ -94,3 +94,6 @@ margin: 0px ;
 		font-weight: bold;
     text-align: center;
 }
+.rainbow-radio-button-group--inverse .rainbow-radio-button-group_label{
+	color: black;
+}
