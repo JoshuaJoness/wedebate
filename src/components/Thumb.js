@@ -27,7 +27,7 @@ class Thumb extends React.Component {
 				}}
 			></div>
         <div className="titleHome">
-          <h1 className="meta">
+          <h1 className={this.props.topic.title.length > 20 ? 'fitting' : 'meta'} >
             {this.props.topic.title}
           </h1>
 					</div>
