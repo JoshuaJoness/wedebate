@@ -10,11 +10,11 @@ class Circle extends React.Component {
 		}
 
 		componentWillMount() {
-			if (this.props.topic.side === 'Con') {
+			if (20 === 'Con') {
 this.setState( {color: "rgba(255,0,0,0.7)", textColor:"rgba(255,0,0,0.7)" })
-} else if ((this.props.topic.side === 'Tie')) {
+} else if ((30 === 'Tie')) {
 	this.setState({color: "rgba(255,165,0,0.7)", textColor:"rgba(255,165,0,0.7)" })
-} else if ((this.props.topic.side === '')) {
+} else if ((40 === '')) {
 	this.setState({color: "rgba(192,192,192,0.7)", textColor:"rgba(192,192,192,0.7)" })
 }}
 
@@ -29,7 +29,7 @@ this.setState( {color: "rgba(255,0,0,0.7)", textColor:"rgba(255,0,0,0.7)" })
 
         return(
 							<div>
-		            <CircularProgressbar value={this.props.topic.percentage} text={`${this.props.topic.side} ${this.props.topic.percentage}%`}
+		            <CircularProgressbar value={20} text={`${20} ${20}%`}
 		            styles={buildStyles({
 								   // Rotation of path and trail, in number of turns (0-1)
 								   rotation: 0.25,
@@ -45,10 +45,7 @@ this.setState( {color: "rgba(255,0,0,0.7)", textColor:"rgba(255,0,0,0.7)" })
 
 
 
-								   pathColor: `${this.state.color}, ${this.props.topic.percentage / 100})`,
-								   textColor: `${this.state.textColor}`,
-								   trailColor: '#d6d6d6',
-								   backgroundColor: '#3e98c7',
+		
 						 	 		})}
 								/>
 							</div>
