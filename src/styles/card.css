@@ -14,7 +14,31 @@
 		width: 300px;
 		height: 400px;
 		display: grid;
-		grid-template-rows: 50% 15% 40% 5%
+		grid-template-rows: 50% 8% 25% 10%
+}
+
+.author {
+	font-size: 12px;
+	color: silver;
+	margin-right: 5px
+}
+.wrapCreation {
+	float: right;
+	 clear: right;
+	 padding: 20px 10px 0px 10px
+}
+
+.footer{
+	border-top: 0.5px solid silver;
+	padding: 8px;
+	display: grid;
+	grid-template-columns: 10% 10% 10%;
+	align-content: right;
+	margin-right:0
+
+}
+.yesno {
+	padding: 10px 10px 0px 10px
 }
 
 .imageHome {
@@ -26,17 +50,24 @@
 
 }
 
+.circle {
+	margin-left: 18px;
+	margin-top: 10px;
+
+}
+
 .titleHome {
+
 	display: flex;
 	    align-items: center;
 	    justify-content: center;
 	    margin-top: 5%;
 	    margin-left: auto;
 	    margin-right: auto;
-	    font-size: auto;
+	    font-size: 1em;
 	    font-family: 'Roboto Mono', monospace;
 			color: black;
-			padding: 5px
+			padding: 15px
 }
 
 .yesno {

@@ -1,6 +1,7 @@
 import React from "react";
 import Circle from './Circle'
 import "../styles/card.css";
+import TimeAgo from 'react-timeago'
 
 
 class Thumb extends React.Component {
@@ -30,14 +31,17 @@ class Thumb extends React.Component {
             {this.props.topic.title}
           </h1>
 					</div>
-          <small className="location">
+
 					<div className='yesno'>
 															<Circle topic={this.props.topic}/>
 					</div>
-          </small >
-          <div> > holaaa</div>
-                       <span className="date"> 2 days ago</span>
-        </div>
+<div className='wrapCreation'>
+					<span className="author"> Created by: {this.props.topic.user.username}</span>
+					 <small className="creationDate"><TimeAgo date= {this.props.topic.created}  /></small>
+					 </div>
+<footer className='footer'><i class="far fa-flag"></i><i class="fas fa-share-alt"></i><i class="fas fa-sort-down"></i>
+					 </footer>
+					 </div>
 
     );
   }
