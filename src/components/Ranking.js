@@ -96,7 +96,7 @@ class SortTable extends React.Component {
 			//
 			// })
 
-			axios.get('http://localhost:4000/rankings', {
+			axios.get('http://localhost:4000/rankingsIncognit', {
 				headers: {
 					Authorization: `Bearer ${token}`
 				}
