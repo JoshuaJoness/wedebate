@@ -3,6 +3,48 @@
 	border: 1px solid #e2e2e2;
 	border-radius: 6px;
 }
+.cardWrap {
+	position: relative;
+    background-color: #fff;
+    border: 0.0625rem solid #e3e5ed;
+    border-radius: 0.875rem;
+    background-clip: padding-box;
+    box-shadow: 0 1px 2px 0 #e3e5ed;
+    overflow: hidden;
+		width: 300px;
+		height: 400px;
+		display: grid;
+		grid-template-rows: 50% 15% 40% 5%
+}
+
+.imageHome {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin: 0px;
+	border-bottom: 1px solid silver
+
+}
+
+.titleHome {
+	display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    margin-top: 5%;
+	    margin-left: auto;
+	    margin-right: auto;
+	    font-size: auto;
+	    font-family: 'Roboto Mono', monospace;
+			color: black;
+			padding: 5px
+}
+
+.yesno {
+	width: 50%;
+ margin: 0 auto;
+ padding: 10px;
+
+}
 
 div.card {
 	text-decoration: none;
