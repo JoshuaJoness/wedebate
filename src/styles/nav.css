@@ -29,6 +29,8 @@ nav .logo {
 
 nav .profile {
 	text-align: right;
+	display: grid;
+	grid-template-rows: 60% 40%;
 }
 
 nav .profile a {
@@ -50,8 +52,4 @@ nav .profile .avatar {
 	display: inline-block;
 	vertical-align: middle;
 	margin-right: 5px;
-}
-
-nav .profile a span {
-	vertical-align: middle;
 }
