@@ -77,11 +77,11 @@ class Nav extends React.Component {
 				fontFamily: "'Roboto Mono', monospace",
 				fontWeight: 'bold',
 				fontSize: '25px',
-				marginTop: '12px'
+				marginTop: '12px',
 			},
 			userInfo:{
 				fontFamily: "'Roboto Mono', monospace"
-			}
+			},
 		}
 
     return (

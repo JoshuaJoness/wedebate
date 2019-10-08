@@ -1,6 +1,7 @@
 import React from 'react'
 import { CheckboxGroup, Button } from 'react-rainbow-components'
 import { Input } from 'react-rainbow-components'
+import {Link} from 'react-router-dom'
 import axios from 'axios'
 import '../styles/forms.css'
 
@@ -160,7 +161,7 @@ console.log(file)
 							</div>
 							<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
 								<p className="footerSignup">
-									Already have an account? <a href="/Login">Login</a>
+									Already have an account? <Link to="/Login">Login</Link>
 								</p>
 							</div>
 						</div>
