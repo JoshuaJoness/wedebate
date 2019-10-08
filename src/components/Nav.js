@@ -84,13 +84,20 @@ class Nav extends React.Component {
 			},
 			rankings:{
 				marginRight: '15px'
+			},
+			userInfoBox:{
+				marginTop: '7px',
+				marginLeft: '5px'
+			},
+			avatar:{
+				marginTop: '7px'
 			}
 		}
 
     return (
       <nav style={styles.nav}>
         <Link to="/posttopic" className="logo" style={{backgroundImage: `url(${"./109526.svg"})`}}></Link>
-        <div>
+        <div style={styles.userInfoBox}>
           <div style={styles.userInfo}>{this.state.user.username}</div>
           <div style={styles.userInfo}>rank #{this.state.user.ranking}</div>
 					<div style={styles.userInfo}>{this.state.user.rank}</div>
