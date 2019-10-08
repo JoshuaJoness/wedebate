@@ -68,15 +68,31 @@ class Nav extends React.Component {
 	}
 
   render() {
+
+		const styles = {
+			nav: {
+				backgroundColor: '#EDE7F6'
+			},
+			title: {
+				fontFamily: "'Roboto Mono', monospace",
+				fontWeight: 'bold',
+				fontSize: '25px',
+				marginTop: '12px'
+			},
+			userInfo:{
+				fontFamily: "'Roboto Mono', monospace"
+			}
+		}
+
     return (
-      <nav>
+      <nav style={styles.nav}>
         <Link to="/posttopic" className="logo" style={{backgroundImage: `url(${"./109526.svg"})`}}></Link>
         <div>
-          <div>{this.state.user.score}</div>
-          <div>rank #{this.state.user.ranking}</div>
-					<div>{this.state.user.rank}</div>
+          <div style={styles.userInfo}>{this.state.user.score}</div>
+          <div style={styles.userInfo}>rank #{this.state.user.ranking}</div>
+					<div style={styles.userInfo}>{this.state.user.rank}</div>
         </div>
-        <Link to="/" className="logoImage"  />
+        <Link to="/"><p style={styles.title}>We Debate</p></Link>
 
         <div className="profile">
 
@@ -86,7 +102,7 @@ class Nav extends React.Component {
               assistiveText="Tahimi Leon"
               menuAlignment="right"
               menuSize="small"
-              avatarSize="small"
+              avatarSize="medium"
               title="Tahimi Leon"
             >
               <li className="rainbow-p-horizontal_small rainbow-align_center rainbow-flex">
@@ -122,9 +138,7 @@ class Nav extends React.Component {
               />
 							</Link>
             </AvatarMenu>
-
-            <span>{this.state.user.username}</span>
-
+            <span style={styles.userInfo}>{this.state.user.username}</span>
         </div>
       </nav>
     );
