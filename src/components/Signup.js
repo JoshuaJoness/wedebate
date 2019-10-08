@@ -82,6 +82,7 @@ console.log(file)
 
 
 		if(user.email && user.username && user.password && !this.state.values.includes('false'))
+		{
 		axios.post("http://localhost:4000/signup",
 		 data).then(res =>{
 			localStorage.setItem('token', res.data.token)
@@ -89,9 +90,11 @@ console.log(file)
 			this.props.history.push("/")
 		}).catch(err =>{
 			console.log(err);
-			alert('Please complete all fields')
 		})
-	}
+		} else {
+		alert('Please complete all fields, and check all boxes.')
+			}
+		}
 
 
 
