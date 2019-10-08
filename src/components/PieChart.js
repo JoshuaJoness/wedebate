@@ -1,5 +1,5 @@
 import React from "react";
-
+import axios from 'axios'
 import { Chart, Dataset } from 'react-rainbow-components';
 
 
@@ -17,15 +17,15 @@ class PieChart extends React.Component {
             labels: ['Topics', 'Opinions', 'Comments'],
             dataset: [
                 {
-                    value: 10,
+                    value: 0,
                     color: '#1abc9c',
                 },
                 {
-                    value: 15,
+                    value: 0,
                     color: '#3498db',
                 },
                 {
-                    value: 33,
+                    value: 0,
                     color: '#34495e',
                 },
             ],
@@ -33,9 +33,39 @@ class PieChart extends React.Component {
     }
 
 		componentWillMount() {
-
-			let topics = this.state.dataset[0].value
-			this.setState({ topics: this.props.user.topics})
+			let token = localStorage.getItem('token')
+			axios.get('http://localhost:4000/opinion', {
+				headers: {
+					Authorization: `Bearer ${token}`
+				}
+			}).then(res => {
+				let dataset = this.state.dataset
+				dataset[1].value = res.data.length
+				this.setState(dataset)
+			}).catch(err => {
+				console.log(err);
+			})
+			axios.get('http://localhost:4000/topicPie', {
+				headers: {
+					Authorization: `Bearer ${token}`
+				}
+			}).then(res => {
+				let dataset = this.state.dataset
+				dataset[0].value = res.data.length
+				this.setState(dataset)
+			}).catch(err =>{
+				console.log(err);
+			})
+			axios.get('http://localhost:4000/commentPie', {
+				headers: {
+					Authorization: `Bearer ${token}`
+				}
+			}).then(res => {
+				console.log('comments', res.data);
+				let dataset = this.state.dataset
+				dataset[2].value = res.data.length
+				this.setState(dataset)
+			})
 }
 
 
