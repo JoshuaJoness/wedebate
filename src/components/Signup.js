@@ -108,9 +108,13 @@ console.log(file)
 				background: '#DCDCDC',
 				border: '0.5px solid silver',
 				marginBottom: '10px'
-
-
-
+			},
+			link:{
+				fontSize: '20px',
+				fontFamily: "'Roboto Mono', monospace",
+				fontWeight: 'bolder',
+				textAlign: 'center',
+				marginLeft: '190px'
 			}
 		}
 
@@ -123,6 +127,8 @@ console.log(file)
 
 
 					<form className="formSignup" onSubmit={this.submit}>
+						<Link to="/" style={styles.link}>We Debate</Link>
+						<span className="title">Sign Up</span>
 						<div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
 						  <Input
 						   	className="formInput"

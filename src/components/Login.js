@@ -56,49 +56,59 @@ class Login extends React.Component {
 				background: '#DCDCDC',
 				border: '0.5px solid silver',
 				margin: '0px',
-
+			},
+			link:{
+				fontSize: '20px',
+				fontFamily: "'Roboto Mono', monospace",
+				fontWeight: 'bolder',
+				textAlign: 'center',
+				marginLeft: '146px'
 			}
 		}
 
 	return (
 		<body>
 			<div class="grid center middle tall image">
-				<div class="small">
-					<div class="content">
-						<div className="content">
-							<div
-								class="logo"
-								style={{backgroundImage: `url('/logo.png')`}}
-							>
-							</div>
-								<form className="form" onSubmit={this.submit}>
-									<span className="title">Login</span>
-										<div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
-									<Input
-										className="formInput"
-										label="Please enter your username:"
-										placeholder="username"
-										type="text"
-										onChange={(e)=>this.changeField(e,'email')} />
 
+					<div class="small">
+						<div class="content">
+							<div className="content">
+								<div
+									class="logo"
+									style={{backgroundImage: `url('/logo.png')`}}
+								>
+								</div>
+									<form className="form" onSubmit={this.submit}>
+
+									<Link to="/" style={styles.link}>We Debate</Link>
+
+										<span className="title">Login</span>
+											<div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
 										<Input
 											className="formInput"
-											label="Please enter your password:"
-											placeholder="password"
-											type="password"
-											onChange={(e)=>this.changeField(e,'password')} />
+											label="Please enter your username:"
+											placeholder="username"
+											type="text"
+											onChange={(e)=>this.changeField(e,'email')} />
 
-											<button className="primary">Login</button>
+											<Input
+												className="formInput"
+												label="Please enter your password:"
+												placeholder="password"
+												type="password"
+												onChange={(e)=>this.changeField(e,'password')} />
+
+												<button className="primary">Login</button>
+												</div>
+											<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
+												<p className="footerLogin">
+													Don't have an account? <Link to="/signup">Sign Up!</Link>
+												</p>
 											</div>
-										<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
-											<p className="footerLogin">
-												Don't have an account? <Link to="/signup">Sign Up!</Link>
-											</p>
-										</div>
-									</form>
-	</div>
-	</div>
-				</div>
+										</form>
+		</div>
+		</div>
+					</div>
 			</div>
 		</body>
 		)

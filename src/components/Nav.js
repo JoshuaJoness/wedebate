@@ -91,6 +91,9 @@ class Nav extends React.Component {
 			},
 			avatar:{
 				marginTop: '7px'
+			},
+			login:{
+				textAlign: 'right'
 			}
 		}
 
@@ -140,7 +143,7 @@ class Nav extends React.Component {
                 iconPosition="left"
               />
 							</Link>
-							<Link to="/">
+							<Link to="/login">
               <MenuItem
                 label="Logout"
                 icon=<i className="fas fa-power-off"></i>
@@ -150,7 +153,12 @@ class Nav extends React.Component {
 							</Link>
             </AvatarMenu>
             <Link to="/ranking" style={styles.rankings}>Rankings</Link>
+
         </div>
+
+					<Link to="/login">Login</Link>
+					<Link to="/signup">Sign-up</Link>
+		
       </nav>
     );
   }
