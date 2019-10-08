@@ -28,7 +28,7 @@ this.setState( {color: "rgba(255,0,0,0.7)", textColor:"rgba(255,0,0,0.7)" })
 
 
         return(
-							<div>
+							<div className='circle'>
 		            <CircularProgressbar value={this.props.topic.percentage} text={`${this.props.topic.side} ${this.props.topic.percentage}%`}
 		            styles={buildStyles({
 								   // Rotation of path and trail, in number of turns (0-1)

@@ -8,6 +8,7 @@ import "../styles/grid.css";
 import "../styles/button.css";
 import axios from "axios";
 import Nav from "./Nav";
+import Thumb from "./Thumb";
 
 
 
@@ -21,7 +22,7 @@ class HomePage extends React.Component {
 			user: {
 			 username: "",
 			 avatar: ""
-			 
+
 			}
 		}],
 		categories: [],
@@ -123,7 +124,7 @@ searchFilter = (event) => {
         <Nav points={this.state.points}/>
         <nav className="searchBar">
           <input onChange={this.searchFilter} type="text" className="search" placeholder="Search..." />
-          <button>Popularity</button>
+
           <select  onChange={(e) => {this.categoryFilter(e)}}>
 
 						<option value='All Categories' >All Categories</option>
@@ -135,10 +136,10 @@ searchFilter = (event) => {
         </nav>
 
         <div className="grid homepage">
-				{
 
+{
 					this.state.topicDisplay.map((topic,index) => {
-						return (<Link key={index} to={`/topic/${this.state.topics[index]._id}`}> <Thumbnail key={index} topic={topic}  /> </Link>)
+						return (<Link key={index} to={`/topic/${this.state.topics[index]._id}`}> <Thumb key={index} topic={topic}  /> </Link>)
 					})
 				}
 
