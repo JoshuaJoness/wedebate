@@ -18,15 +18,15 @@ class PieChart extends React.Component {
             dataset: [
                 {
                     value: 10,
-                    color: '#fe4849',
+                    color: '#1abc9c',
                 },
                 {
                     value: 15,
-                    color: '#ff6837',
+                    color: '#3498db',
                 },
                 {
                     value: 33,
-                    color: 'blue',
+                    color: '#34495e',
                 },
             ],
         };

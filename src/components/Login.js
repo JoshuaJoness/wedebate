@@ -87,14 +87,14 @@ class Login extends React.Component {
 											type="password"
 											onChange={(e)=>this.changeField(e,'password')} />
 
-												<Button style={styles.button}  className="primary signupButton ">Login</Button>
-												</div>
-												<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
-													<p className="footerLogin">
-													Don't have an account? <a href="/signup">Sign Up!</a>
-													</p>
-												</div>
-										</form>
+										<button style={styles.button}>Login</button>
+											</div>
+										<div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
+											<p className="footerLogin">
+												Don't have an account? <a href="/signup">Sign Up!</a>
+											</p>
+										</div>
+									</form>
 	</div>
 	</div>
 				</div>

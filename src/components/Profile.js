@@ -81,6 +81,26 @@ class Profile extends React.Component {
 
 
   render() {
+
+		const styles = {
+			headerElement: {
+				marginTop: '7px',
+				fontFamily: "'Roboto Mono', monospace"
+			},
+			avatar: {
+				marginBottom: '100px'
+			},
+			pie: {
+				paddingTop: '20px'
+			},
+			label: {
+				textAlign: 'center',
+				fontFamily: "'Roboto Mono', monospace",
+				fontWeight: 'bold',
+				marginTop: '8px'
+			}
+		}
+
     return (
       <div>
 
@@ -94,34 +114,30 @@ class Profile extends React.Component {
                 assistiveText="Jose Leandro"
                 title="Jose Leandro"
                 size="large"
+								style={styles.avatar}
               />
               <div className="headerName">
-                <p>{this.state.user.username}</p>
-                <p>User since: {moment(this.state.user.created).format('D MMMM YYYY')}</p>
+                <p style={styles.headerElement}>{this.state.user.username}</p>
+                <p style={styles.headerElement}>User since: {moment(this.state.user.created).format('D MMMM YYYY')}</p>
+								<p style={styles.headerElement}>Points: {this.state.user.ranking}</p>
               </div>
             </div>
           </div>
-					<PieChart user={this.state.user}/>
-          <div className="headerPoints">
-            <p>Points: {this.state.user.ranking}</p>
-            <p></p>
-          </div>
+					<div style={styles.pie}>
+						<PieChart user={this.state.user}/>
+					</div>
         </div>
 
-        <div
-          style={{border: "black solid 1px", borderRadius: "5%", width: "600px", marginLeft: "10%", marginBottom: "5%", marginTop:"5%"}}
-        >
-          <LineChart className="chart" points={this.state.ranking}/>
-        </div>
+
 
         <div className="boxHolder">
 					<div></div>
           <div className="box">
-					<h1>Your Opinions</h1>
+					<h1 style={styles.label}>Your Opinions</h1>
             <OpinionBox user={this.state.user} opinions={this.state.opinions}/>
           </div>
           <div className="box">
-							<h1>Your Comments</h1>
+							<h1 style={styles.label}>Your Comments</h1>
             <CommentBox user={this.state.user} comments={this.state.comments}/>
           </div>
 					<div></div>
