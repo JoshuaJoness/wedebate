@@ -31,7 +31,7 @@ class Login extends React.Component {
 		e.preventDefault()
 		let user = this.state.user
 		if (user.email && user.password) {
-			axios.post("http://localhost:4000/login",
+			axios.post(`${process.env.REACT_APP_API}/login`,
 			user).then(res => {
 				localStorage.setItem('token', res.data.token)
 				this.props.history.push("/")

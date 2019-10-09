@@ -9,20 +9,18 @@ class Nav extends React.Component {
 
 	componentWillMount(){
 		let token = localStorage.getItem('token')
-
-		axios.get('http://localhost:4000/profile', {
+		axios.get(`${process.env.REACT_APP_API}/profile`, {
 			headers: {
 				Authorization: `Bearer ${token}`
 			}
 		}).then(res => {
 			let user = this.state.user
 			user = res.data
-			axios.get(`http://localhost:4000/rankings?user=${user._id}`, {
+			axios.get(`${process.env.REACT_APP_API}/rankings?user=${user._id}`, {
 				headers: {
 					Authorization: `Bearer ${token}`
 				}
 			}).then(res => {
-				console.log('wwwwwww', res)
 				this.setState({user: res.data})
 			}).catch(err =>{
 				console.log(err)
@@ -158,7 +156,7 @@ class Nav extends React.Component {
 
 					<Link to="/login">Login</Link>
 					<Link to="/signup">Sign-up</Link>
-		
+
       </nav>
     );
   }

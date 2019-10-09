@@ -38,7 +38,7 @@ class PostTopic extends React.Component {
 	componentWillMount () {
 		let topic = this.state.topic
 		let token = localStorage.getItem('token')
-		axios.get('http://localhost:4000/profile', {
+		axios.get(`${process.env.REACT_APP_API}/profile`, {
 			headers: {
 				Authorization: `Bearer ${token}`
 			}
@@ -52,7 +52,7 @@ class PostTopic extends React.Component {
 			console.log(err);
 		})
 
-		axios.get('http://localhost:4000/category')
+		axios.get(`${process.env.REACT_APP_API}/category`)
 			.then(res => {
 				res.data.unshift({
 					 _id: null,
@@ -62,7 +62,7 @@ class PostTopic extends React.Component {
 			})
 
 
-		axios.get('http://localhost:4000/ranking', {
+		axios.get(`${process.env.REACT_APP_API}/ranking`, {
 			headers: {
 				Authorization: `Bearer ${token}`
 			}
@@ -106,7 +106,7 @@ console.log(file)
 		e.preventDefault()
 		let topic = this.state.topic
 
-	console.log('this.state', this.state);
+		console.log('this.state', this.state);
 
 		let data = new FormData()
 
@@ -117,7 +117,7 @@ console.log(file)
 		data.append('category', this.state.topic.category)
 
 		if(topic.title && topic.description && topic.user && topic.category) {
-			axios.post('http://localhost:4000/topic',
+			axios.post(`${process.env.REACT_APP_API}/topic`,
 			data).then(res => {
 				console.log(res.data)
 				this.props.history.push("/")
@@ -135,49 +135,44 @@ console.log(file)
 		return(
 			<>
 			<Nav user={this.state.user} points={this.state.points}/>
-<div className='grid image'>
-			<div className="wrapPosttopic">
-
-
-<div>
-
-				<form className="formPostTopic" onSubmit={this.submitTopic}>
-				<span className="title">Post Topic</span>
-					<div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
-						<Select
-					    label="Please select a category for your post:"
-					    options={this.state.options}
-					    style={containerStyles}
-					    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-							onChange={this.changeSelect}
-						/>
-
-						<Textarea
-							id="example-textarea-1"
-							label="Please enter a title for your topic:"
-							rows={1}
-							placeholder="Title"
-							style={containerStyles}
-							className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-							onChange={(e)=>this.changeField(e,'title')}
-						/>
-						<Textarea
-					    id="example-textarea-1"
-					    label="Please enter your topic below:"
-					    rows={6}
-					    placeholder="Your topic..."
-					    style={containerStyles}
-					    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-							onChange={(e)=>this.changeField(e,'description')}
-						/>
-						<div className="uploadLabel">Please select an image for your topic:</div>
-							<input type="file"name="myFile"onChange={this.getFile} />
-						<button className="submitTopic">Submit</button>
-					</div>
-				</form>
-
-</div>
-</div>
+				<div className='grid image'>
+					<div className="wrapPosttopic">
+						<div>
+							<form className="formPostTopic" onSubmit={this.submitTopic}>
+							<span className="title">Post Topic</span>
+								<div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
+									<Select
+								    label="Please select a category for your post:"
+								    options={this.state.options}
+								    style={containerStyles}
+								    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+										onChange={this.changeSelect}
+									/>
+									<Textarea
+										id="example-textarea-1"
+										label="Please enter a title for your topic:"
+										rows={1}
+										placeholder="Title"
+										style={containerStyles}
+										className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+										onChange={(e)=>this.changeField(e,'title')}
+									/>
+									<Textarea
+								    id="example-textarea-1"
+								    label="Please enter your topic below:"
+								    rows={6}
+								    placeholder="Your topic..."
+								    style={containerStyles}
+								    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+										onChange={(e)=>this.changeField(e,'description')}
+									/>
+									<div className="uploadLabel">Please select an image for your topic:</div>
+										<input type="file"name="myFile"onChange={this.getFile} />
+									<button className="submitTopic">Submit</button>
+								</div>
+							</form>
+						</div>
+				</div>
 			</div>
 			</>
 		)

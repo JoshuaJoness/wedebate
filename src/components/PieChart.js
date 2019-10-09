@@ -34,7 +34,7 @@ class PieChart extends React.Component {
 
 		componentWillMount() {
 			let token = localStorage.getItem('token')
-			axios.get('http://localhost:4000/opinion', {
+			axios.get(`${process.env.REACT_APP_API}/opinion`, {
 				headers: {
 					Authorization: `Bearer ${token}`
 				}
@@ -45,7 +45,7 @@ class PieChart extends React.Component {
 			}).catch(err => {
 				console.log(err);
 			})
-			axios.get('http://localhost:4000/topicPie', {
+			axios.get(`${process.env.REACT_APP_API}/topicPie`, {
 				headers: {
 					Authorization: `Bearer ${token}`
 				}
@@ -56,7 +56,7 @@ class PieChart extends React.Component {
 			}).catch(err =>{
 				console.log(err);
 			})
-			axios.get('http://localhost:4000/commentPie', {
+			axios.get(`${process.env.REACT_APP_API}/commentPie`, {
 				headers: {
 					Authorization: `Bearer ${token}`
 				}

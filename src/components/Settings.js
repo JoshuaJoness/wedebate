@@ -17,7 +17,7 @@ class Settings extends React.Component{
 
 	componentWillMount() {
 		let token = localStorage.getItem('token')
-			axios.get('http://localhost:4000/profile', {
+			axios.get(`${process.env.REACT_APP_API}/profile`, {
 				headers: {
 					Authorization: `Bearer ${token}`
 				}
@@ -28,7 +28,7 @@ class Settings extends React.Component{
 			}).catch(err => {
 				console.log(err);
 			})
-			axios.get('http://localhost:4000/ranking', {
+			axios.get(`${process.env.REACT_APP_API}/ranking`, {
 				headers: {
 					Authorization: `Bearer ${token}`
 				}

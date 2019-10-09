@@ -12,38 +12,34 @@ class Thumb extends React.Component {
 		],
 		categories: [],
 		users: []
-
-
-
-  };
+  }
 
 	render() {
     return (
       <div className="cardWrap" href="place.html">
-			<div
+				<div
 				className="imageHome"
 				style={{
 					backgroundImage: `url(${this.props.topic.image})`
 				}}
-			></div>
+					>
+				</div>
         <div className="titleHome">
           <h1 className={this.props.topic.title.length > 25 ? 'fitting' : 'meta'} >
             {this.props.topic.title}
           </h1>
-					</div>
-
-					<div className='yesno'>
-															<Circle topic={this.props.topic}/>
-					</div>
-<div className='wrapCreation'>
+				</div>
+				<div className='yesno'>
+					<Circle topic={this.props.topic}/>
+				</div>
+				<div className='wrapCreation'>
 					<span className="author"> Created by: {this.props.topic.user.username}</span>
-					 <small className="creationDate"><TimeAgo date= {this.props.topic.created}  /></small>
-					 </div>
-<footer className='footer'><i class="far fa-flag"></i><i class="fas fa-share-alt"></i><i class="fas fa-sort-down"></i>
-					 </footer>
-					 </div>
-
-    );
+					<small className="creationDate"><TimeAgo date= {this.props.topic.created}  /></small>
+				</div>
+					<footer className='footer'><i class="far fa-flag"></i><i class="fas fa-share-alt"></i><i class="fas fa-sort-down"></i>
+					</footer>
+			</div>
+    )
   }
  }
 export default Thumb

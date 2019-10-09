@@ -83,7 +83,7 @@ console.log(file)
 
 		if(user.email && user.username && user.password && this.state.values.includes('checkboxOne' && 'checkboxTwo'))
 		{
-		axios.post("http://localhost:4000/signup",
+		axios.post(`${process.env.REACT_APP_API}/signup`,
 		 data).then(res =>{
 			localStorage.setItem('token', res.data.token)
 			console.log(res.data)

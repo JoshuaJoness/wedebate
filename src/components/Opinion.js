@@ -38,7 +38,7 @@ class Opinion extends React.Component {
 	componentWillMount () {
 		console.log('>>>>>>>>>>>',this.props);
 		let token = localStorage.getItem('token')
-		axios.get('http://localhost:4000/profile', {
+		axios.get(`${process.env.REACT_APP_API}/profile`, {
 		headers: {
 			Authorization: `Bearer ${token}`
 		}
@@ -51,7 +51,7 @@ class Opinion extends React.Component {
 		}).catch(err => {
 			console.log(err);
 		})
-		axios.get(`http://localhost:4000/comment?opinion=${this.props.opinion._id}`).then(res => {
+		axios.get(`${process.env.REACT_APP_API}/comment?opinion=${this.props.opinion._id}`).then(res => {
 			let comments = this.state.comments
 			comments = res.data
 			this.setState({comments})
@@ -69,7 +69,7 @@ class Opinion extends React.Component {
 
 	submitComment = () => {
 		let currentComment = this.state.currentComment
-		axios.post("http://localhost:4000/comment",
+		axios.post(`${process.env.REACT_APP_API}/comment`,
 			currentComment).then(res => {
 		console.log(res.data)
 		let comments = this.state.comments
@@ -82,7 +82,7 @@ class Opinion extends React.Component {
 
 	upVote = () => {
 		let upVoter = this.state.upVoter
-		axios.post(`http://localhost:4000/upvote/${this.props.opinion._id}`,
+		axios.post(`${process.env.REACT_APP_API}/upvote/${this.props.opinion._id}`,
 		upVoter).then(res => {
 
 			let opinions = this.state.opinions

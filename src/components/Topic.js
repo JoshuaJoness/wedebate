@@ -43,7 +43,7 @@ class Topic extends React.Component {
 
 	componentWillMount(){
 		let token = localStorage.getItem('token')
-		axios.get('http://localhost:4000/profile', {
+		axios.get(`${process.env.REACT_APP_API}/profile`, {
 			headers: {
 				Authorization: `Bearer ${token}`
 			}
@@ -58,7 +58,7 @@ class Topic extends React.Component {
 					console.log(err);
 				})
 
-		axios.get('http://localhost:4000/ranking', {
+		axios.get(`${process.env.REACT_APP_API}/ranking`, {
 			headers: {
 				Authorization: `Bearer ${token}`
 			}
@@ -73,8 +73,8 @@ class Topic extends React.Component {
 
 	componentDidMount() {
 		Promise.all([
-			axios.get(`http://localhost:4000/topic/${this.props.match.params.id}`),
-			axios.get(`http://localhost:4000/opinions/topic/${this.props.match.params.id}`)
+			axios.get(`${process.env.REACT_APP_API}/topic/${this.props.match.params.id}`),
+			axios.get(`${process.env.REACT_APP_API}/opinions/topic/${this.props.match.params.id}`)
 				]).then(([topic, opinions]) => {
 								this.setState({
 									topic: topic.data,
@@ -104,7 +104,7 @@ class Topic extends React.Component {
 		e.preventDefault()
 		let currentOpinion = this.state.currentOpinion
 		if(currentOpinion.text && currentOpinion.side) {
-			axios.post('http://localhost:4000/opinion',
+			axios.post(`${process.env.REACT_APP_API}/opinion`,
 			currentOpinion).then(res => {
 				if (res.data.side === 'pro') {
 					let proOpinions = this.state.proOpinions
@@ -126,7 +126,7 @@ class Topic extends React.Component {
 	voteYes = () => {
 		let user = this.state.user
 		user.votedYes = true
-		axios.patch(`http://localhost:4000/vote/${this.props.match.params.id}`,
+		axios.patch(`${process.env.REACT_APP_API}/vote/${this.props.match.params.id}`,
 			{user}).then(res => {
 				console.log('RESPONSE',res.data);
 			}).catch(err => {
@@ -136,7 +136,7 @@ class Topic extends React.Component {
 
 	voteNo = () => {
 		let user = this.state.user
-		axios.patch(`http://localhost:4000/vote/${this.props.match.params.id}`,
+		axios.patch(`${process.env.REACT_APP_API}/vote/${this.props.match.params.id}`,
 			{user}).then(res => {
 				console.log('RESPONSE',res.data);
 			}).catch(err => {
@@ -177,7 +177,9 @@ class Topic extends React.Component {
 				<Nav user={this.state.user} points={this.state.points}/>
 				<div className="topic">
 					<h1 style={styles.title}>{this.state.topic.title}</h1>
+					<div >
 					<img src={this.state.topic.image} alt="landscape with rainbows and colorful birds"/>
+					</div>
 					<div style={styles.descriptionLabel}>Description:</div>
 				<div style={styles.description}>	{this.state.topic.description}</div>
 				</div>

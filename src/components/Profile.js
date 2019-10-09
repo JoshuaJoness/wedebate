@@ -25,7 +25,7 @@ class Profile extends React.Component {
 
 	componentWillMount(){
 		let token = localStorage.getItem('token')
-		axios.get('http://localhost:4000/profile', {
+		axios.get(`${process.env.REACT_APP_API}/profile`, {
 		  headers: {
 		    Authorization: `Bearer ${token}`
 		  }
@@ -33,12 +33,11 @@ class Profile extends React.Component {
 			let user = this.state.user
 			user.created =
 			user = res.data
-			axios.get(`http://localhost:4000/rankings?user=${user._id}`, {
+			axios.get(`${process.env.REACT_APP_API}/rankings?user=${user._id}`, {
 				headers: {
 					Authorization: `Bearer ${token}`
 				}
 			}).then(res => {
-				console.log('wwwwwww', res.data)
 				this.setState({user: res.data})
 			}).catch(err =>{
 				console.log(err)
@@ -47,9 +46,7 @@ class Profile extends React.Component {
 			console.log(err);
 		})
 
-
-
-		axios.get('http://localhost:4000/opinion', {
+		axios.get(`${process.env.REACT_APP_API}/opinion`, {
 			headers: {
 		    Authorization: `Bearer ${token}`
 		}
@@ -62,7 +59,7 @@ class Profile extends React.Component {
 			console.log(err)
 		})
 
-		axios.get('http://localhost:4000/comment', {
+		axios.get(`${process.env.REACT_APP_API}/comment`, {
 			headers: {
 				Authorization: `Bearer ${token}`
 		}
@@ -74,14 +71,10 @@ class Profile extends React.Component {
 		}).catch(err =>{
 			console.log(err)
 		})
-
-
-
 	}
 
 
   render() {
-
 		const styles = {
 			headerElement: {
 				marginTop: '7px',
@@ -128,8 +121,6 @@ class Profile extends React.Component {
 					</div>
         </div>
 
-
-
         <div className="boxHolder">
 					<div></div>
           <div className="box">
@@ -147,6 +138,5 @@ class Profile extends React.Component {
     )
   }
 }
-
 
 export default Profile;

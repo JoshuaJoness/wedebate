@@ -71,7 +71,7 @@ class SortTable extends React.Component {
 
 			let token = localStorage.getItem('token')
 
-			axios.get('http://localhost:4000/profile', {
+			axios.get(`${process.env.REACT_APP_API}/profile`, {
 				headers: {
 					Authorization: `Bearer ${token}`
 				}
@@ -96,7 +96,7 @@ class SortTable extends React.Component {
 			//
 			// })
 
-			axios.get('http://localhost:4000/rankingsIncognit', {
+			axios.get(`${process.env.REACT_APP_API}/rankingsIncognit`, {
 				headers: {
 					Authorization: `Bearer ${token}`
 				}

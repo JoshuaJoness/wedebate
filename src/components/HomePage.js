@@ -75,8 +75,8 @@ searchFilter = (event) => {
 		let token = localStorage.getItem('token')
 
 		Promise.all([
-		axios.get('http://localhost:4000/topic/'),
-		axios.get('http://localhost:4000/category/')
+		axios.get(`${process.env.REACT_APP_API}/topic/`),
+		axios.get(`${process.env.REACT_APP_API}/category`)
 		]).then(([topics, categories]) => {
 					this.setState({
 						topics: topics.data,
@@ -86,7 +86,7 @@ searchFilter = (event) => {
 				})
 
 
-			axios.get('http://localhost:4000/profile', {
+			axios.get(`${process.env.REACT_APP_API}/profile`, {
 				headers: {
 					Authorization: `Bearer ${token}`
 				}
@@ -99,7 +99,7 @@ searchFilter = (event) => {
 			})
 
 
-			axios.get('http://localhost:4000/ranking', {
+			axios.get(`${process.env.REACT_APP_API}/ranking`, {
 				headers: {
 					Authorization: `Bearer ${token}`
 				}
